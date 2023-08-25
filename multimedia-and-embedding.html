@@ -1,0 +1,113 @@
+<!DOCTYPE = html>
+<html lang="en">
+  <head>
+    <title>Introduction to HTML</title>
+    <link href="styles/styles.css" rel="stylesheet">
+    <link href="../MDN-structuring-the-web/images/weagle.png" id="weagle">
+    <link href="index.html">
+    <meta charset="UTF-8">
+    </head>
+  <body>
+  <h2>Images in HTML</h2>
+  <p>Place &lt;img&gt; tags within a &lt;figure&gt; tag to structure content. After inputting your image in the &lt;figure&gt; tag, you can add a &lt;figcaption&gt; tag to provide a caption for your image.</p>
+  <p><strong>Example code:</strong></p>
+  <code><pre>
+&lt;figure&gt;
+    &lt;img src=&quot;&quot; alt=&quot;&quot; width=&quot;&quot; height=&quot;&quot;&gt;
+    &lt;figcaption&gt;Caption goes here
+    &lt;figcaption&gt;
+  &lt;/figure&gt;
+</pre></code>
+  <p><strong>Output:</strong></p>
+    <figure>
+        <img src="https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg" alt="The head and torso of a dinosaur skeleton; it has a large head with long sharp teeth" width="400" height="341" />
+      <figcaption>
+        A T-Rex on display in the Manchester University Museum.
+      </figcaption>
+    </figure>
+  <p>A figure doesn't have to be an image. It is an independent unit of content that:
+    <ul>
+    <li>Expresses your meaning in a compact, easy-to-grasp way.</li>
+    <li>Could go in several places in the page's linear flow.</li>
+    <li>Provides essential information supporting the main text.</li>
+    </ul>
+    A figure could be several images, a code snippet, audio, video, equations, a table, or something else.</p>
+        <h2>CSS Background Images</h2>
+        <p>You can use CSS to place images directly on your page's background. You can more easily control the placement of CSS background images relative to HTML images using CSS background- properties. That said, CSS background images are decorative only; unlike HTML images, they cannot be interacted with or make use of accessibility features.</p>
+        <ul><li>MDN suggests only using CSS background images when your images are for purely decorative purposes</li>
+            <ul><li>In other words, probably not the greatest idea for a photography portfolio. But I should look into this more before ruling it out</li></ul></ul>
+            </div>
+        <p><strong>Example code:</strong></p>
+        </div>
+    </div>
+    <code><pre>
+p {
+  background-image: url("images/dinosaur.jpg");
+}
+    </pre></code>
+    <p><strong>Output (two examples):</strong></p>
+    <div id="caps-logo-2">
+        <p>Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
+            Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!</p>
+            <br></div>
+    <div id="caps-logo-1"><br><br><br><br><br></div>
+    <br>
+    <a href="index.html">Home</a>
+
+    </html>

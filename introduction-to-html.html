@@ -1,0 +1,160 @@
+<!DOCTYPE = html>
+<html lang="en">
+  <head>
+    <title>Introduction to HTML</title>
+    <link href="styles/styles.css" rel="stylesheet">
+    <linl href="index.html"></linl>
+    <meta charset="UTF-8">
+    <meta name="author" content="Author's name goes here">
+    <meta name="description" content="page description for SEO purposes goes here">
+    </head>
+  <body>
+  <h2 id="span-ex">Replicating &lt;H1&gt; using &lt;span&gt; elements</h1>
+  <code><pre>&lt;strong&gt;&lt;span style="font-size: 32px; margin: 21px 0; display: block;" id="span-ex"&gt;
+    Faux H1 example&lt;/span&gt;&lt;strong&gt;</pre></code>
+    <p>&lt;H1&gt; headings should only be used once per page as they contain information that is referenced for SEO purposes. If you need to replicate the style of an &lt;H1&gt; heading for design purposes, utilize &lt;span&gt; elements to stylize text accordingly. Use &lt;H2&gt;, &lt;H3&gt;, etc. for subheadings, sub-subheadings, etc.</p>
+    <h2 id="stylizing-text">Stylizing text</h2>
+    <p>Use &lt;mark&gt; to <mark>highlight</mark> text</p>
+    <p>Use &lt;em&gt; to <em>italicize</em> text--don't use &lt;i&gt;</p>
+    <p>Use &ltstrong&gt; to <strong>bold</strong> text--don't use &lt;b&gt;</p>
+    <h2 id="linking-images">Linking images</h2>
+    <a href="https://www.google.com/" title="Google"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png" width="250"></a> 
+    <p>This is an example of an image that links to another page when it's clicked on by the user. Adding a title attribute to the &lt;anchor&gt; element allows you to create a tooltip that appears when hovering on the link.</p>
+    <h2 id="doc-frag-ex">Roots, URLs, and paths</h2>
+    <p>The "root" refers to the name of the folder that houses all of your website's index file, code, directories, documents, images, etc.</p>
+    <ul>
+      <li>Index.html files are used for your landing pages. You can have multiple index files, but they have to be located in different directories (sub-folders) within the root. This means that only one index.html file can be present directly inside the root and outside of your directories.</li>
+      <ul>
+        <li>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#a_quick_primer_on_urls_and_paths">here</a> for information on how to use multiple index files in the same website, etc.</li>
+        <li>Keep in mind that HTML files do <strong>not</strong> have to be named &quot;index.html&quot;; you can easily create subpages containing HTML that have different file names--just be sure to link to them accordingly (see above link or <a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files#file_paths">here</a> for basic idea).</li>
+      </ul>
+    </ul>
+  <h2 id="links">Links</h2>
+  <p>Document fragments are used to jump to a certain section on a given page. This page can be either the current page or a different page altogether. They use the <strong>href attribute with a # symbol</strong> in &lt;anchor&gt; elements to jump to the section of the page with the corresponding ID attribute. They are case-sensitive.<br><br>
+    <strong>Example code:</strong></p>
+  <code>&lt;a href=&quot;<strong>#</strong>doc-frag-ex&quot;&gt;<a href="#doc-frag-ex">click here</a>&lt;a&gt;</code>
+  <ul>
+    <li>Be strategic with links--search engines catalog hyperlinked text for SEO purposes.</li>
+    </ul>
+  <p>The download attribute can be used to create a name for files to be saved as when downloaded by another system.
+  <div><strong>Input:</strong></p><code><pre>
+&lt;a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+download="firefox-latest-64bit-installer.exe"&gt;
+Download Firefox for Windows (64-bit) (English, US)
+    &lt;/a&gt;</pre>
+</code></div>
+<div><p><strong>Output:</strong></p>
+  <a
+  href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
+  download="firefox-latest-64bit-installer.exe">
+  Download Latest Firefox for Windows (64-bit) (English, US)</a>
+  </div>
+  <h2 id="advanced-text">Advanced text formatting</h2>
+  <h3 id="description-lists">Description lists</h3>
+  <p><em>Note the use of two &lt;dd&gt; elements in the last &lt;dt&gt; element</em></p>
+<p><strong>Input:</strong></p><code><pre>
+&lt;dl&gt;
+  &nbsp;&lt;dt&gt;soliloquy&lt;/dt&gt;
+      &nbsp;&nbsp;&lt;dd&gt;In drama, where a character speaks to themselves, representing their inner 
+            thoughts or feelings and in the process relaying them to the audience 
+            (but not to other characters.)&lt;/dd&gt;
+   &nbsp;&lt;dt&gt;monologue&lt;/dt&gt;
+      &nbsp;&nbsp;&lt;dd&gt;In drama, where a character speaks their thoughts out loud to share them 
+            with the audience and any other characters present.&lt;/dd&gt;
+   &nbsp;&lt;dt&gt;aside&lt;/dt&gt;
+      &nbsp;&nbsp;&lt;dd&gt;In drama, where a character shares a comment only with the audience for
+            humorous or dramatic effect. This is usually a feeling, thought, or piece 
+            of additional background information.&lt;/dd&gt;
+      &nbsp;&nbsp;&lt;dd&gt;In writing, a section of content that is related to the current topic, but 
+            doesn't fit directly into the main flow of content so is presented nearby 
+            (often in a box off to the side.)&lt;/dd&gt;
+  &lt;/dl&gt;</pre>
+  </code></div>
+  <div><p><strong>Output:</strong></p>
+   <dl>
+   <dt>soliloquy</dt>
+   <dd>
+    In drama, where a character speaks to themselves, representing their inner
+    thoughts or feelings and in the process relaying them to the audience (but
+    not to other characters.)
+   </dd>
+   <dt>monologue</dt>
+   <dd>
+    In drama, where a character speaks their thoughts out loud to share them
+    with the audience and any other characters present.
+   </dd>
+   <dt>aside</dt>
+    <dd>
+    In drama, where a character shares a comment only with the audience for
+    humorous or dramatic effect. This is usually a feeling, thought, or piece of
+    additional background information.
+   </dd>
+   <dd>
+    In writing, a section of content that is related to the current topic, but
+    doesn't fit directly into the main flow of content so is presented nearby
+    (often in a box off to the side.)
+    </dd>
+   </dd>
+  </dl>
+  </div>
+<h3 id="quotes">Quotes</h3>
+  <blockquote>This is an example of a block quote &lt;blockquote&gt;</blockquote>
+  <q>This is an example of an inline quote &lt;q&gt;</q>
+<h3 id="abbreviations">Abbreviations</h3>
+  <p>This is an example of how &lt;<abbr title="abbreviations">abbr</abbr>&gt; work</p>
+<h3 id="addresses">Addresses</h3>
+ <address>This is an example of an &lt;address&gt;
+  <ul>
+    <li>Addresses should be in the footer section</li>
+    <li>if they apply to the whole document</li>
+    <li>and in the &lt;body&gt; or &lt;article&gt;</li>
+    <li>if they apply to an individual page</li>
+  </ul>
+  They can be used for regular contact information or actual addresses
+ </ul></address>
+<h3 id="subscripts">Superscripts and subscripts</h3>
+ <p>This is an example of a <sub>&lt;sub&gt;</sub>script and <sup>&lt;sup&gt;</sup>script</p>
+<h3 id="displaying-code">Displaying code</h3>
+  <p><em>Note: These elements are generally used in &lt;code&gt; blocks.</em></p>
+  <p>Text in a &lt;pre&gt; element is displayed in a fixed-width font, and it preserves both spaces and line breaks.
+   <code><pre>This
+        is an
+      example       of  the      &lt;pre&gt; element.
+                          Yay!</pre></code>
+  <p>The &lt;var&gt; element is used to write variables:</p>
+    <code><var>l</var> x <var>w</var> x <var>h</var></code>
+  <p>The &lt;kbd&gt; element is used to indicate when to input commands via your keyboard or mouse:</p>
+   <code>Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</code>
+  <p>The &lt;samp&gt; element is used to display output from a computer program:</p>
+  <code><samp>PING mozilla.org (63.245.215.20): 56 data bytes</samp></code>
+<h3 id="time-and-dates">Writing time and dates</h3>
+<p>Use &lt;time datetime=&quot;24:00 clock format&quot;&gt; and &lt;time datetime=&quot;YYYY-MM-DD&quot;&gt; to write time and dates in machine-readable formats to avoid confusing the computer.</p>
+  <code><pre>&lt;time datetime="12:01"&gt;12:01&lt;/time&gt;
+    &lt;/time&gt;</pre></code>
+  <time datetime="2000-01-01">January 1, 2000</time>
+  <code><pre>&lt;time datetime="12:01"&gt;12:01
+    &lt;/time&gt;</pre></code>
+<time datetime="2000-01-01">January 1, 2000</time></li>
+</code>
+
+<!--FOR NAV BAR-->
+<a href="index.html">Home</a>
+<a href="#span-ex">Replicating &lt;H1&gt; using &lt;span&gt; elements</a>
+<a href="#stylizing-text">Stylizing text</a>
+<a href="#linking-images">Linking images</a>
+<a href="#doc-frag-ex">Roots, URLs, and paths</a>
+<a href="#links">Links</a>
+<a href="#advanced-text">Advanced text formatting</a>
+<a href="#description-lists">Description lists</a>
+<a href="#quotes">Quotes</a>
+<a href="#abbreviations">Abbreviations</a>
+<a href="#addresses">Addresses</a>
+<a href="#subscripts">Superscripts and subscripts</a>
+<a href="#displaying-code">Displaying code</a>
+<a href="#time-and-dates">Writing time and dates</a>
+<!--FOR NAV BAR-->
+
+    </body>
+  </html>
+
+
