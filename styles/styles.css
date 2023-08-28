@@ -32,3 +32,8 @@ font-variant-caps: all-small-caps;
 font-family: Arial, Helvetica, sans-serif;
 
 }
+
+#logo {
+    width: 100px;
+    height: 250px;
+}
