@@ -1,0 +1,133 @@
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Table template</title>
+    <link href="/tables-directory/minimal-table.css" rel="stylesheet" type="text/css">
+    <link href="../index.html">
+  </head>
+  <body>
+    <h1>Table template</h1>
+    <h4>Table cells should be read left-to-right</h4>
+    <h2>Basic table guidelines</h2>
+    <table>
+        <th>Table Header example &lt;th&gt;</th><th>To place a table header next to another on the x-axis,</th><th>use multiple &lt;th&gt; elements</th><th>on the same row of HTML markup.</th>
+        <tr>
+            <td>This is an example of a table cell, &lt;td&gt;.</td>
+            <td>Table cells are enclosed within &lt;table&gt; tags.</td>
+            <td><em>Table cell three</em></td>
+            <td><em>Table cell four</em></td>
+        </tr>
+        <tr>
+            <td>Table cells should also be enclosed within &lt;tr&gt; tags.</td>
+            <td>These tags are responsible for creating rows of cells.</td>
+            <td>So, the hierarchy would be as follows: <br>&lt;table&gt;<br> &lt;tr&gt;<br> &lt;th&gt;<br> &lt;td&gt;&lt;/td&gt;<br> &lt;/th&gt;<br> &lt;/tr&gt;<br> &lt;/table&gt;</td>
+            <td>Note: &lt;th&gt; elements can also precede &lt;tr&gt; elements.</td>
+        </tr>
+        <tr>
+            <td>The height of table cells automatically</td>
+            <td>resizes to fit the content in</td>
+            <td>each row of cells. It is not based</td>
+            <td>on the preceding row's height.</td>
+        </tr>
+    </table>
+    <br>
+    <h2>Allowing table cells to span multiple rows and columns</h2>
+    <p>Q: How can we clean up the below table?</p>
+    <table>
+        <tr>
+          <th>Animals</th>
+        </tr>
+        <tr>
+          <th>Hippopotamus</th>
+        </tr>
+        <tr>
+          <th>Horse</th>
+          <td>Mare</td>
+        </tr>
+        <tr>
+          <td>Stallion</td>
+        </tr>
+        <tr>
+          <th>Crocodile</th>
+        </tr>
+        <tr>
+          <th>Chicken</th>
+          <td>Hen</td>
+        </tr>
+        <tr>
+          <td>Rooster</td>
+        </tr>
+      </table>
+      <br>
+      <p>A: By using the colspan=&quot;&quot; and rowspan=&quot;&quot; attributes within the &lt;th&gt; and &lt;td&gt; elements. 
+        <ul>
+            <li>These attributes work by making the table header or cell span the number of columns designated in the attribute.</li>
+            </ul>
+      <table>
+        <tr>
+          <th colspan="2">Example of cell spanning two <em>columns</em></th>
+        </tr>
+        <tr>
+          <th>Hippopotamus</th>
+        </tr>
+        <tr>
+          <th rowspan="2">Example of cell spanning two <em>rows</em></th>
+          <td>Mare</td>
+        </tr>
+        <tr>
+          <td>Stallion</td>
+        </tr>
+        <tr>
+          <th>Crocodile</th>
+        </tr>
+        <tr>
+          <th rowspan="2">Example of cell spanning two <em>rows</em></th>
+          <td>Hen</td>
+        </tr>
+        <tr>
+          <td>Rooster</td>
+        </tr>
+      </table>
+    <h2>Providing common styling to columns</h2>
+    <h3>Styling without &lt;col&gt;</h3>
+    <p>HTML has a method of defining styling information for an entire column of data all in one place — the &lt;col&gt; and &lt;colgroup&gt; elements. These exist because it is inefficient having to use &lt;td&gt; or &lt;th&gt; in the column, or use a complex selector such as :nth-child.</p>
+    <ul>
+        <li>Styling columns like this is limited to the following properties:</li>
+        <ul><li>border</li>
+        <li>background</li>
+        <li>width</li>
+        <li>visibility</li></ul>
+        <li>To set other properties, you have to either style every &lt;td&gt; or &lt;th&gt; in the column by setting a class with corresponding CSS rules, or use a complex selector such as :nth-child.</li>
+    </ul>
+    <h3>Styling with &lt;col&gt;</h3>
+    <p>Instead of doing the above, we can input the information once, using the &lt;col&gt; element.</p>
+    <ul>
+        <li>&lt;col&gt; elements are specified within a &lt;colgroup&gt; container below the opening &lt;table&gt; tag.</li>
+    </ul>
+    <p><strong>Input:</strong></p>
+    <code><pre>
+    &lt;table&gt;
+        &lt;colgroup&gt;
+            &lt;col style="background-color: yellow" span="2" /&gt;
+          &lt;/colgroup&gt;
+        &lt;tr>
+          &lt;th>Data 1&lt;/th&gt;
+          &lt;th>Data 2&lt;/th&gt;
+        &lt;/tr>
+        &lt;tr>
+          &lt;td>Calcutta&lt;/td&gt;
+          &lt;td>Orange&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td>Robots&lt;/td&gt;
+          &lt;td>Jazz&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/table&gt;
+      </pre></code>
+    <p><strong>Output:</strong></p>
+    <p>See <a href="/tables-directory/colgroup-example.html">this page</a>; the CSS sheet is overriding the HTML styling.<br>
+    Note: You can use an <a href="https://www.w3schools.com/css/css_howto.asp">internal CSS stylesheet</a> to override potential CSS created by the external stylesheet. This is useful for things like borders, etc.</p>
+
+  </body>
+</html>
