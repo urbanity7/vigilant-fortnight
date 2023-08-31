@@ -27,7 +27,7 @@
         <tr>
             <td>Table cells should also be enclosed within &lt;tr&gt; tags.</td>
             <td>These tags are responsible for creating rows of cells.</td>
-            <td>So, the hierarchy would be as follows: <br>&lt;table&gt;<br> &lt;tr&gt;<br> &lt;th&gt;<br> &lt;td&gt;&lt;/td&gt;<br> &lt;/th&gt;<br> &lt;/tr&gt;<br> &lt;/table&gt;</td>
+            <td>So, the <em>basic</em> hierarchy would be: <br>&lt;table&gt;<br>&lt;tr&gt;<br>&lt;th&gt;<br>&lt;/th&gt;<br>&lt;td&gt;&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;/table&gt;</td>
             <td>Note: &lt;th&gt; elements can also precede &lt;tr&gt; elements.</td>
         </tr>
         <tr>
@@ -37,9 +37,8 @@
             <td>on the preceding row's height.</td>
         </tr>
     </table>
-    <br>
     <h2>Allowing table cells to span multiple rows and columns</h2>
-    <p>Q: How can we clean up the below table?</p>
+    <p><strong>Q:</strong> How can we clean up the below table?</p>
     <table>
         <tr>
           <th>Animals</th>
@@ -65,8 +64,7 @@
           <td>Rooster</td>
         </tr>
       </table>
-      <br>
-      <p>A: By using the colspan=&quot;&quot; and rowspan=&quot;&quot; attributes within the &lt;th&gt; and &lt;td&gt; elements. 
+      <p><strong>A:</strong> By using the colspan=&quot;&quot; and rowspan=&quot;&quot; attributes within the &lt;th&gt; and &lt;td&gt; elements. 
         <ul>
             <li>These attributes work by making the table header or cell span the number of columns designated in the attribute.</li>
             </ul>
@@ -117,11 +115,11 @@
         &lt;colgroup&gt;
             &lt;col style="background-color: yellow" span="2" /&gt;
           &lt;/colgroup&gt;
-        &lt;tr>
+        &lt;tr&gt;
           &lt;th>Data 1&lt;/th&gt;
           &lt;th>Data 2&lt;/th&gt;
-        &lt;/tr>
-        &lt;tr>
+        &lt;/tr&gt;
+        &lt;tr&gt;
           &lt;td>Calcutta&lt;/td&gt;
           &lt;td>Orange&lt;/td&gt;
         &lt;/tr&gt;
@@ -131,8 +129,99 @@
         &lt;/tr&gt;
       &lt;/table&gt;</pre></code>
     <p><strong>Output:</strong></p>
-    <p>See <a href="/tables-directory/colgroup-example.html">this page</a>; the CSS sheet is overriding the HTML styling.<br>
-    Note: You can use an <a href="https://www.w3schools.com/css/css_howto.asp">internal CSS stylesheet</a> to override potential CSS created by the external stylesheet. This is useful for things like borders, etc.</p>
+    See <a href="/tables-directory/colgroup-example.html">this page</a>; the CSS sheet is overriding the HTML styling.
+      <ul>
+        <li>Note: You can use an <a href="https://www.w3schools.com/css/css_howto.asp">internal CSS stylesheet</a> to override potential CSS created by the external stylesheet. This is useful for things like borders, etc.</li></ul>
+      <h2>Adding a caption to your table with &lt;caption&gt;</h2>
+      <p>Captions provide a description of the contents of a given table--think of them as a one-line summary, essentially. They go directly below the opening &lt;table&gt; tag.</p>
+      <p><strong>Input:</strong></p>
+      <code><pre>
+      &lt;table&gt;
+          &lt;caption&gt;
+            Dinosaurs in the Jurassic Period
+          &lt;/caption&gt;
+          &lt;tr&gt;
+            &lt;th&gt;T-Rex&lt;/th&gt;
+              &lt;td&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Stegosaurus&lt;/th&gt;
+              &lt;td&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Triceratops&lt;/th&gt;
+              &lt;td&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;/td&gt;
+              &lt;td&gt;&lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;table&gt;</pre></code>
+      <p><strong>Output:</strong></p>
+      <table>
+        <caption hide>
+          Dinosaurs in the Jurassic Period
+        </caption>
+        <tr>
+          <th>T-Rex</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+          <th>Stegosaurus</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+          <th>Triceratops</th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+      </table>
+    <h2>Adding structure with &lt;thead&gt;, &lt;tfoot&gt;, and &lt;tbody&gt;</h2>
+    <p>Writing out the full element name in the case of &lt;thead&gt;, &lt;tfoot&gt;, and &lt;tbody&gt; allows you to give your HTML a structure and provide hooks from which you can utilize CSS. These elements do <em>not</em> increase accessibility.</p>
+    <table>
+      <tr>
+        <th>&lt;thead&gt;</th>
+        <td>This element must wrap the table's header--this is generally (but not always) the first row containing column headings.</td>
+        <td colspan="2">It comes directly after the &lt;col&gt;/&lt;colgroup&gt; if they're being used in your table.</td>
+      </tr>
+      <tr>
+        <th>&lt;tfoot&gt;</th>
+        <td>This element must wrap the table's footer--for instance, this might be the table's final row containing the sum of the preceding rows a la an Excel document.</td>
+        <td colspan="2">It comes either right at the bottom of the table, or directly below the table header. In the case of the latter, the browser will still render it at the bottom of the table.</td>
+      </tr>
+      <tr>
+        <th>&lt;tbody&gt;</th>
+        <td>This element must wrap the contents of the table that aren't contained within the table header or table footer.</td>
+        <td>Depending on how you structure it, it will appear below the table header or table footer.</td>
+        <td><strong>Important:</strong> This element is always part of your HTML, even if not explicitly stated. It is still worth adding the explicit tag because it gives you more control over how the table is styled.</td>
+      </tr>
+    </table>
+
+
+
+
+
+    <h2>Overall table hierarchy</h2>
+    <p>make sure to denote optional things like th elements and provide examples of where they can go (eg before rows and at the top of columns, in this case)</p>
+        <p>&lt;table&gt;
+          <br>&lt;caption&gt;
+          <br>&lt;/caption&gt;
+          <br>&lt;colgroup&gt;
+            <br>&lt;col style=&quot;&quot;/&gt;
+          <br>&lt;/colgroup&gt;
+          <br>&lt;tr&gt;
+          <br>&lt;th (OPTIONAL colspan and rowspan attributes)&gt;&lt;/th&gt;
+          <br>&lt;td (OPTIONAL colspan and rowspan attributes)&gt;&lt;/td&gt;
+          <br>&lt;td&gt;&lt;/td&gt;
+          <br>&lt;/tr&gt;
+          <br>&lt;/table&gt;</p>
 
   </body>
 </html>
