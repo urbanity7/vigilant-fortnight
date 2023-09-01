@@ -95,14 +95,14 @@
       </table>
     <h2>Providing common styling to columns</h2>
     <h3>Styling without &lt;col&gt;</h3>
-    <p>HTML has a method of defining styling information for an entire column of data all in one place — the &lt;col&gt; and &lt;colgroup&gt; elements. These exist because it is inefficient having to use &lt;td&gt; or &lt;th&gt; in the column, or use a complex selector such as :nth-child.</p>
+    <p>HTML has a method of defining styling information for an entire column of data all in one place — the &lt;col&gt; and &lt;colgroup&gt; elements. These exist because it is inefficient having to use &lt;td&gt; or &lt;th&gt; in the column, or use a complex selector such as <kbd>:nth-child</kbd>.</p>
     <ul>
         <li>Styling columns like this is limited to the following properties:</li>
         <ul><li>border</li>
         <li>background</li>
         <li>width</li>
         <li>visibility</li></ul>
-        <li>To set other properties, you have to either style every &lt;td&gt; or &lt;th&gt; in the column by setting a class with corresponding CSS rules, or use a complex selector such as :nth-child.</li>
+        <li>To set other properties, you have to either style every &lt;td&gt; or &lt;th&gt; in the column by setting a class with corresponding CSS rules, or use a complex selector such as <kbd>:nth-child</kbd>.</li>
     </ul>
     <h3>Styling with &lt;col&gt;</h3>
     <p>Instead of doing the above, we can input the information once, using the &lt;col&gt; element.</p>
@@ -111,23 +111,23 @@
     </ul>
     <p><strong>Input:</strong></p>
     <code><pre>
-    &lt;table&gt;
-        &lt;colgroup&gt;
-            &lt;col style="background-color: yellow" span="2" /&gt;
-          &lt;/colgroup&gt;
-        &lt;tr&gt;
-          &lt;th>Data 1&lt;/th&gt;
-          &lt;th>Data 2&lt;/th&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td>Calcutta&lt;/td&gt;
-          &lt;td>Orange&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td>Robots&lt;/td&gt;
-          &lt;td>Jazz&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/table&gt;</pre></code>
+&lt;table&gt;
+    &lt;colgroup&gt;
+        &lt;col style="background-color: yellow" span="2" /&gt;
+      &lt;/colgroup&gt;
+    &lt;tr&gt;
+      &lt;th>Data 1&lt;/th&gt;
+      &lt;th>Data 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td>Calcutta&lt;/td&gt;
+      &lt;td>Orange&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td>Robots&lt;/td&gt;
+      &lt;td>Jazz&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;</pre></code>
     <p><strong>Output:</strong></p>
     See <a href="/tables-directory/colgroup-example.html">this page</a>; the CSS sheet is overriding the HTML styling.
       <ul>
@@ -136,29 +136,29 @@
       <p>Captions provide a description of the contents of a given table--think of them as a one-line summary, essentially. They go directly below the opening &lt;table&gt; tag.</p>
       <p><strong>Input:</strong></p>
       <code><pre>
-      &lt;table&gt;
-          &lt;caption&gt;
-            Dinosaurs in the Jurassic Period
-          &lt;/caption&gt;
-          &lt;tr&gt;
-            &lt;th&gt;T-Rex&lt;/th&gt;
-              &lt;td&gt;&lt;/td&gt;
-              &lt;td&gt;&lt;/td&gt;
-              &lt;td&gt;&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;
-            &lt;th&gt;Stegosaurus&lt;/th&gt;
-              &lt;td&gt;&lt;/td&gt;
-              &lt;td&gt;&lt;/td&gt;
-              &lt;td&gt;&lt;/td&gt;
-          &lt;/tr&gt;
-          &lt;tr&gt;
-            &lt;th&gt;Triceratops&lt;/th&gt;
-              &lt;td&gt;&lt;/td&gt;
-              &lt;td&gt;&lt;/td&gt;
-              &lt;td&gt;&lt;/td&gt;
-          &lt;/tr&gt;
-        &lt;table&gt;</pre></code>
+&lt;table&gt;
+    &lt;caption&gt;
+      Dinosaurs in the Jurassic Period
+    &lt;/caption&gt;
+    &lt;tr&gt;
+      &lt;th&gt;T-Rex&lt;/th&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Stegosaurus&lt;/th&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Triceratops&lt;/th&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;</pre></code>
       <p><strong>Output:</strong></p>
       <table>
         <caption hide>
@@ -203,25 +203,88 @@
         <td><strong>Important:</strong> This element is always part of your HTML, even if not explicitly stated. It is still worth adding the explicit tag because it gives you more control over how the table is styled.</td>
       </tr>
     </table>
-
-
-
-
-
-    <h2>Overall table hierarchy</h2>
-    <p>make sure to denote optional things like th elements and provide examples of where they can go (eg before rows and at the top of columns, in this case)</p>
-        <p>&lt;table&gt;
-          <br>&lt;caption&gt;
-          <br>&lt;/caption&gt;
-          <br>&lt;colgroup&gt;
-            <br>&lt;col style=&quot;&quot;/&gt;
-          <br>&lt;/colgroup&gt;
-          <br>&lt;tr&gt;
-          <br>&lt;th (OPTIONAL colspan and rowspan attributes)&gt;&lt;/th&gt;
-          <br>&lt;td (OPTIONAL colspan and rowspan attributes)&gt;&lt;/td&gt;
-          <br>&lt;td&gt;&lt;/td&gt;
-          <br>&lt;/tr&gt;
-          <br>&lt;/table&gt;</p>
+    <h2>Nesting tables</h2>
+    <p>You can technically nest a table within another table, but you generally should avoid doing so as this will make your HTML more complicated. One example of when you might nest a table in another table is when you're trying to import content from other sources to your table in a specifically-styled manner.</p>
+    <h2>Tables for visually impaired users</h2>
+    <p>There are a few ways to make tables more readily accessible to viewers. These include:</p>
+    <ul>
+      <li>Using column and row headers--aka the &lt;th&gt; element</li>
+      <li>Defining a <kbd>scope</kbd> attribute</li>
+      <ul>
+        <li>The <kbd>scope</kbd> attribute is used to define the cells that the &lt;th&gt; element relates to. In other words, it identifies which cells the header is a header for.</li> 
+        <li>It can have the following values:</li>
+          <ul>
+            <li>col</li>
+            <li>row</li>
+            <li>colgroup</li>
+            <li>rowgroup</li>
+          </ul>
+          <li><strong>Example code:</strong></li>
+<code><pre>
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;Purchase&lt;/th&gt;
+    &lt;th scope="col"&gt;Location&lt;/th&gt;
+    &lt;th scope="col"&gt;Date&lt;/th&gt;
+    &lt;th scope="col"&gt;Evaluation&lt;/th&gt;
+    &lt;th scope="col"&gt;Cost (€)&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;/thead&gt;
+</pre></code>
+      </ul>
+      <li>Giving each &lt;th&gt; element a unique ID and each &lt;td&gt; element the attribute <kbd>headers</kbd>. When opting for this route, make sure to give each <kbd>headers</kbd> attribute a list of the <kbd>id</kbd> values of all the &lt;th&gt; elements that act as a header for that cell, separated by spaces.</li>
+      <ul>
+        <li><strong>Example code:</strong></li>
+        <code><pre>
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th id="purchase"&gt;Purchase&lt;/th&gt;
+    &lt;th id="location"&gt;Location&lt;/th&gt;
+    &lt;th id="date"&gt;Date&lt;/th&gt;
+    &lt;th id="evaluation"&gt;Evaluation&lt;/th&gt;
+    &lt;th id="cost"&gt;Cost (€)&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;th id="haircut"&gt;Haircut&lt;/th&gt;
+    &lt;td headers="location haircut"&gt;Hairdresser&lt;/td&gt;
+    &lt;td headers="date haircut"&gt;12/09&lt;/td&gt;
+    &lt;td headers="evaluation haircut"&gt;Great idea&lt;/td&gt;
+    &lt;td headers="cost haircut"&gt;30&lt;/td&gt;
+      &lt;/tr&gt;
+      
+      …
+  &lt;/tbody&gt;</pre></code>
+      </ul>
+    </ul>
+<h2>Overall table hierarchy</h2>
+<code><pre>
+&lt;table&gt;
+    &lt;caption&gt;&lt;/caption&gt;
+    &lt;colgroup&gt;
+        &lt;col style=&quot;&quot;/&gt;
+      &lt;/colgroup&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th <strong>(</strong><em>Optional colspan and rowspan attributes</em><strong>)</strong>&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;th <strong>(</strong><em>Optional colspan and rowspan attributes</em><strong>)</strong>&gt;&lt;/th&gt;
+          &lt;td <strong>(</strong><em>Optional colspan and rowspan attributes</em><strong>)</strong>&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;tfoot&gt;
+      &lt;tr&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;td&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tfoot&gt;
+  &lt;/table&gt;
+</pre></code>
 
   </body>
 </html>
