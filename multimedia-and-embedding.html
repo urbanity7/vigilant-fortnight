@@ -118,11 +118,11 @@ p {
     <ul><li>The latter method is the only one which allows you to manipulate the vector using CSS attributes. However, it's best to only use the &lt;svg&gt; method when the vector only appears on one page of your website as this method increases the size of the overall SVG file.</li></ul>
     <ul><ul>
       <li>Method one (&lt;img src=&quot;&quot;&gt;):<br>
-        <code><pre>&lt;img src="/images/clairecarmi-logo-2.svg" id="logo"&gt;</pre></code>
-        <img src="/images/clairecarmi-logo-2.svg" height="100" width="auto" id="logo">
+        <code><pre>&lt;img src="SVG LINK HERE" id="logo"&gt;</pre></code>
+        <img src="SVG LINK HERE" height="100" width="auto" id="logo">
       </li>
       <li>Method two (&lt;svg&gt;):<br>
-      <code><pre>&lt;svg id="Layer_14" data-name="Layer 14" xmlns=
+      <code><pre>&lt;svg id="SVG LINK HERE I THINK" data-name="SVG LINK HERE I THINK" xmlns=
         "http://www.w3.org/2000/svg" width="100px" height="250px" 
         viewBox="0 0 153.9 250.88"&gt;&lt;defs&gt;&lt;style&gt;
         .cls-1{fill:#231f20;stroke:#231f20;stroke-miterlimit:10;}&lt;
@@ -160,8 +160,8 @@ p {
 </li></ul></ul>
         <!-- To center SVG, input the following in the element: add style="display: block; margin:auto;" -->
     <li>This isn't listed on MDN's guide about SVGs, but to resize a vector, there are two options:
-      <ul><li>For vectors inserted using &lt;image src=&quot;&quot;&gt;, apply a matching ID to the vector in the &lt;meta&gt; and &lt;img src=&quot;&quot;&gt; elements. After making sure the width and height attributes within the SVG file are set to 100%, change the width and height within the &lt;img src=&quot;&quot;&gt; element (e.g., height=&quot;100&quot; width=&quot;100&quot;). See this <a href="https://www.freecodecamp.org/news/use-svg-images-in-css-html/">guide here</a> for more information.</li>
-      <li>For vectors inserted using &lt;svg&gt; elements, add height and width attributes to the SVG file's code and set them to your desired value in pixels (e.g., height=&quot;250px&quot; width=&quot;100px&quot;). Save the SVG's source code in your images folder and paste it into the HTML file where you want the vector to appear. See <a href="https://graphicdesign.stackexchange.com/questions/63726/resizing-svg-files">this guide</a> for more information (note: tested using TextEdit; confirmed to work correctly).</p>
+      <ul><li>For vectors inserted using &lt;image src=&quot;&quot;&gt;, apply a matching ID to the vector in the &lt;meta&gt; and &lt;img src=&quot;&quot;&gt; elements. After making sure the <kbd>width</kbd> and <kbd>height</kbd> attributes within the SVG file are set to 100%, change the width and height within the &lt;img src=&quot;&quot;&gt; element (e.g., height=&quot;100&quot; width=&quot;100&quot;). See this <a href="https://www.freecodecamp.org/news/use-svg-images-in-css-html/">guide here</a> for more information.</li>
+      <li>For vectors inserted using &lt;svg&gt; elements, add <kbd>height</kbd> and <kbd>width</kbd> attributes to the SVG file's code and set them to your desired value in pixels (e.g., height=&quot;250px&quot; width=&quot;100px&quot;). Save the SVG's source code in your images folder and paste it into the HTML file where you want the vector to appear. See <a href="https://graphicdesign.stackexchange.com/questions/63726/resizing-svg-files">this guide</a> for more information (note: tested using TextEdit; confirmed to work correctly).</p>
       </li>  
       </ul></ul>
     <h2>Responsive images</h2>
@@ -169,7 +169,7 @@ p {
       <ul>
         <li><strong>Art direction problem</strong>: The problem whereby you want to serve cropped images for different layouts—for example a landscape image showing a full scene for a desktop layout, and a portrait image showing the main subject zoomed in for a mobile layout. You can solve this problem using the &lt;picture&gt; element.
         </li>
-        <li><strong>Resolution switching problem</strong>: The problem whereby you want to serve smaller image files to narrow-screen devices, as they don't need huge images like desktop displays do — and to serve different resolution images to high density/low density screens. You can solve this problem using vector graphics (SVG images) and the srcset with sizes attributes.
+        <li><strong>Resolution switching problem</strong>: The problem whereby you want to serve smaller image files to narrow-screen devices, as they don't need huge images like desktop displays do — and to serve different resolution images to high density/low density screens. You can solve this problem using vector graphics (SVG images) with the <kbd>srcset</kbd> and <kbd>size</kbd> attributes.
         </li>
       </ul>
     </p>
