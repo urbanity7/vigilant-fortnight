@@ -19,7 +19,7 @@
     <p>Use &ltstrong&gt; to <strong>bold</strong> text--don't use &lt;b&gt;</p>
     <h2 id="linking-images">Linking images</h2>
     <a href="https://www.google.com/" title="Google"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/640px-Google_2015_logo.svg.png" width="250"></a> 
-    <p>This is an example of an image that links to another page when it's clicked on by the user. Adding a title attribute to the &lt;anchor&gt; element allows you to create a tooltip that appears when hovering on the link.</p>
+    <p>This is an example of an image that links to another page when it's clicked on by the user. Adding a <kbd>title</kbd> attribute to the &lt;anchor&gt; element allows you to create a tooltip that appears when hovering on the link.</p>
     <h2 id="doc-frag-ex">Roots, URLs, and paths</h2>
     <p>The "root" refers to the name of the folder that houses all of your website's index file, code, directories, documents, images, etc.</p>
     <ul>
@@ -30,13 +30,13 @@
       </ul>
     </ul>
   <h2 id="links">Links</h2>
-  <p>Document fragments are used to jump to a certain section on a given page. This page can be either the current page or a different page altogether. They use the <strong>href attribute with a # symbol</strong> in &lt;anchor&gt; elements to jump to the section of the page with the corresponding ID attribute. They are case-sensitive.<br><br>
+  <p>Document fragments are used to jump to a certain section on a given page. This page can be either the current page or a different page altogether. They use the <strong><kbd>href</kbd> attribute with a # symbol</strong> in &lt;anchor&gt; elements to jump to the section of the page with the corresponding <kbd>id</kbd> attribute. They are case-sensitive.<br><br>
     <strong>Example code:</strong></p>
   <code>&lt;a href=&quot;<strong>#</strong>doc-frag-ex&quot;&gt;<a href="#doc-frag-ex">click here</a>&lt;a&gt;</code>
   <ul>
     <li>Be strategic with links--search engines catalog hyperlinked text for SEO purposes.</li>
     </ul>
-  <p>The download attribute can be used to create a name for files to be saved as when downloaded by another system.
+  <p>The <kbd>download</kbd> attribute can be used to create a name for files to be saved as when downloaded by another system.
   <div><strong>Input:</strong></p><code><pre>
 &lt;a href="https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US"
 download="firefox-latest-64bit-installer.exe"&gt;
@@ -117,16 +117,17 @@ Download Firefox for Windows (64-bit) (English, US)
 <h3 id="displaying-code">Displaying code</h3>
   <p><em>Note: These elements are generally used in &lt;code&gt; blocks.</em></p>
   <p>Text in a &lt;pre&gt; element is displayed in a fixed-width font, and it preserves both spaces and line breaks.
-   <code><pre>This
+   <code><pre>&lt;pre&gt; This
         is an
       example       of  the      &lt;pre&gt; element.
-                          Yay!</pre></code>
+                          Yay! 
+  &lt;/pre&gt;</pre></code>
   <p>The &lt;var&gt; element is used to write variables:</p>
-    <code><var>l</var> x <var>w</var> x <var>h</var></code>
+    <code>&lt;var&gt;l&lt;/var&gt; x &lt;var&gt;w&lt;/var&gt; x &lt;var&gt;h&lt;/var&gt;</code>
   <p>The &lt;kbd&gt; element is used to indicate when to input commands via your keyboard or mouse:</p>
-   <code>Please press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>R</kbd> to re-render an MDN page.</code>
+   <code>Please press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;Shift&lt;/kbd&gt; + &lt;kbd&gt;R&lt;/kbd&gt; to re-render an MDN page.</code>
   <p>The &lt;samp&gt; element is used to display output from a computer program:</p>
-  <code><samp>PING mozilla.org (63.245.215.20): 56 data bytes</samp></code>
+  <code>&lt;samp&gt;PING mozilla.org (63.245.215.20): 56 data bytes&lt;/samp&gt;</code>
 <h3 id="time-and-dates">Writing time and dates</h3>
 <p>Use &lt;time datetime=&quot;24:00 clock format&quot;&gt; and &lt;time datetime=&quot;YYYY-MM-DD&quot;&gt; to write time and dates in machine-readable formats to avoid confusing the computer.</p>
   <code><pre>&lt;time datetime="12:01"&gt;12:01&lt;/time&gt;
