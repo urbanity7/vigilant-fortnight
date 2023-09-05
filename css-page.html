@@ -1,0 +1,73 @@
+<!DOCTYPE = html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="styles/styles.css" rel="stylesheet">
+    <link href="index.html">
+    <title>Introduction to CSS</title>
+   </head>
+  <body>
+    <h2>Using classes and IDs</h2>
+    <p>Classes are indicated by <kbd>.class-name</kbd> and IDs by <kbd>#id-name</kbd> in CSS.</p>
+    <p>You can also pair classes and IDs with CSS selectors as such:</p>
+    <code><pre>
+<strong>li.special</strong> {
+    color: orange;
+}</pre></code>
+    <p>This syntax would apply the &quot;special&quot; class to all list items in your document. If you were to do this, you would no longer be able to apply the &quot;special&quot; class to a &lt;span&gt; or another element by adding the class to it; you would have to add that element to the list of selectors:</p>
+    <code><pre>
+li.special, <strong>span.special</strong> {
+    color: orange;
+}</pre></code>
+    <p>Some classes might be applied to many elements. In these cases, you don't want to have to keep editing your CSS every time something new needs to take on that style. Therefore, it is sometimes best to bypass the element and refer to the class, unless you know that you want to create some special rules for one element alone, or perhaps make sure they are not applied to other things.</p>
+    <h2>Styling things based on their location in a document</h2>
+    <p>Use a <strong>descendant combinator</strong> selector to select things based on their location:</p>
+    <code><pre>
+li <strong>em</strong> {
+    color: purple;
+}</pre></code>
+    <p>This selector will select any &lt;em&gt; element that is inside (a descendant of) an &lt;li&gt;. So in your example document, you should find that the &lt;em&gt; in the third list item is now purple, but the one inside the paragraph is unchanged.</p>   
+    <p>Use an <strong>adjacent sibling combinator</strong> to style something that comes immediately after something else:</p>
+<code><pre>
+p <strong>+ em</strong> {
+    color: green;
+}
+
+<em>note: this would target &lt;em&gt; elements that come after a &lt;p&gt; element closes; not within an open &lt;p&gt; element.</em></pre></code>
+    <h2>Styling things based on state</h2>
+    <p>This is an example of how to target a link based on its state. Note: <kbd>a:link</kbd> refers to an unvisited link.</p>
+    <code><pre>
+<strong>a:link</strong> {
+    color: pink;
+}
+
+<strong>a:visited</strong> {
+    color: green;
+}
+
+<strong>a:hover</strong> {
+    color: red;
+    text-decoration: none;
+}</pre></code>
+    <h2>Combining selectors and combinators</h2>
+    <p>You can combine multiple selectors and combinators together:</p>
+<code><pre>
+<strong>article p span</strong> {
+    color: orange;
+}
+<em>This would change a &lt;span&gt; located within a &lt;p&gt; inside an &lt;article&gt; to the color orange.</em></pre></code>
+<p>You can also combine multiple types together:</p>
+<code><pre>
+<strong>body h1 + p .special</strong> {
+    color: yellow;
+    background-color: black;
+    padding: 5px;
+}
+<em>This will style any element with a class of special, which is inside a &lt;p&gt;, which comes just after an &lt;h1&gt;, which is inside a &lt;body&gt;.</em></pre></code>
+<h2>Other</h2>
+<p>Remove or change bullet points used in lists:</p>
+<code><pre>li {
+    <strong>list-style-type: none/square;</strong>
+}</pre></code>
+  </body>
+  </html>
