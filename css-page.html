@@ -7,9 +7,68 @@
     <title>Introduction to CSS</title>
    </head>
   <body>
-    <h2>Using classes and IDs</h2>
-    <p>Classes are indicated by <kbd>.class-name</kbd> and IDs by <kbd>#id-name</kbd> in CSS.</p>
-    <p>You can also pair classes and IDs with CSS selectors as such:</p>
+    <h2>Selectors</h2>
+    <h3>Types of selectors</h3>
+    <h4>Type selectors</h4>
+    <p>These are used to select types of elements:</p>
+<code><pre>
+<strong>h1</strong> {
+}</pre></code>
+    <h4>Class selectors</h4>
+<code><pre>
+<strong>.class-name</strong> {
+}</pre></code>
+    <h4>ID selectors</h4>
+<code><pre>
+<strong>#id-name</strong> {
+}</pre></code>
+    <h4>Attribute selectors</h4>
+    <p>These enable you to select elements based on the presence of a certain attribute on the element:</p>
+<code><pre>
+<strong>a[title]</strong> {
+}</pre></code>
+    <p>They can also be used to make a selection based on the presence of a certain value:</p>
+<code><pre>
+<strong>a[href="https://example.com"]</strong> {
+}</pre></code>
+    <h4>The universal selector</h4>
+    <p>The <strong>universal selector</strong> selects everything in the document. If it is chained together with another element and descendant combinator, it will select everything in the parent element.</p>
+<code><pre>
+<strong>*</strong> {
+}</pre></code>
+    
+    <h3>Pseudo-classes and pseudo-elements</h3>
+    <p><strong>Pseudo-classes</strong> are used to style various states of an element:</p>
+<code><pre>
+<strong>a:hover</strong> {
+}</pre></code>
+    <p><strong>Pseudo-elements</strong> select a certain part of an element rather than the entire element. For instance, the <kbd>::first-line</kbd> pseudo-element selects the first line of text in the element preceding the :: (in this case, the &lt;p&gt; element):</p>
+<code><pre>
+<strong>p::first-line</strong> {
+}</pre></code>
+    <h3>Combinators</h3>
+    <p><strong>Combinators</strong> combine other selectors to target groups of elements:</p>
+<code><pre>
+<strong>article > p</strong> {
+}</pre></code>
+<h3>Selector lists</h3>
+    <p>When more than one selector uses the same CSS, you can combine the selectors into a selector list, separated by a comma:</p>
+    <code><pre>
+<strong>p, .first-paragraph</strong> {
+    color: black;
+    font-size: 12px;
+}</pre></code>
+    <p>You can also write a selector list like this:</p>
+    <code><pre>
+<strong>p, 
+.first-paragraph</strong> {
+    color: black;
+    font-size: 12px;
+}</pre></code>
+    <p><strong>Keep in mind:</strong> when using selector lists, if one part of the list is incorrect, then the CSS will not be applied to any component of the selector list.</p>
+
+    <h2>Using classes</h2>
+    <p>Classes are indicated by <kbd>.class-name</kbd> in CSS. You can pair classes with CSS selectors as such:</p>
     <code><pre>
 <strong>li.special</strong> {
     color: orange;
@@ -20,6 +79,7 @@ li.special, <strong>span.special</strong> {
     color: orange;
 }</pre></code>
     <p>Some classes might be applied to many elements. In these cases, you don't want to have to keep editing your CSS every time something new needs to take on that style. Therefore, it is sometimes best to bypass the element and refer to the class, unless you know that you want to create some special rules for one element alone, or perhaps make sure they are not applied to other things.</p>
+    
     <h2>Styling things based on their location in a document</h2>
     <p>Use a <strong>descendant combinator</strong> selector to select things based on their location:</p>
     <code><pre>
@@ -34,6 +94,7 @@ p <strong>+ em</strong> {
 }
 
 <em>note: this would target &lt;em&gt; elements that come after a &lt;p&gt; element closes; not within an open &lt;p&gt; element.</em></pre></code>
+    
     <h2>Styling things based on state</h2>
     <p>This is an example of how to target a link based on its state. Note: <kbd>a:link</kbd> refers to an unvisited link.</p>
     <code><pre>
@@ -64,6 +125,7 @@ p <strong>+ em</strong> {
     padding: 5px;
 }
 <em>This will style any element with a class of special, which is inside a &lt;p&gt;, which comes just after an &lt;h1&gt;, which is inside a &lt;body&gt;.</em></pre></code>
+
 <h2>Three ways to add CSS</h2>
 <ul>
     <li>Using an external stylesheet, or the &lt;link href&gt; method</li>
@@ -72,11 +134,13 @@ p <strong>+ em</strong> {
     <ul><li><code>&lt;h1 style=&quot;color: blue background-color: yellow; border: 1px solid black;&quot;&gt;
     </code></li></ul>
 </ul>
+
 <h2>Cascade vs specificity</h2>
 <ul>
     <li><strong>Cascade</strong>: CSS will apply the rule that appears later in the stylesheet in instances where two or more rules are applied to the same element. Later styles will likewise replace earlier styles.</li>
     <li><strong>Specificity</strong>: styles applied to classes will override styles applied to elements because classes are considered to be more specific.</li>
 </ul>
+
 <h2>CSS functions</h2>
 <ul>
     <li><strong>calc()</strong>: used to do simple math, e.g., calculate the given function</li>
@@ -97,6 +161,7 @@ p <strong>+ em</strong> {
         <li>Other transform functions include <strong>skew()</strong>; <strong>matrix()</strong>; <strong>translate()</strong>; and <strong>scale()</strong>.</li>
     </ul>
 </ul>
+
 <h2>@rules</h2>
 <p>@rules give instructions for how CSS should perform or behave. For example, you can use the <kbd>@media</kbd> rule to make a media query to change the background color of the page to blue when the viewport is wider than 30em:</p>
   <code><pre>
