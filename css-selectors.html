@@ -1,0 +1,84 @@
+<!DOCTYPE = html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="styles/styles.css" rel="stylesheet">
+    <link href="index.html">
+    <title>CSS Selectors</title>
+   </head>
+  <body>
+    <h2>Selectors</h2>
+    <h4><em>Jump to <a href="#type">type</a> | <a href="#class">class<a> | <a href="#id">ID</a> | <a href="#attribute">attribute</a> | <a href="#universal">universal</a></em></h4>
+    <h3 style="text-decoration: underline;" id="type">Type selectors</h3>
+    <p>These are used to select types of elements:</p>
+<code><pre>
+<strong>h1</strong> {
+}</pre></code>
+    <h3 style="text-decoration: underline;" id="class">Class selectors</h3>
+    <p>Example:</p>
+<code><pre>
+<strong>.class-name</strong> {
+}</pre></code>
+    <p>To target a class on a particular element, use the type selector for the element you want to target and connect it with the .class (no space between):</p>
+<code><pre>
+<strong>p.example</strong> {
+}
+
+<em>Keep in mind: you would need to make another selector if you wanted this rule to apply to other elements as well.</em>
+</pre></code>
+    <p>You can also pair classes with CSS selectors as such:</p>
+    <code><pre>
+<strong>li.special</strong> {
+    color: orange;
+}</pre></code>
+    <p>This syntax would apply the &quot;special&quot; class to all list items in your document:</p>
+    <code><pre>
+li.special, <strong>span.special</strong> {
+    color: orange;
+}
+
+<em>If you were to do this, you would no longer be able to apply the &quot;special&quot; class to a &lt;span&gt; or another element 
+by adding the class to it; you would have to add that element to the list of selectors.</em></pre></code>
+    <p><strong>Multiple classes may be applied to the same element</strong>. Simply separate the name of each class with a space when referring to them in the element.</p>
+    <h3 style="text-decoration: underline;" id="id">ID selectors</h3>
+    <p><kbd>id</kbd> selectors are similar to <kbd>class</kbd> selectors, except they can 1) only be used once per page and 2) cannot have multiple ID values attached to them in the same way that an element can have multiple class selectors:</p>
+<code><pre>
+<strong>#id-name</strong> {
+}</pre></code>
+    <h3 style="text-decoration: underline;" id="attribute">Attribute selectors</h3>
+    <p>These enable you to select elements based on the presence of a certain attribute on the element:</p>
+<code><pre>
+<strong>a[title]</strong> {
+}</pre></code>
+    <p>Attribute selectors can also be used to make a selection based on the presence of a certain value:</p>
+<code><pre>
+<strong>a[href="https://example.com"]</strong> {
+}</pre></code>
+    
+    <h3 style="text-decoration: underline;" id="universal">Universal selector</h3>
+    <p>The universal selector selects everything in the document. If it is chained together with another element and descendant combinator, it will select everything in the parent element.</p>
+<code><pre>
+<strong>*</strong> {
+}</pre></code>
+    <p>It can be used to select any element which is the first-child of another element (in this case, the &lt;article&gt; element), like such:</p>
+<code><pre>
+<strong>article *:first-child</strong>{
+    font-weight: bold;
+}</pre></code>
+<h2>Selector lists</h2>
+<p>When more than one selector uses the same CSS, you can combine the selectors into a selector list, separated by a comma:</p>
+<code><pre>
+<strong>p, .first-paragraph</strong> {
+color: black;
+font-size: 12px;
+}</pre></code>
+<p>You can also write a selector list like this:</p>
+<code><pre>
+<strong>p, 
+.first-paragraph</strong> {
+color: black;
+font-size: 12px;
+}</pre></code>
+<p><strong>Keep in mind:</strong> when using selector lists, if one part of the list is incorrect, then the CSS will not be applied to any component of the selector list.</p>
+</body>
+  </html>

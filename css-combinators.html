@@ -1,0 +1,35 @@
+<!DOCTYPE = html>
+<html lang="en">
+  <head>
+    <title>CSS Combinators</title>
+    <link href="styles/styles.css" rel="stylesheet">
+    <link href="index.html"></linl>
+    <meta charset="UTF-8">
+    </head>
+  <body>
+    <h2>Combinators</h2>
+    <p><strong>Combinators</strong> combine other selectors to target groups of elements:</p>
+<code><pre>
+<strong>article > p</strong> {
+}</pre></code>
+
+<h2>Combining selectors and combinators</h2>
+<p>You can combine multiple selectors and combinators together:</p>
+<code><pre>
+<strong>article p span</strong> {
+color: orange;
+}
+<em>This would change a &lt;span&gt; located within a &lt;p&gt; inside an &lt;article&gt; to the color orange.</em></pre></code>
+<p>You can also combine multiple types together:</p>
+<code><pre>
+<strong>body h1 + p .special</strong> {
+color: yellow;
+background-color: black;
+padding: 5px;
+}
+
+<em>This will style any element with a class of special, which is inside a &lt;p&gt;, which comes just after 
+an &lt;h1&gt;, which is inside a &lt;body&gt;.</em></pre></code>
+
+  </body>
+</html>
