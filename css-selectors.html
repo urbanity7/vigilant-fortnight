@@ -39,12 +39,13 @@ li.special, <strong>span.special</strong> {
 
 <em>If you were to do this, you would no longer be able to apply the &quot;special&quot; class to a &lt;span&gt; or another element 
 by adding the class to it; you would have to add that element to the list of selectors.</em></pre></code>
-    <p><strong>Multiple classes may be applied to the same element</strong>. Simply separate the name of each class with a space when referring to them in the element.</p>
+    <p><strong>Multiple classes may be applied to the same element</strong>. Simply separate the name of each class with no space between them when referring to them in the element (e.g., <kbd>class="box big"</kbd> would combine the <kbd>box</kbd> and <kbd>big</kbd> classes).</p>
     <h3 style="text-decoration: underline;" id="id">ID selectors</h3>
     <p><kbd>id</kbd> selectors are similar to <kbd>class</kbd> selectors, except they can 1) only be used once per page and 2) cannot have multiple ID values attached to them in the same way that an element can have multiple class selectors:</p>
 <code><pre>
 <strong>#id-name</strong> {
 }</pre></code>
+    <p>ID selectors can select an element that has the <kbd>id</kbd> set on it, and you can precede the ID with a type selector to only target the element if both the element and ID match. See <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors">here</a> for example code and potential usage.</p>
     <h3 style="text-decoration: underline;" id="attribute">Attribute selectors</h3>
     <p>These enable you to select elements based on the presence of a certain attribute on the element:</p>
 <code><pre>
@@ -54,7 +55,70 @@ by adding the class to it; you would have to add that element to the list of sel
 <code><pre>
 <strong>a[href="https://example.com"]</strong> {
 }</pre></code>
-    
+    <h4 style="font-variant-caps: all-small-caps; font-size: 22px"><em>Presence and value selectors</em></h4>
+    <p>These types of attribute selectors enable the selection of an element based on the presence of an attribute alone (e.g., <kbd>href</kbd>), or on different matches <em>against</em> the value of the attribute.</p>
+    <table style="border: 1px black solid;">
+        <th style="border-bottom: 1px black solid;">Selector</th>
+        <th style="border-bottom: 1px black solid;">Example</th>
+        <th style="border-bottom: 1px black solid;">Description</th>
+        <tr style="background-color: lightgray;">
+            <td><kbd><em>[attr]</em></kbd></td>
+            <td><kbd>a[title]</kbd></td>
+            <td>Matches elements with an <em>attr</em> attribute (whose name is the value in the square brackets).</td>
+        </tr>
+        <tr>
+            <td><kbd><em>[attr=value]</em></kbd></td>
+            <td><kbd>a[href="https://example.com"]</kbd></td>
+            <td>Matches elements with an <em>attr</em> attribute whose value is exactly <em>value</em>--or the string inside the quotes.</td>
+        </tr>
+        <tr style="background-color: lightgray;">
+            <td><kbd><em>[attr~=value]</em></kbd></td>
+            <td><kbd>p[class~="special"]</kbd></td>
+            <td>Matches elements with an <em>attr</em> attribute whose value is exactly <em>value</em>, or contains <em>value</em> in its (space separated) list of values.</td>
+        </tr>
+        <tr>
+            <td><kbd><em>[attr|=value]</em></kbd></td>
+            <td><kbd>div[lang|="zh"]</kbd></td>
+            <td>Matches elements with an <em>attr</em> attribute whose value is exactly <em>value</em> or begins with <em>value</em> immediately followed by a hyphen.</td>
+        </tr>
+    </table>
+    <p>Example of potential usage (see here for <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors">list items</a> being referenced):</p>
+    <ul>
+        <li>By using <kbd>li[class]</kbd> we can match any list item with a class attribute. This matches all of the list items except the first one.</li>
+        <li><kbd>li[class="a"]</kbd> matches a selector with a class of <kbd>a</kbd>, but not a selector with a class of <kbd>a</kbd> with another space-separated class as part of the value. It selects the second list item.</li>
+        <li><kbd>li[class~="a"]</kbd> will match a class of <kbd>a</kbd> but also a value that contains the class of <kbd>a</kbd> as part of a whitespace-separated list. It selects the second and third list items.</li>
+    </ul>
+    <h4 style="font-variant-caps: all-small-caps; font-size: 22px"><em>Substring matching selectors</em></h4>
+    <p>These selectors allow for more advanced matching of substrings inside the value of your attribute. For instance, if you had classes of <kbd>box-warning</kbd> and <kbd>box-error</kbd> and wanted to match everything that started with the string &quot;box-&quot;, you could use <kbd>[class^="box-"]</kbd> to select them both (or <kbd>[class|="box"]</kbd> as described in section above).</p>
+    <table style="border: 1px black solid;">
+        <th style="border-bottom: 1px black solid;">Selector</th>
+        <th style="border-bottom: 1px black solid;">Example</th>
+        <th style="border-bottom: 1px black solid;">Description</th>
+        <tr style="background-color: lightgray;">
+            <td><kbd><em>[attr^=value]</em></kbd></td>
+            <td><kbd>li[class^="box-"]</kbd></td>
+            <td>Matches elements with an <em>attr</em> attribute whose value begins with <em>value</em>.</td>
+        </tr>
+        <tr>
+            <td><kbd><em>[attr$=value]</em></kbd></td>
+            <td><kbd>li[class$="-box"]</kbd></td>
+            <td>Matches elements with an <em>attr</em> attribute whose value ends with <em>value</em>.</td>
+        </tr>
+        <tr style="background-color: lightgray;">
+        <td><kbd><em>[attr*=value]</em></kbd></td>
+        <td><kbd>li[class*="box"]</kbd></td>
+        <td>Matches elements with an <em>attr</em> attribute whose value contains <em>value</em> anywhere within the string.</td>
+        </tr>
+    </table>
+    <p>(Aside: it may help to note that <kbd>^</kbd> and <kbd>$</kbd> have long been used as <em>anchors</em> in so-called <em>regular-expressions</em> to mean <em>begins with</em> and <em>ends with</em> respectively.)
+        <br>
+        <br>
+        Example of potential usage (see here for <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors">list items</a> being referenced):</p>
+        <ul>
+            <li><kbd>li[class^="a"]</kbd> matches any attribute value which starts with <kbd>a</kbd>, so matches the first two list items.</li>
+            <li><kbd>li[class$="a"]</kbd> matches any attribute value which starts with <kbd>a</kbd>, so matches the first and third list items.</li>
+            <li><kbd>li[class*="a"]</kbd> matches any attribute value where <kbd>a</kbd> appears anywhere in the string, so it matches all of our list items.</li>
+        </ul>
     <h3 style="text-decoration: underline;" id="universal">Universal selector</h3>
     <p>The universal selector selects everything in the document. If it is chained together with another element and descendant combinator, it will select everything in the parent element.</p>
 <code><pre>
