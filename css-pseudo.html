@@ -53,9 +53,9 @@ targeting are enclosed within a &lt;article&gt; tag within the &lt;body&gt;.</em
 }
 
 <strong>HTML</strong>
-&lt;p class=&quot;box&quot;&gt;Content in the box in my HTML page.&lt;/p&gt;</pre></code>
+&lt;p class=&quot;box&quot;&gt;Content in the box on my HTML page.&lt;/p&gt;</pre></code>
     <p><strong>Output</strong>:</p>
-    <p>Content in the box in my HTML page. ➥</p>
+    <p>Content in the box on my HTML page. ➥</p>
     <p>Special pseudo-elements can also be used to insert an empty string, which can then be styled just like any element on the page:</p>
 <p><strong>Input</strong>:</p>
 <code><pre>
@@ -70,11 +70,11 @@ targeting are enclosed within a &lt;article&gt; tag within the &lt;body&gt;.</em
 }   
 
 <strong>HTML</strong>
-&lt;p class=&quot;box&quot;&gt;Content in the box in my HTML page.&lt;/p&gt;
+&lt;p class=&quot;box&quot;&gt;Content in the box on my HTML page.&lt;/p&gt;
 </pre></code>
     <p><strong>Output</strong>:</p>
     <p class="box" style="content: ; display: block; width: 100px; height: 100px; background-color: rebeccapurple; border: 1px solid black"></p>
-    <p>Content in the box in my HTML page.</p>   
+    <p>Content in the box on my HTML page.</p>   
     <p>In this case, the empty string is set to display as <kbd>display: block</kbd>, so it will generate content accordingly based on the provided CSS. This content--the purple box--can then be styled like any other element using additional CSS.</p>
     <p>In CSS, <strong>generated content</strong> refers to anything created using the <kbd>::before</kbd> and <kbd>::after</kbd> selectors and the <kbd>content</kbd> CSS property.</p>
     </body>
