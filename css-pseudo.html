@@ -3,18 +3,79 @@
   <head>
     <title>CSS Pseudo</title>
     <link href="styles/styles.css" rel="stylesheet">
-    <link href="index.html"></linl>
+    <link href="index.html">
     <meta charset="UTF-8">
     </head>
   <body>
-    <h2>Pseudo-classes and pseudo-elements</h2>
-    <p><strong>Pseudo-classes</strong> are used to style various states of an element:</p>
+    <h2>Pseudo-classes</h2>
+    <p><strong>Pseudo-classes</strong> are used to style various states of an element. They are written as keywords that start with a colon (e.g., <kbd>:hover</kbd>), and are preceded by the type tag of the element of which you wish to target (in the case below, &lt;a&gt;):</p>
 <code><pre>
 <strong>a:hover</strong> {
 }</pre></code>
-    <p><strong>Pseudo-elements</strong> select a certain part of an element rather than the entire element. For instance, the <kbd>::first-line</kbd> pseudo-element selects the first line of text in the element preceding the :: (in this case, the &lt;p&gt; element):</p>
+    <p>Pseudo-classes tend to act as if you applied a class to a part of your document, enabling you to cut down on excess classes in your HTML.</p>
+    <p>Examples of pseudo-classes include:</p>
+    <ul>
+        <li><kbd>:first-child</kbd>. This is used to target the first child element.</li>
+        <li><kbd>:last-child</kbd>. This is used to target the last child element.</li>
+        <li><kbd>:only-child</kbd>. This is used to target an element without any siblings. It is equivalent to <kbd>:first-child:last-child</kbd> and <kbd>:nth-child(1):nth-last-child(1)</kbd>, but with a lower specificity.</li>
+        <li><kbd>:invalid</kbd>. This is used to represent any &lt;form&gt;, &lt;fieldset&gt;, or &lt;input&gt; elements whose contents fail to validate.</li>
+    </ul>
+    <p><strong>User-action</strong> or <strong>dynamic pseudo-classes</strong> only apply when a user interacts with the document in a specific way.</p>
+    <p>Examples of user-action pseudo-classes include:</p>
+    <ul>
+        <li><kbd>:hover</kbd>. As mentioned previously, this only applies if the user moves their pointer over an element, generally a link.</li>
+        <li><kbd>:focus</kbd>. This only applies if the user focuses the element by clicking or using keyboard controls.</li>
+    </ul>
+    <h2>Pseudo-elements</h2>
+    <p><strong>Pseudo-elements</strong> select a certain part of an element rather than applying a class to existing elements. In other words, they behave as if you had added an entirely new HTML element into the markup. For instance, the <kbd>::first-line</kbd> pseudo-element selects the first line of text in the element preceding the :: (in this case, the &lt;p&gt; element). Pseudo-elements are written similarly to pseudo-classes, except they are preceded by two colons rather than one:</p>
 <code><pre>
 <strong>p::first-line</strong> {
 }</pre></code>
+    <p>You might use the <kbd>::first-line</kbd> pseudo-element as an alternative to enclosing your text in &lt;span&gt; elements. This is because the pseudo-element will always select the precise number of characters that can fit on the first line of text based on the screen's size. Since screen sizes change from device to device, what fits on the first line of text on one device might be different on a laptop than, say, an iPhone. If you were using the &lt;span&gt; option, you'd have to specify which text would always appear on the first line, as these tags would not change based on the size of the screen.</p>
+    <h2>Combining pseudo-classes and pseudo-elements</h2>
+    <p>If you wanted to make the first line of the first paragraph bold, you could chain the <kbd>:first-child</kbd> and <kbd>::first-line</kbd> selectors together as such:</p>
+    <code><pre>
+<strong>article p:first-child::first-line</strong> {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+<em>Note: the use of &quot;article&quot; here assumes the paragraphs that you're 
+targeting are enclosed within a &lt;article&gt; tag within the &lt;body&gt;.</em></pre></code>
+    <p>This declaration indicates that you want to select the first line of the first &lt;p&gt; element, which itself is located inside an &lt;article&gt; element.</p>
+    <h2>Generating content with ::before and ::after</h2>
+    <p><strong>Special pseudo-elements</strong>, such as <kbd>::before</kbd> and <kbd>::after</kbd>, are used along with the <kbd>content</kbd> CSS property to insert content into your document. These might, among other things, be used to insert an icon after a given element:</p>
+<p><strong>Input</strong>:</p>
+<code><pre>
+<strong>CSS</strong>
+<strong>.box::after</strong> {
+    content: "➥";
+}
+
+<strong>HTML</strong>
+&lt;p class=&quot;box&quot;&gt;Content in the box in my HTML page.&lt;/p&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <p>Content in the box in my HTML page. ➥</p>
+    <p>Special pseudo-elements can also be used to insert an empty string, which can then be styled just like any element on the page:</p>
+<p><strong>Input</strong>:</p>
+<code><pre>
+<strong>CSS</strong>
+<strong>.box::before</strong> {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: rebeccapurple;
+    border: 1px solid black;
+}   
+
+<strong>HTML</strong>
+&lt;p class=&quot;box&quot;&gt;Content in the box in my HTML page.&lt;/p&gt;
+</pre></code>
+    <p><strong>Output</strong>:</p>
+    <p class="box" style="content: ; display: block; width: 100px; height: 100px; background-color: rebeccapurple; border: 1px solid black"></p>
+    <p>Content in the box in my HTML page.</p>   
+    <p>In this case, the empty string is set to display as <kbd>display: block</kbd>, so it will generate content accordingly based on the provided CSS. This content--the purple box--can then be styled like any other element using additional CSS.</p>
+    <p>In CSS, <strong>generated content</strong> refers to anything created using the <kbd>::before</kbd> and <kbd>::after</kbd> selectors and the <kbd>content</kbd> CSS property.</p>
     </body>
 </html>
