@@ -94,5 +94,10 @@ blockquote {
     </ol>
     <p><em>Note: <strong>user-agent = browser</strong>; <strong>user = site-visitor</strong>; <strong>author = developer</strong> (this category includes styles declared using the &lt;style&gt; element)</em></p>
     <p>This stuff is really confusing... I'd recommend following along on the <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers">MDN Cascade Layers page</a> here if you get stuck. Or try other guides by Googling "css layers explained."</p>
+    <p>The only thing I'm going to add is a quick description of what cascade layers are, taken from the MDN guide:
+        <em><br>
+        <br>In the same way that cascade origins provides a balance of power between user, user-agents, and author styles, cascade layers provide a structured way to organize and balance concerns within a single origin, as if each layer in an origin were a sub-origin. A layer can be created for each team, component, and third party, with style precedence based on layer order.
+        <br>
+        <br>Rules within a layer cascade together, without competing with style rules outside the layer. Cascade layers enable the prioritizing of entire stylesheets over other stylesheets, without having to worry about specificity between these sub-origins.</em></p>
     </body>
 </html>
