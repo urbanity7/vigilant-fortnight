@@ -7,10 +7,92 @@
     <meta charset="UTF-8">
     </head>
   <body>
-    <h2>Cascade vs specificity</h2>
+    <h2>Quick definitions</h2>
     <ul>
         <li><strong>Cascade</strong>: CSS will apply the rule that appears later in the stylesheet in instances where two or more rules are applied to the same element. Later styles will likewise replace earlier styles.</li>
         <li><strong>Specificity</strong>: styles applied to classes will override styles applied to elements because classes are considered to be more specific.</li>
-    </ul>    
+        <li><strong>Inheritance</strong>: by default, some CSS properties inherit values set on the current element's parental element, while others don't. <br>Some properties that are not inherited include:</li>
+            <ul>
+                <li><kbd>width</kbd></li>
+                <li><kbd>margin</kbd></li>
+                <li><kbd>padding</kbd></li>
+                <li><kbd>border</kbd></li>
+            </ul>
+    </ul>
+    <h2>Controlling inheritance</h2>
+    <p>The following five <strong>universal property values</strong> can be used to control inheritance on any CSS property:</p>
+        <ul>
+            <li><kbd><strong>inherit</strong></kbd>: sets the property value applied to a selected element to be the same as that of its parent element. Essentially an easy way of &quot;turning inheritance on.&quot;</li>
+            <li><kbd><strong>initial</strong></kbd>: sets the property value applied to a selected element to the initial value of that property.</li>
+            <li><kbd><strong>revert</strong></kbd>: resets the property value applied to a selected element to the browser's default styling rather than the defaults applied to that property. In many cases, this value acts like the <kbd>unset</kbd> value (see below).</li>
+            <li><kbd><strong>revert-layer</strong></kbd>: resets the property value applied to a selected element to the value established in a previous cascade layer.</li>
+            <li><kbd><strong>unset</strong></kbd>: resets the property to its natural value, which means that if the property is naturally inherited it acts like <kbd>inherit</kbd>; otherwise it acts like <kbd>initial</kbd>.</li>
+        </ul>
+    <p>The CSS shorthand property <kbd><strong>all</strong></kbd> can be used to apply any one of the five universal property values to (nearly) all properties at once:</p>
+<code><pre>
+blockquote {
+    background-color: orange;
+    border: 2px solid blue;
+}
+
+.fix-this {
+    <strong>all: unset;</strong>
+}</pre></code>
+    <h2>Understanding the cascade</h2>
+    <p>There are three overarching factors to consider when determining cascade, with those listed first being most imporant:</p>
+    <ol>
+        <li><strong>Source order</strong>. Source order only matters when the specificity weight of CSS rules is the same.</li>
+        <li><strong>Specificity</strong>. Specificity is calculated using:</li>
+        <ul>
+            <li><strong>Identifiers</strong>, or ID selectors</li>
+            <li><strong>Classes</strong>, including class selectors, attribute selectors, and pseudo-classes</li>
+            <ul>
+                <li>The negation <kbd>:not()</kbd>, relational selector <kbd>:has()</kbd>, and the matches-any <kbd>:is()</kbd> pseudo-classes themselves don't have specificity, however, their parameters do.</li>
+            </ul>
+            <li><strong>Elements</strong>, including element selectors and pseudo-elements that are contained inside the overall selector</li>
+            <li>The universal selector, combinators, and specificity adjustment selector--<kbd>:where()</kbd>--have <em>no effect</em> on specificity</li>
+        </ul>
+        <li><strong>Importance</strong>. </li>
+    </ol>
+    <h3>Inline styles</h3>
+    <p>Style declarations inside the <kbd>style</kbd> attribute take precedence over all normal styles, no matter the specificity.</p>
+    <h3>!important</h3>
+    <p>The <kbd>!important</kbd> flag may be used to override ALL determinants of specificity. It's intended to make an individual property and value pair the most specific rule in the document, thereby overruling the normal rules of the cascade. That said, MDN suggests not using it unless absolutely necessary because the changes it makes to the cascade can make debugging more difficult.</p>
+    <h2>The effect of CSS location</h2>
+    <h3>Order of overriding declarations</h3>
+    <p>Conflicting declarations will be applied in the following order, with later ones overriding earlier ones:</p>
+    <ol>
+        <li>Declarations in user agent style sheets (e.g., the browser's default styles, used when no other styling is set).</li>
+        <li>Normal declarations in user style sheets (custom styles set by a user).</li>
+        <li>Normal declarations in author style sheets (the styles set by web developers).</li>
+        <li>Important declarations in author style sheets.</li>
+        <li>Important declarations in user style sheets.</li>
+        <li>Important declarations in user agent style sheets.</li>
+    </ol>
+    <p>See <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">this page</a> for more.</p>
+    <h2>More on cascading</h2>
+    <p>To recap, the following steps are the steps by which CSS styles cascade together (note: for each step, only those declarations that are "still in the running" will move on to be categorized under the following step):</p>
+    <ol>
+        <li><strong>Relevance</strong>: find all declaration blocks with a selector match for each element.</li>
+        <li><strong>Importance</strong>: sort rules based on if they are normal or important (e.g., the latter will include the <kbd>!important</kbd> property value).</li>
+        <li><strong>Origin</strong>: within each of the two importance buckets, sort rules by author, user, or user-agent origin.</li>
+        <li><strong>Layers</strong>: within each of the six origin importance buckets, sort by cascade layer. The layer order for normal declarations is from first layer created last, followed by unlayered normal styles. This order is <em>inverted</em> for important styles, with unlayered important styles having the lowest precedence.</li>
+        <li><strong>Specificity</strong>: for competing styles in the origin layer with precedence, sort declarations by specificity.</li>
+        <li><strong>Order of appearance</strong>: when two selectors in the origin layer with precedence have the same specificity, the property value from the last declared selector with the highest specificity will have higher priority.</li>
+    </ol>
+    <h3>Origin and cascade</h3>
+    <p>Eight levels of precedence:</p>
+    <ol>
+        <li>User-agent normal styles</li>
+        <li>User normal styles</li>
+        <li>Author normal styles</li>
+        <li>Styles being animated</li>
+        <li>Author important styles</li>
+        <li>User important styles</li>
+        <li>User-agent important styles</li>
+        <li>Styles being transitioned</li>
+    </ol>
+    <p><em>Note: <strong>user-agent = browser</strong>; <strong>user = site-visitor</strong>; <strong>author = developer</strong> (this category includes styles declared using the &lt;style&gt; element)</em></p>
+    <p>This stuff is really confusing... I'd recommend following along on the <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_layers">MDN Cascade Layers page</a> here if you get stuck. Or try other guides by Googling "css layers explained."</p>
     </body>
 </html>
