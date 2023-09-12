@@ -8,6 +8,10 @@
     </head>
   <body>
     <h2>Combinators</h2>
+    <p><strong>Combinators</strong> combine other selectors to target groups of elements:</p>
+<code><pre>
+<strong>article > p</strong> {
+}</pre></code>
     <h4><em>Jump to <a href="#descendant">descendant</a> | <a href="#child">child</a> | <a href="#adjacent-sibling">adjacent sibling</a> | <a href="#general-sibling">general sibling</a></em></h4>
     <h3 id="descendant" style="text-decoration: underline;">Descendant combinators</h3>
     <p>These combine two selectors such that the elements matched by the second selector are selected if they have an ancestor (parent, parent's name, parent's parent's parent, etc.) element matching the first selector. They are generally represented by a single space (" ") character.</p>
@@ -16,34 +20,44 @@
 }</pre></code>
     <p>Selectors that utilize a descendant combinator are known as <strong>descendant selectors</strong>.</p>
     <h3 id="child" style="text-decoration: underline;">Child combinators</h3>
-
-    <h3 id="adjacent-sibling" style="text-decoration: underline;">Adjacent sibling combinators</h3>
-
-    <h3 id="general-sibling" style="text-decoration: underline;">General sibling combinators</h3>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <h2>Combinators</h2>
-    <p><strong>Combinators</strong> combine other selectors to target groups of elements:</p>
+    <p>The <strong>child combinator</strong> is represented by <kbd>&gt;</kbd> and is placed between two CSS selectors. It matches only those elements matched by the second selector that are the direct children of elements matched by the first. Descendant elements further down the hierarchy don't match. For example:</p>
 <code><pre>
-<strong>article > p</strong> {
-}</pre></code>
+<strong>ul &gt; li</strong>
 
-<h2>Combining selectors and combinators</h2>
-<p>You can combine multiple selectors and combinators together:</p>
+<em>In this example, the child combinator selects only those &lt;li&gt; elements which are
+direct children of a &lt;ul&gt; element. 
+
+If you remove the character that designates this as a child combinator, you'll end 
+up with a descendant selector that selects all &lt;li&gt; elements in the document.</em></pre></code>
+    <h3 id="adjacent-sibling" style="text-decoration: underline;">Adjacent sibling combinators</h3>
+    <p>The <strong>adjacent sibling selector</strong> is represented by <kbd>+</kbd> and is placed between two CSS selectors. It matches only those elements matched by the second selector that are the next sibling element of the first selector:</p>
+<code><pre>
+<strong>p + img</strong>
+
+<em>This would target all &lt;img&gt; elements that are immediately preceded by a &lt;p&gt; element.</em></pre></code>
+    <h3 id="general-sibling" style="text-decoration: underline;">General sibling combinators</h3>
+    <p>Use the <strong>general sibling combinator</strong>, which is represented by <kbd>~</kbd>, to select the siblings of an element even if they are not directly adjacent.</p>
+<code><pre>
+<strong>p ~ img</strong>
+
+<em>This would select all &lt;img&gt; elements that come anywhere after &lt;p&gt; elements.
+The &lt;img&gt; elements that come after a &lt;p&gt; would still be selected even if there
+was a &lt;div&gt; or another element between them (e.g., &lt;p&gt;, &lt;img&gt;, &lt;div&gt;, &lt;img&gt;).</em></pre></code>
+    <h2>Combining selectors and combinators</h2>
+    <p>You can combine multiple selectors and combinators together:</p>
 <code><pre>
 <strong>article p span</strong> {
 color: orange;
 }
 <em>This would change a &lt;span&gt; located within a &lt;p&gt; inside an &lt;article&gt; to the color orange.</em></pre></code>
-<p>You can also combine multiple types together:</p>
+    <p>Another example:</p>
+<code><pre>
+<strong>ul &gt; li[class=&quot;a&quot;]</strong> {
+}
+  
+<em>This would select list items with a class of &quot;a&quot; which are the direct children of
+an &lt;ul&gt; element.</em></pre></code>
+    <p>You can also combine multiple types together:</p>
 <code><pre>
 <strong>body h1 + p .special</strong> {
 color: yellow;
@@ -53,6 +67,5 @@ padding: 5px;
 
 <em>This will style any element with a class of special, which is inside a &lt;p&gt;, which comes just after 
 an &lt;h1&gt;, which is inside a &lt;body&gt;.</em></pre></code>
-
   </body>
 </html>
