@@ -7,6 +7,47 @@
     <meta charset="UTF-8">
     </head>
   <body>
-
-    </body>
+    <h2>Block and inline boxes</h2>
+    <p>There are two overarching types of boxes: <strong>block boxes</strong> and <strong>inline boxes</strong>. The general box type dictates how the box behaves and flows relative to other content on the page. Boxes also have both an <strong>inner</strong> and <strong>outer</strong> display type.</p>
+    <h3 style="text-decoration: underline;">Outer display type</h3>
+    <h4>For boxes with an outer display type of block:</h4>
+    <ul>
+      <li>The box will break onto a new line.</li>
+      <li>The <kbd>width</kbd> and <kbd>height</kbd> properties are respected.</li>
+      <li>Padding, margin, and border will cause other elements to be pushed away from the box.</li>
+      <li>If <kbd>width</kbd> is not specified, the box will extend in the inline direction to fill the space available in its container. In most cases, the box will become as wide as its container.</li>
+      <li>Keep in mind that the following elements use an outer display type of <kbd>block</kbd> by default:</li>
+      <ul>
+        <li>&lt;h1&gt;</li>
+        <li>&lt;p&gt;</li>
+      </ul>
+    </ul>
+    <h4>For boxes with an outer display type of inline:</h4>
+    <ul>
+      <li>The box will not break onto a new line.</li>
+      <li>The <kbd>width</kbd> and <kbd>height</kbd> properties will not apply.</li>
+      <li>Top and bottom padding, margins, and borders will apply, but will not cause other inline boxes to move away from the box.</li>
+      <li>Left and right padding, margins, and borders will apply and will cause other inline boxes to move away from the box.</li>
+      <li>Keep in mind that the following elements use an outer display type of <kbd>inline</kbd> by default:</li>
+      <ul>
+        <li>&lt;a&gt;</li>
+        <li>&lt;span&gt;</li>
+        <li>&lt;em&gt;</li>
+        <li>&lt;strong&gt;</li>
+      </ul>
+    </ul>
+    <h3 style="text-decoration: underline;">Inner display type</h3>
+    <p>The <strong>inner display type</strong> determines how elements inside the box are ordered. It is the default way things behave on the web--and, barring additional instructions, the elements inside a box are likewise laid out in normal flow and behave as block or inline boxes.</p>
+    <p>You can change the inner display type using the CSS <kbd>display</kbd> property (e.g., <kbd>display: flex</kbd>). Any direct children of this box will likewise adopt this inner display type (in this case, flex). Defining an inline display type <strong>does not</strong> change the box's outer display type.</p>
+    <h3>Controlling display types</h3>
+    <p>To change a box's <em>inner display type</em>, use the following CSS::</p>
+<code><pre>
+<strong>display: type;</strong>
+  or
+<strong>display: inline-type;</strong></pre></code>
+    <p>To change a box's <em>outer display type</em>, use the following CSS:</p>
+<code><pre>
+<strong>display-outside: block/inline;</strong></pre></code>
+    <h2>Examples of different display types</h2>
+  </body>
 </html>
