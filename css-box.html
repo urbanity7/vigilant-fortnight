@@ -40,14 +40,86 @@
     <p>The <strong>inner display type</strong> determines how elements inside the box are ordered. It is the default way things behave on the web--and, barring additional instructions, the elements inside a box are likewise laid out in normal flow and behave as block or inline boxes.</p>
     <p>You can change the inner display type using the CSS <kbd>display</kbd> property (e.g., <kbd>display: flex</kbd>). Any direct children of this box will likewise adopt this inner display type (in this case, flex). Defining an inline display type <strong>does not</strong> change the box's outer display type.</p>
     <h3>Controlling display types</h3>
-    <p>To change a box's <em>inner display type</em>, use the following CSS::</p>
+    <p>***To change a box's <em>inner display type</em>, use the following CSS:</p>
 <code><pre>
-<strong>display: type;</strong>
-  or
-<strong>display: inline-type;</strong></pre></code>
-    <p>To change a box's <em>outer display type</em>, use the following CSS:</p>
+<strong>display: type;</strong></pre></code>
+    <p>***To change a box's <em>outer display type</em>, use the following CSS:</p>
 <code><pre>
 <strong>display-outside: block/inline;</strong></pre></code>
-    <h2>Examples of different display types</h2>
+    <p><em style="font-variant-caps: all-small-caps;">*** = clarify this is correct</em></p>
+    <p style="text-decoration: line-through;">To toggle between inline and block display modes, you can change <kbd>display: inline</kbd> to <kbd>display: block</kbd> or <kbd>display: inline-flex</kbd> to <kbd>display: flex</kbd>.</p>
+    <h4><strong><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model#examples_of_different_display_types">Examples</a> of different outer and inline display types</strong></h4>
+    <h2>What is the CSS box model?</h2>
+    <p>The box model uses <strong style="text-decoration: underline;"><em>block boxes</em></strong>; only some aspects of inline boxes follow the behavior of the box model. There are also two different box models: the standard model--which is what browsers use by default--and the alternate box model.</p>
+    <p>CSS parts of a box:</p>
+    <ul>
+      <li><strong>Content box</strong>: the area where your content is displayed; size it using properties like <kbd>inline-size</kbd> and <kbd>block-size</kbd> or <kbd>width</kbd> and <kbd>height</kbd>.</li>
+      <li><strong>Padding box</strong>: the padding sits around the content as white space; size it using <kbd>padding</kbd> and related properties.</li>
+      <li><strong>Border box</strong>: the border box wraps the content and any padding; size it using <kbd>border</kbd> and related properties.</li>
+      <li><strong>Margin box</strong>: the margin is the outermost layer, wrapping the content, padding, and border as whitespace between this box and other elements; size it using <kbd>margin</kbd> and related properties.</li>
+    </ul>
+    <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/box-model.png">
+    <h3 style="text-decoration: underline;">The standard CSS box model</h3>
+    <p>In the standard box model, if you give a box an <kbd>inline-size</kbd> and a <kbd>block-size</kbd> (or <kbd>width</kbd> and <kbd>height</kbd>) attributes, this defines the inline-size and block-size (or width and height) of the <em>content box</em>. Any padding and border is then added to those dimensions to get the total size taken up by the box.</p>
+    <p>So, if we assume a box has the following CSS,</p>
+<code><pre>
+.box {
+  <strong>width: 350px;
+  height: 150px;
+  margin: 10px;
+  padding: 25px;
+  border: 5px solid black;</strong>
+}</pre></code>
+    <p>Then the <em>actual space</em> taken up by the box will be 410px wide (350 + 25 + 25 + 5 + 5) and 210px high (150 + 25 + 25 + 5 + 5).</p>  
+    <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/standard-box-model.png">
+    <p><strong>Keep in mind</strong>, the margin is not counted towards the actual size of the box despite the fact it affects how much space the box takes up on the page (specifically the space outside the box). The box's area stops at the border--it does not extend into the margin.</p>
+    <h3 style="text-decoration: underline;">The alternative CSS box model</h3>
+    <p>In the alternative box model, any width is the width of the visible box on the page. The content area width is that width minus the width for the padding and border. You don't need to add up the border and padding to get the real size of the box.</p>
+    <p>To turn on the alternative box model, use the following CSS:</p>
+<code><pre>
+.box {
+  <strong>box-sizing: border-box;</strong>
+}</pre></code>
+    <p>So, if we assume a box has the following CSS from above (additions denoted by italicized text),</p>
+<code><pre>
+.box {
+  width: 350px;
+  <strong>inline-size: 350px;</strong>
+  height: 150px;
+  <strong>block-size: 150px;</strong>
+  margin: 10px;
+  padding: 25px;
+  border: 5px solid black;
+}</pre></code>
+    <p>Then the <em>actual space</em> taken up by the box will be 350px in the inline direction and 150px in the block direction.</p>
+    <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/alternate-box-model.png">
+    <p>To use the alternative box model for all of your elements (a common choice among developers), set the <kbd>box-sizing</kbd> property on the &lt;html&gt; element and set all other elements to inherit that value, as such:</p>
+<code><pre><strong>
+html {
+  box-sizing: border-box;
+}  
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}</strong></pre></code>
+    <p>This <a href="https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/">article</a> explains the underlying concept here in more detail.</p>
+    
+    <h3>Understanding the box model: using browser DevTools to view the box model</h3>
+    
+    <h2>Margins, padding, and borders</h2>
+
+    <h3>Margins</h3>
+
+    <h3>Padding</h3>
+
+    <h3>Borders</h3>
+
+    <h2>The box model and inline boxes</h2>
+    
+    <h2>Using display: inline-block</h2>
+
+
   </body>
 </html>
