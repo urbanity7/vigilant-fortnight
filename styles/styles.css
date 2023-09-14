@@ -39,3 +39,21 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 /* CSS example for MDN guide on CSS begins here */
+.box {
+    display: block;
+    width: 20px;
+    height: 20px;    
+    padding: 20px;
+    border: 5px solid lightblue;
+    background-color: lightblue;
+    
+}
+
+.box-two {
+    display: block;
+    width: 20px;
+    height: 20px;    
+    margin: 20px;
+    border: 5px solid lightblue;
+    background-color: lightblue;
+}
