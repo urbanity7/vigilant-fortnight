@@ -58,11 +58,11 @@ font-family: Arial, Helvetica, sans-serif;
 .grid-group {
     display: grid;
     /* Not sure if grids are inline or block level elements. Or perhaps neither? */
-    grid-template-columns: repeat(3, 5px);
-    /* Makes a new column 3 times with each track (space between two adjacent grid lines)
-    measuring 60px */
+    grid-template-columns: repeat(3, 10px);
+    /* Makes a 3 columns with each track (space between two adjacent grid lines)
+    measuring 10px */
     grid-template-rows: repeat(3, 0);
-    /* Makes a new row 3 times with each track (space between two adjacent grid lines)
+    /* Makes 3 rows with each track (space between two adjacent grid lines)
     measuring the second value. 
     
     If you change the second value to anything above 0, the grid items will get out 
