@@ -39,13 +39,13 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 /* CSS example for MDN guide on CSS begins here */
-.inline-grid {
+.inline-flex-group {
     display: inline-flex;
 }
 
-.block-grid {
-    /* Using display: inline-flex for the .inline-grid class vs display: block for this
-    class (.block-grid) affects the layout of the content in the box--in other words, 
+.block-group {
+    /* Using display: inline-flex for the .inline-group class vs display: block for this
+    class (.block-group) affects the layout of the content in the box--in other words, 
     using the block layout causes the images to be aligned in a single column rather than 
     a row. I wonder why this is? */
     display: block;
@@ -53,6 +53,27 @@ font-family: Arial, Helvetica, sans-serif;
     function as a valid property)? If so, then it negates my previous comment--if you change
     display: block in this declaration to display: flex, the royal blue squares will also be
     arranged in a row, similarly to the light blue ones. */
+}
+
+.grid-group {
+    display: grid;
+    /* Not sure if grids are inline or block level elements. Or perhaps neither? */
+    grid-template-columns: repeat(3, 5px);
+    /* Makes a new column 3 times with each track (space between two adjacent grid lines)
+    measuring 60px */
+    grid-template-rows: repeat(3, 0);
+    /* Makes a new row 3 times with each track (space between two adjacent grid lines)
+    measuring the second value. 
+    
+    If you change the second value to anything above 0, the grid items will get out 
+    of alignment on the X-axis. I wonder if the same would happen on the y-axis if 
+    the grid-template-columns repeat property's second value was 0px and the 
+    grid-template-rows repeat property's second value was greater than 0px? */
+    column-gap: 75px;
+    /* Makes a 75px gutter (aka gap) between row columns. Not sure why
+    row-gap property isn't working. There is also a gap property. */
+    margin: 25 100;
+    /* top and bottom margins are 25px; left and right margins are 100px */
 }
 
 .box-lightblue-1 {
@@ -65,6 +86,31 @@ font-family: Arial, Helvetica, sans-serif;
     border: 5px solid lightblue;
     background-color: lightblue;
     transform: rotate(25deg);
+}
+
+.box-navyblue-1 {
+    width: 30px;
+    height: 30px;
+    transform: skewY(-7deg);
+    border: 2px solid navy;
+    background-color: navy;
+}
+
+.box-navyblue-borderonly-1 {
+    width: 30px;
+    height: 30px;
+/* transform: translateX(-15px); */
+/* transform: skewY(7deg); */
+    /* Try placing the skewY declaration before the translateX one--
+    it's a good example of how CSS prioritizes markup written last.
+    In this example, this means the skewY property will override
+    the transformX property since the skewY property is written
+    later in the declaration. */
+    transform: translateX(40px) skewY(7deg);
+    /* To use multiple transform properties in the same declaration
+    without override as experienced in the commented out section above,
+    you must place the transform properties on the same line of markup */
+    border: 2px solid navy;
 }
 
 .box-royalblue-1 {
@@ -86,6 +132,11 @@ font-family: Arial, Helvetica, sans-serif;
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.right-top {
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .right-top {
