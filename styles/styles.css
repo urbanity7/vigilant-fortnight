@@ -59,7 +59,7 @@ font-family: Arial, Helvetica, sans-serif;
     display: grid;
     /* Not sure if grids are inline or block level elements. Or perhaps neither? */
     grid-template-columns: repeat(3, 10px);
-    /* Makes a 3 columns with each track (space between two adjacent grid lines)
+    /* Makes 3 columns with each track (space between two adjacent grid lines)
     measuring 10px */
     grid-template-rows: repeat(3, 0);
     /* Makes 3 rows with each track (space between two adjacent grid lines)
