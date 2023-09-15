@@ -39,21 +39,56 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 /* CSS example for MDN guide on CSS begins here */
-.box {
+.inline-grid {
+    display: inline-flex;
+}
+
+.block-grid {
+    /* Using display: inline-flex for the .inline-grid class vs display: block for this
+    class (.block-grid) affects the layout of the content in the box--in other words, 
+    using the block layout causes the images to be aligned in a single column rather than 
+    a row. I wonder why this is? */
     display: block;
+    /* Is display: flex equivalent to display: block-flex (note: the latter doesn't actually
+    function as a valid property)? If so, then it negates my previous comment--if you change
+    display: block in this declaration to display: flex, the royal blue squares will also be
+    arranged in a row, similarly to the light blue ones. */
+}
+
+.box-lightblue-1 {
+    /* I intend to keep the display mode set to block, 
+    so I don't need to set it in the CSS since div elements 
+    are block level elements by default */
     width: 20px;
     height: 20px;    
     padding: 20px;
     border: 5px solid lightblue;
     background-color: lightblue;
-    
+    transform: rotate(25deg);
 }
 
-.box-two {
-    display: block;
+.box-royalblue-1 {
     width: 20px;
-    height: 20px;    
+    height: 20px;
+    padding: 0;    
     margin: 20px;
-    border: 5px solid lightblue;
-    background-color: lightblue;
+    border: 5px solid royalblue;
+    background-color: royalblue;
+}
+
+.left-top {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.middle-top {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.right-top {
+    margin-left: 20px;
+    margin-top: 20px;
 }
