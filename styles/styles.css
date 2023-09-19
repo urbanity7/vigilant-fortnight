@@ -38,30 +38,32 @@ font-family: Arial, Helvetica, sans-serif;
     height: 250px;
 }
 
-/* CSS example for MDN guide on CSS begins here */
-.inline-flex-group {
+/* CSS example for MDN guide on CSS begins here. */
+/* COMMENTING OUT THE BOXES I MADE BY FIDDLING WITH GRIDS FOR NOW */
+
+/* .inline-flex-group {
     display: inline-flex;
 }
 
-.block-group {
+/* .block-group {
     /* Using display: inline-flex for the .inline-group class vs display: block for this
     class (.block-group) affects the layout of the content in the box--in other words, 
     using the block layout causes the images to be aligned in a single column rather than 
     a row. I wonder why this is? */
-    display: block;
+/*  display: block;
     /* Is display: flex equivalent to display: block-flex (note: the latter doesn't actually
     function as a valid property)? If so, then it negates my previous comment--if you change
     display: block in this declaration to display: flex, the royal blue squares will also be
     arranged in a row, similarly to the light blue ones. */
-}
+/*  }
 
-.grid-group {
+/* .grid-group {
     display: grid;
     /* Not sure if grids are inline or block level elements. Or perhaps neither? */
-    grid-template-columns: repeat(3, 10px);
+/*    grid-template-columns: repeat(3, 10px);
     /* Makes 3 columns with each track (space between two adjacent grid lines)
     measuring 10px */
-    grid-template-rows: repeat(3, 0);
+/*    grid-template-rows: repeat(3, 0);
     /* Makes 3 rows with each track (space between two adjacent grid lines)
     measuring the second value. 
     
@@ -69,18 +71,18 @@ font-family: Arial, Helvetica, sans-serif;
     of alignment on the X-axis. I wonder if the same would happen on the y-axis if 
     the grid-template-columns repeat property's second value was 0px and the 
     grid-template-rows repeat property's second value was greater than 0px? */
-    column-gap: 75px;
+/*    column-gap: 75px;
     /* Makes a 75px gutter (aka gap) between row columns. Not sure why
     row-gap property isn't working. There is also a gap property. */
-    margin: 25 100;
+/*    margin: 25 100;
     /* top and bottom margins are 25px; left and right margins are 100px */
-}
+/* }
 
 .box-lightblue-1 {
     /* I intend to keep the display mode set to block, 
     so I don't need to set it in the CSS since div elements 
     are block level elements by default */
-    width: 20px;
+/*    width: 20px;
     height: 20px;    
     padding: 20px;
     border: 5px solid lightblue;
@@ -106,11 +108,11 @@ font-family: Arial, Helvetica, sans-serif;
     In this example, this means the skewY property will override
     the transformX property since the skewY property is written
     later in the declaration. */
-    transform: translateX(40px) skewY(7deg);
+/*    transform: translateX(40px) skewY(7deg);
     /* To use multiple transform properties in the same declaration
     without override as experienced in the commented out section above,
     you must place the transform properties on the same line of markup */
-    border: 2px solid navy;
+/*    border: 2px solid navy;
 }
 
 .box-royalblue-1 {
@@ -137,6 +139,51 @@ font-family: Arial, Helvetica, sans-serif;
 .right-top {
     margin-left: 20px;
     margin-top: 20px;
+}
+
+.right-top {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+*/
+
+.seagreen-box {
+    display: inline-block;
+    background-color: lightseagreen;
+    width: 350px;
+    height: 350px;
+    /* In general, use margins when you're adjusting the spacing of an element in relation to 
+    another element (i.e a div in relation to another div on the page), and padding when you're 
+    adjusting the look of an individual element (i.e the amount of pixels between the edge of 
+    a div and the text within it). via Google Search */
+    margin-left: 45px;
+    margin-right: 45px;
+    margin-top: 45px;
+    border: 12px darkslategrey solid;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px; 
+}
+
+.seagreen-box-text {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bolder;
+    font-style: oblique;
+    color: white;
+}
+
+.maroon-box {
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    background-color: maroon;
+    border-radius: 150px;
+    border-style: groove;
+    border-width: 20px;
+    border-color: red;
+    border-inline-start-style: outset;
+    border-inline-end-style: outset;
 }
 
 .right-top {
