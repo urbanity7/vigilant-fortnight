@@ -106,21 +106,159 @@ html {
   box-sizing: inherit;
 }</strong></pre></code>
     <p>This <a href="https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/">article</a> explains the underlying concept here in more detail.</p>
-    
     <h3>Understanding the box model: using browser DevTools to view the box model</h3>
-    
-    <h2>Margins, padding, and borders</h2>
-
+    <p>This is pretty self-explanatory.</p>
+    <h2>Margins, borders, and padding</h2>
     <h3>Margins</h3>
-
-    <h3>Padding</h3>
-
+    <p>The margin refers to the invisible space around your box that pushes elements <strong>away from the box itself</strong>.</p>
+    <p>Margins can have positive or negative values. Setting a negative margin on one side of your box can cause it to overlap with other things on the page.</p>
+    <p>Regardless of whether you're using the standard box model or the alternative box model, the margin is always added after the size of the visible box has been calculated.</p>
+    <p><strong>Margin collapsing</strong>: Depending on whether two elements whose margins touch have positive or negative margins, the results will be different.</p>
+    <ul>
+      <li>Two positive margins will combine into one margin with a size equal to the largest individual margin.</li>
+      <li>Two negative margins will collapse and the smallest value will be used.</li>
+      <li>If one margin is negative, its area will be subtracted from the total.</li>
+    </ul>
+    <p>A good rule of thumb is that margin collapsing occurs when you end up with space in the margins that you didn't expect. See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing">here</a> for more details.</p>
     <h3>Borders</h3>
-
+    <p>The border is drawn between the box's margin and padding. In the standard box model, the size of the border is added to the width and height of the content box; in the alternative box model, the size of the border makes the size of the content box smaller as it takes up some of its available width and height.</p>
+    <p>You can set the top/right/bottom/left borders individually using the same notation as when setting the properties of individual margins. You can also add properties like width and style to these individually-set borders through properties like <kbd>border-top-width</kbd> and <kbd>border-left-style</kbd>.</p>
+    <h3>Padding</h3>
+    <p>The padding sits between the border and the content area, and pushes contents <strong>away from the border</strong>.</p>
+    <p>Unlike margins, you cannot set the padding to a negative value. Any background applied to your element will always display behind the padding.</p>
     <h2>The box model and inline boxes</h2>
-    
+    <p>All of the above fully applies to block boxes. Some of these properties can also apply to inline boxes, such as those created using &lt;span&gt; elements, for example.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre>
+<strong>CSS</strong>
+span {
+  margin: 20px;
+  padding: 20px;
+  width: 80px;
+  height: 50px;
+  background-color: lightblue;
+  border: 2px solid blue;
+}
+
+<strong>HTML</strong>
+&lt;p&gt;I am a paragraph and this is a &lt;span&gt;span&lt;/span&gt;
+inside that paragraph. A span is an inline element and 
+so does not respect width and height.&lt;p&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+<p>I am a paragraph and this is a <span style="margin: 20px; padding: 20px; width: 80px; height: 50px; background-color: lightblue; border: 2px solid blue;">span</span> inside that paragraph. A span is an inline element and so does not respect width and height.</p>     
     <h2>Using display: inline-block</h2>
+    <p><kbd><strong>display: inline-block</strong></kbd> is a special value of <kbd>display</kbd>. It provides a middle ground between <kbd>inline</kbd> and <kbd>block</kbd>. Use it if you do not want an item to break onto a new line, but do want it to respect <kbd>width</kbd> and <kbd>height</kbd> without the overlapping in the previous input/output example.</p>
+    <p>If an element is set to <kbd><strong>display: inline-block</strong></kbd>:</p>
+    <ul>
+      <li>The <kbd>width</kbd> and <kbd>height</kbd> properties are respected.</li>
+      <li>The <kbd>padding</kbd>, <kbd>margin</kbd>, and <kbd>border</kbd> will cause other elements to be pushed <strong>away from the box</strong>.</li>
+      <li>It will <strong>NOT</strong> break onto a new line.</li>
+      <li>It will only become larger than its content if you explicitly add <kbd>width</kbd> and <kbd>height</kbd> properties.</li>
+    </ul>
+    <p>The next examples show a &lt;span&gt; element that has a <kbd>display: inline-block</kbd> property, <kbd>display: block</kbd> property, and lack thereof. There is no example with a <kbd>display: inline</kbd> property because &lt;span&gt; elements are inline by default.</p>
+    <ol>
+      <p><strong>Example of a &lt;span&gt; element with a <kbd>display: inline-block</kbd> property</strong>:</p>
+      <p>I am a paragraph and this is a <span style="margin: 20px; padding: 20px; width: 80px; height: 50px; background-color: lightblue; border: 2px solid blue; display: inline-block;">span</span> inside that paragraph. A span is an inline element and so does not respect width and height.</p>     
+      <p><strong>Example of a &lt;span&gt; element with a <kbd>display: block</kbd> property</strong>:</p>
+      <p>I am a paragraph and this is a <span style="margin: 20px; padding: 20px; width: 80px; height: 50px; background-color: lightblue; border: 2px solid blue; display: block;">span</span> inside that paragraph. A span is an inline element and so does not respect width and height.</p>     
+      <p><strong>Example of a &lt;span&gt; element with no <kbd>display</kbd> property</strong>:</p>
+      <p>I am a paragraph and this is a <span style="margin: 20px; padding: 20px; width: 80px; height: 50px; background-color: lightblue; border: 2px solid blue;">span</span> inside that paragraph. A span is an inline element and so does not respect width and height.</p>
+    </ol>
+    <p>Where this can be useful is when you want to give a link a larger hit area by adding <kbd>padding</kbd>. The &lt;a&gt; element is an inline element by default like &lt;span&gt;; <strong>this means you can use <kbd>display: inline-block</kbd> to allow padding to be set on it</strong>, making it easier for a user to click the link.</p>
+    <p>You see this fairly frequently in navigation bars. The navigation below is displayed in a row using flexbox and we have added padding to the &lt;a&gt; element as we want to be able to change the <kbd>background-color</kbd> when a user hovers on the &lt;a&gt; element. The padding appears to overlap the border on the &lt;ul&gt; element. This is because the &lt;a&gt; is an inline element.</h4>
+    <h4 style="text-decoration: underline;">Example one: the class selector does NOT have a <kbd>display: inline-block</kbd> property attached to it.</h3>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+.links-list a {
+  background-color: rgb(179,57,81);
+  color: #fff;
+  text-decoration: none;
+  padding: 1em 2em;
+}
 
+.links-list a:hover {
+  background-color: rgb(66, 28, 40);
+  color: #fff;
+}
 
+<strong>HTML</strong>
+&lt;nav&gt;
+  &lt;ul class="links-list"&gt;
+    &lt;li&gt;&lt;a href=""&gt;Link one&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;Link two&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;Link three&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+<strong>NOTE</strong>: I added an <kbd>display: inline-block</kbd> property to the style of
+each individual list item using inline CSS, as the items wouldn't 
+appear on a single line without the bullet point otherwise.</pre></code>
+    <p><strong>Output</strong>:</p>
+        <style>.links-list a {
+          background-color: rgb(179,57,81);
+          color: #fff;
+          text-decoration: none;
+          padding: 1em 2em;
+        }
+        
+        .links-list a:hover {
+          background-color: rgb(66, 28, 40);
+          color: #fff;
+        }</style>
+      <nav>
+        <ul class="links-list">
+          <li style="display: inline-block;"><a href="">Link one</a></li>
+          <li style="display: inline-block;"><a href="">Link two</a></li>
+          <li style="display: inline-block;"><a href="">Link three</a></li>
+        </ul>
+      </nav>
+    <h4 style="text-decoration: underline;">Example two: the class selector has a <kbd>display: inline-block</kbd> property attached to it.</h4>
+    <p><strong>Input</strong>:</p>
+    <code><pre><strong>CSS</strong>
+.links-list a {
+  background-color: rgb(179,57,81);
+  color: #fff;
+  text-decoration: none;
+  padding: 1em 2em;
+  <strong>display: inline-block;</strong>
+}
+
+.links-list a:hover {
+  background-color: rgb(66, 28, 40);
+  color: #fff;
+}
+
+<strong>HTML</strong>
+&lt;nav&gt;
+  &lt;ul class="links-list"&gt;
+    &lt;li&gt;&lt;a href=""&gt;Link one&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;Link two&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;Link three&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+<strong>See note in previous input block.</strong></pre></code>
+    <p><strong>Output</strong>:</p>
+        <style>.links-list-2 a {
+          background-color: rgb(179,57,81);
+          color: #fff;
+          text-decoration: none;
+          padding: 1em 2em;
+          display: inline-block;
+        }
+        
+        .links-list-2 a:hover {
+          background-color: rgb(66, 28, 40);
+          color: #fff;
+        }</style>
+      <nav>
+        <ul class="links-list-2">
+          <li style="display: inline-block;"><a href="">Link one</a></li>
+          <li style="display: inline-block;"><a href="">Link two</a></li>
+          <li style="display: inline-block;"><a href="">Link three</a></li>
+        </ul>
+      </nav>    
+    <p>If you're not seeing the difference between the two outputs, look at the line spacing immediately below the word "Output."</p>
+    <p>The first example--or the output <strong>without</strong> the <kbd>display: inline-block</kbd> property attached to the declaration <kbd>.links-list a</kbd>--is all smushed together, whereas the second example--or the output <strong>with</strong> a <kbd>display: inline-block</kbd> property--has more spacing and appears more organized.</p>
   </body>
 </html>
