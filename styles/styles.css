@@ -190,3 +190,27 @@ font-family: Arial, Helvetica, sans-serif;
     margin-left: 20px;
     margin-top: 20px;
 }
+
+/* Borders and backgrounds */
+.gradient-a {
+    background-image: linear-gradient(27deg, rgba(197, 77, 10, 0.15) 12%, rgba(127, 26, 27, 0.5) 52%, rgba(4, 72, 172, 0.15) 80%);
+    background-position: center;
+}
+
+.gradient-b {
+    background-image: radial-gradient(circle, rgba(252, 235, 107, .75) 3%, rgba(121, 200, 121, 0.6) 9%)
+}
+
+.caps-logo-test-1 {
+    background-image: url(../images/weagle.png);
+    background-size: 2.5%;
+    background-repeat: repeat-y;
+    background-position: top left;
+    background-attachment: local;
+}
+
+.box-border-radius {
+border: 5px solid rebeccapurple;
+  border-radius: 2em;
+  border-top-right-radius: 10% 30%;
+}
