@@ -1,0 +1,105 @@
+<!DOCTYPE = html>
+<html lang="en">
+  <head>
+    <title>CSS Backgrounds and Borders</title>
+    <link href="styles/styles.css" rel="stylesheet">
+    <link href="index.html">
+    <meta charset="UTF-8">
+    </head>
+  <body>
+    <h2>Styling backgrounds in CSS</h2>
+    <p>The <kbd><strong>background</strong></kbd> property accepts many values.</p>
+    <h3>Background colors</h3>
+    <p>When a background color is declared using the <kbd><strong>background-color</strong></kbd> property, the selected color will extend underneath both the content and padding box of the element.</p>
+    <h3>Background images</h3>
+    <p>The <kbd><strong>background-image</strong></kbd> property allows you to display an image in the background of an element.</p>
+    <ul>
+        <li>Background images do not automatically scale to fit an element's content box.</li>
+        <li>You can add a background color behind a background image using the <kbd>background-color</kbd> property.</li>
+    </ul>
+    <h4 style="text-decoration: underline;">Controlling background-repeat</h4>
+    <p>The <kbd><strong>background-repeat</strong></kbd> property is used to control the tiling behavior of images. It accepts the following values:</p>
+    <ul>
+        <li><kbd><strong>no-repeat</strong></kbd>: stops the background from repeating altogether.</li>
+        <li><kbd><strong>repeat-x</strong></kbd>: repeat horizontally.</li>
+        <li><kbd><strong>repeat-y</strong></kbd>: repeat vertically.</li>
+        <li><kbd><strong>repeat</strong></kbd>: the default; repeat in both directions.</li>
+    </ul>
+    <h4 style="text-decoration: underline;">Sizing the background image</h4>
+    <p>You can use the following property (listed first) and keywords to size a background image:</p>
+    <ul>
+        <li><kbd><strong>background-size</strong></kbd>: size the image to the background using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">length</a> or percentage values.</li>
+        <li><kbd><strong>cover</strong></kbd>: the browser will make the image just large enough so that it completely covers the box area while still retaining its aspect ratio.</li>
+        <li><kbd><strong>contain</strong></kbd>: the browser will make the image the right size to fit inside the box.</li>
+    </ul>
+    <h4 style="text-decoration: underline;">Positioning the background image</h4>
+    <p>The <kbd><strong>background-position</strong></kbd> property--which is short for the more specific <kbd>background-position-x</kbd> and <kbd>background-position-y</kbd> properties--allows you to choose the position in which the background image appears on the box it is applied to. This utilizes a coordinate system in which the top-left-hand corner of the box is (0,0), and the box is positioned along the x and y axes. It accepts the following values:</p>
+    <ul>
+        <li><kbd>top</kbd>, <kbd>bottom</kbd>, <kbd>left</kbd>, <kbd>right</kbd>, and <kbd>center</kbd>.</li>
+        <li>Length values.</li>
+        <li>Percentages.</li>
+        <li>A combination of the previous three options, in which case the first value refers to the horizontal position or offset and the second position the vertical.</li>
+        <li>A 4-value syntax in order to indicate a distance from certain edges of the box. The example below positions the background 20px from the top and 10px from the right:</li>
+<code><pre>
+.box {
+    background-image: url(star.png);
+    background-repeat: no-repeat;
+    <strong>background-position: top 20px right 10px;</strong>
+}</pre></code>
+    </ul>
+    <h4 style="text-decoration: underline;">Gradient backgrounds</h4>
+    <p>When used for a background, a gradient acts just like an image and is likewise set using the <kbd>background-image</kbd> property.</p>
+    <div class="wrapper-gradient-a">
+        <div class="box gradient-a"><br></div>
+        <div class="box gradient-b"><br></div>
+    </div>
+    <h3>Multiple background images</h3>
+    <p>It is also possible to have multiple background images--simply specify multiple <kbd>background-image</kbd> values in a single property value, separating each one with a comma.</p>
+    <p>When you do this, you may end up with background images overlapping each other. The backgrounds will layer with the last listed background image at the bottom of the stack, and each previous image stacking on top of the one that follows it in the code.</p>
+    <p>Gradients can also be mixed with regular background images.</p>
+    <p>The other <kbd><strong>background-*</strong></kbd> properties can also have comma-separated values in the same way as the background image:</p>
+<code><pre>
+background-image: url(image1.png), url(image2.png), 
+    url(image3.png), url(image4.png);
+background-repeat: no-repeat, repeat-x, repeat;
+background-position: 10px 20px, top right;</pre></code>
+    <p>Each value of the different properties will match up to the values in the same position in other properties. Above, for example, image1's <kbd>background-repeat</kbd> value will be <kbd>no-repeat</kbd>. However, what happens when different properties have different numbers of values? The answer is that the smaller numbers of values will cycle--in the above example there are four background images but only two <kbd>background-position</kbd> values. The first two position values will be applied to the first two images, then they will cycle back again--image3 will be given the first position value, and image4 will be given the second position value.</p>
+    <h3>Background attachment</h3>
+    <p>We can specify how backgrounds scroll when the content scrolls using the <kbd><strong>background-attachment</strong></kbd> property. It accepts the following values:</p>
+    <ul class="caps-logo-test-1">
+        <li><kbd><strong>scroll</strong></kbd>: causes the element's background to scroll when the page is scrolled. If the element is scrolled, the background does not move. In effect, the background is fixed to the same position on the page, so it scrolls as the page scrolls.</li>
+        <li><kbd><strong>fixed</strong></kbd>: causes an element's background to be fixed to the viewport so that it doesn't scroll when the page or element is scrolled. It will always remain in the same position on the screen.</li>
+        <li><kbd><strong>local</strong></kbd>: fixes the background to the element it is set on, so when you scroll the element, the background scrolls with it.</li>
+    </ul>
+    <p>Keep in mind: the <kbd>background-attachment</kbd> property only has an effect when there is content to scroll.</p>
+    <h3>Using the background shorthand property</h3>
+    <p>Using the <kbd>background</kbd> property permits you to set all of the different background properties at once.</p>
+    <p>If using multiple backgrounds, you need to specify all of the properties for the first background, then add your next background after a comma. In the example below (see <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders">this page</a>) we have a gradient with a size and position, then an image background with <kbd>no-repeat</kbd> and a position, then a color.</p>
+    <p>There are a few rules that need to be followed when writing background image shorthand values, including:</p>
+    <ul>
+        <li>A <kbd>background-color</kbd> may only be specified after the final comma.</li>
+        <li>The value of <kbd>background-size</kbd> may only be included immediately after <kbd>background-position</kbd>, separated with the "/" character, like this: center/80%.</li>
+        <li>See <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background">this page</a> for more considerations.</li>
+    </ul>
+    <h3>Accessibility considerations with backgrounds</h3>
+    <p>When placing text on top of a background image or color, you should take care that you have enough contrast for the text to be legible for your visitors. If specifying an image, and if text will be placed on top of that image, you should also specify a <kbd>background-color</kbd> that will allow the text to be legible if the text does not load.</p>
+    <p>Screen readers cannot parse background images. Therefore, they should only be used for decoration. Any important content should be part of the HTML page and not contained in a background.</p>
+    <h2>Borders</h2>
+    <p>You can set individual borders (e.g., top, left, right, bottom) and border properties by adding the appropriate keyword to the <kbd>border</kbd> declaration (e.g., <kbd>border-top</kbd> or <kbd>border-top-width</kbd>).</p>
+    <h3>Rounded corners</h3>
+    <p>Rounding corners on a box is achieved using the <kbd><strong>border-radius</strong></kbd> property and associated longhands which relate to each corner of the box. Two lengths or percentages may be used as a value, with the first defining the horizontal radius, and the second the vertical radius. In a lot of cases, you will only pass in one value, which will be used for both.</p>
+    <p>In the following example, we have given each corner except for the top right the same radius.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre>
+.box {
+    <strong>border-radius: 10px</strong>
+    <strong>border-top-right-radius: 10% 30%;</strong>
+}
+
+<em>You don't need to enter the first property for the second property to work.</em></pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="box-border-radius">
+        <p>Try changing the borders.</p>
+      </div>
+</body>
+</html>
