@@ -1,0 +1,46 @@
+<!DOCTYPE = html>
+<html lang="en">
+  <head>
+    <title>Text Directions</title>
+    <link href="styles/styles.css" rel="stylesheet">
+    <link href="index.html">
+    <meta charset="UTF-8">
+    </head>
+  <body>
+    <h2>Writing Modes</h2>
+    <p><strong>Writing modes</strong> set the direction in which block-level elements are displayed on the page--left-to-right, top-to-bottom, etc.--and, consequently, the direction in which text flows in sentences. They are controlled using the <kbd><strong>writing-mode</strong></kbd> property, and accept the following values:</p>
+    <ul>
+      <li><kbd><strong>horizontal-tb</strong></kbd>: top-to-bottom block flow direction with sentences running horizontally.</li>
+      <li><kbd><strong>vertical-rl</strong></kbd>: right-to-left block flow direction with sentences running vertically.</li>
+      <li><kbd><strong>vertical-lr</strong></kbd>: left-to-right block flow direction with sentences running vertically.</li>
+    </ul>
+    <h2>Writing modes and block and inline layout</h2>
+    <p>Setting a writing mode also affects block and inline layout. This is because when we switch the writing mode, we are changing which direction is block and which is inline. In a <kbd>horizontal-tb</kbd> writing mode, the block direction runs from top to bottom; in a <kbd>vertical-rl</kbd> writing mode, the block directions runs right-to-left horizontally. So, the <strong>block dimension</strong> is always the direction blocks are displayed on the page in the writing mode in use. Meanwhile, the <strong>inline dimension</strong> is always the direction a sentence flows. See the images below for visual examples.</p>
+    <p><strong>The two dimensions when in a horizontal writing mode:</strong></p>
+    <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions/horizontal-tb.png">
+    <p><strong>The two dimensions when in a vertical writing mode:</strong></p>
+    <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions/vertical.png">
+    <h3>Direction</h3>
+    <p>Because writing mode and the direction of text can change, newer CSS layout methods do not refer to left and right, and top and bottom. Instead, they use the terms <em>start</em> and <em>end</em> alongside the idea of inline and block.</p>
+    <h2>Logical properties and values</h2>
+    <p>CSS uses mapped properties--called <strong>logical</strong> or <strong>flow relative</strong> versions--in lieu of the <kbd>width</kbd> and <kbd>height</kbd> properties (which are physical properties) to control these dimensions when using a writing mode. These correspond to the following:</p>
+    <ul>
+      <li><kbd><strong>inline-size</strong></kbd> is used for <kbd>width</kbd> when in a horizontal writing mode. It refers to the size in the inline dimension.</li>
+      <li><kbd><strong>block-size</strong></kbd> is used for <kbd>height</kbd> and is the size in the block dimension.</li>
+    </ul>
+    <h3>Local margin, border, and padding properties</h3>
+    <p>The <kbd>margin-top</kbd>, <kbd>padding-left</kbd>, and <kbd>border-bottom</kbd> properties also have corresponding logical properties. These include:</p>
+    <ul>
+      <li>The <kbd>margin-top</kbd> property is mapped to <kbd><strong>margin-block-start</strong></kbd>. This will always refer to the margin at the start of the block dimension.</li>
+      <li>The <kbd>padding-left</kbd> property maps to <kbd><strong>padding-inline-start</strong></kbd>, the padding that is applied to the start of the inline direction. This will be where sentences start in that writing mode.</li>
+      <li>The <kbd>border-bottom</kbd> property maps to <kbd><strong>border-block-end</strong></kbd>, which is the border at the end of the block dimension.</li>
+    </ul>
+    <p><strong>Keep in mind that physical properties stay tied to their physical direction, while logical properties switch with the writing mode</strong>. You can see this at play under the "Local margin, border, and padding properties" section on <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions">this page</a>.</p>
+    <p>Additionally, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values">this page</a> contains a complete list of all mapped properties.</p>
+    <h3>Logical values</h3>
+    <p>There are also some properties that take physical values of <kbd>top</kbd>, <kbd>right</kbd>, <kbd>bottom</kbd>, and <kbd>left</kbd>. These values also have mappings, to logical values--<kbd><strong>block-start</strong></kbd>, <kbd><strong>inline-end</strong></kbd>, <kbd><strong>block-end</strong></kbd>, and <kbd><strong>inline-start</strong></kbd>.</p>
+    <p><strong>As mentioned above, physical properties stay tied to their physical direction, while logical properties switch with the writing mode</strong>. You can see this at play under the "Logical values" section on <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions">this page</a>.</p>
+    <h3>Should you use physical or logical properties?</h3>
+    <p>Logical properties are newer than their physical counterparts, so some browsers have only recently started supporting their use. While logical properties will likely become the standard in the future--because they make more sense in the context of layout methods such as flexbox and grid--it therefore might be preferable to use their physical counterparts when you're only using a single writing mode. Otherwise, if you're using multiple writing modes, try to use logical properties instead.</p>
+  </body>
+</html>
