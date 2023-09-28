@@ -215,4 +215,13 @@ border: 5px solid rebeccapurple;
   border-top-right-radius: 10% 30%;
 }
 
+/* Units and values */
+.table-gray {
+    background-color: lightgray;
+}
+
+.table-lightgray {
+    background-color: #ECECEC;
+}
+
 /* Text */
