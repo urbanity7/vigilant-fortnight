@@ -216,6 +216,15 @@ border: 5px solid rebeccapurple;
 }
 
 /* Units and values */
+table {
+    border-collapse: collapse;
+    border: 2px solid lightgray;
+}
+
+td, th {
+    border: 1px solid lightgray
+}
+
 .table-lightgray {
     background-color: #ECECEC;
 }
