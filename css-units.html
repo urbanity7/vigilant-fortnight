@@ -5,8 +5,80 @@
     <link href="styles/styles.css" rel="stylesheet">
     <link href="index.html">
     <title>CSS Values and Units</title>
-   </head>
+    </head>
   <body>
+    <h2>What is a CSS value?</h2>
+    <p>CSS declarations are composed of properties and values. Each value is further defined by its <strong>value type</strong>, or the component that describes what kind of values it is allowed to have. CSS value types are also known as <strong>data types</strong>.</p>
+    <p>Value types are normally denoted by the use of angled brackets (&lt; and &gt;); the value type <kbd>&lt;color&gt;</kbd>, for instance, indicates that the property accepts any valid color--as well as comparable functions like <kbd>rbg()</kbd>--as its value.</p>
+    <ul>
+        <li>With this in mind, be aware that the <kbd>&lt;color&gt;</kbd> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">value type</a> is different than the <kbd>color</kbd> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">property</a>.</li>
+    </ul>
+    <h2>Numbers, lengths, and percentages</h2>
+    <h4><em>Jump to type <a href="#length">Lengths</a> | <a href="#percentages">Percentages</a> | <a href="#numbers">Numbers</a></em></h4>
+    <p>There are various numeric value types that you might encounter in CSS. The following are all classes as numeric:</p>
+    <table>
+        <tr class="table-gray">
+          <th>Data type</th>
+          <th>Description</th>
+          <th>MDN page</th>
+        </tr>
+        <tr>
+          <td><kbd><strong>&lt;integer&gt;</strong></kbd></td>
+          <td>An <kbd>&lt;integer&gt;</kbd> is a whole number such as 1024 or -55.</td>
+          <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/integer">MDN</a></td>
+        </tr>
+        <tr class="table-lightgray">
+          <td><kbd><strong>&lt;number&gt;</strong></kbd></td>
+          <td>A <kbd>&lt;number&gt;</kbd> represents a decimal number--it may or may not have a decimal point with a fractional component. For example, 0.255, 128, or -1.2.</td>
+          <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/number">MDN</a></td>
+        </tr>
+        <tr>
+          <td><kbd><strong>&lt;dimension&gt;</strong></kbd></td>
+          <td>A <kbd>&lt;dimension&gt;</kbd> is a <kbd>&lt;number&gt;</kbd> with a unit attached to it. For example, 45deg, 5s, or 10px.
+            <br><br>It is an <em>umbrella category</em> that includes the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">&lt;length&gt;</a></kbd>, <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/angle">&lt;angle&gt;</a></kbd>, <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/time">&lt;time&gt;</a></kbd>, and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/resolution">&lt;resolution&gt;</a></kbd> types.</td>
+          <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/dimension">MDN</a></td>
+        </tr>
+        <tr class="table-lightgray">
+          <td><kbd><strong>&lt;percentage&gt;</strong></kbd></td>
+          <td>A <kbd>&lt;percentage&gt;</kbd> represents a fraction of some other value. For example, 50%.
+            <br><br>Percentage values are <em>always</em> relative to another quantity. For example, an element's length is relative to its parent element's length.</td>
+          <td><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage">MDN</a></td>
+        </tr>
+      </table>
+    <h3 id="length">Lengths</h3>
+
+    <h4 style="text-decoration: underline;">Absolute length units</h4>
+
+    <h4 style="text-decoration: underline;">Relative length units</h4>
+
+    <h4>Example</h4>
+
+    <h4 style="text-decoration: underline;">More on ems and rems</h4>
+
+    <h3 id="percentages">Percentages</h3>
+
+    <h3 id="numbers">Numbers</h3>
+
+    <h2>Color</h2>
+
+    <h3>Color keywords</h3>
+
+    <h3>Hexadecimal values</h3>
+
+    <h3>RGB and RGBA values</h3>
+
+    <h3>HSL and HSLA values</h3>
+
+    <h2>Images</h2>
+
+    <h2>Position</h2>
+
+    <h2>Strings and identifiers</h2>
+
+    <h2>Functions</h2>
+
+    <h3>Math functions</h3>
+
 
 </body>
 </html>
