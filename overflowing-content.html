@@ -10,6 +10,18 @@
     <h2>What is overflow?</h2>
     <p>Overflow happens when there is too much content to fit in a box. Remember, everything in CSS is a box. Because CSS tries to avoid "data loss," it has a tendency to permit overflow unless otherwise instructed not to.</p>
     <h2>The overflow property</h2>
-    <p>The <kbd><strong>overflow</strong></kbd> property is used to control overflow. It is set to <kbd>visible</kbd> by default, which allows overflow to be seen on the frontend. To crop content when it overflows, you can use <kbd>overflow: hidden</kbd>. Because this makes overflow invisible, only use this when you're sure hiding content won't cause problems. Finally, using <kbd>overflow: scroll</kbd> adds scrollbars when content overflows to keep the layout consistent while showing all pertinent content. To scroll on just one axis instead of both, you can use the corresponding property for that axis (e.g., <kbd>overflow-y: scroll</kbd>).</p>
+    <p>The <kbd><strong>overflow</strong></kbd> property is used to control overflow. It is set to <kbd><strong>visible</strong></kbd> by default, which allows overflow to be seen on the frontend. It can also be set to the following:</p>
+      <ul>
+        <li>To crop content when it overflows, you can use <kbd><strong>overflow: hidden</strong></kbd>. Because this makes overflow invisible, only use this when you're sure hiding content won't cause problems.</li>
+        <li><kbd><strong>overflow: scroll</strong></kbd> adds scrollbars when content overflows to keep the layout consistent while showing all pertinent content. To scroll on just one axis instead of both, you can use the corresponding property for that axis (e.g., <kbd><strong>overflow-y: scroll</strong></kbd>).</li>
+        <ul>
+          <li>It is not recommended to use <kbd><strong>overflow-x: scroll</strong></kbd> to accommodate long words; use <kbd><strong>word-break</strong></kbd> or <kbd><strong>overflow-wrap</strong></kbd>, or CSS sizing methods, instead.</li>
+          <li>If you only want scrollbars to appear when there is more content than can fit in the box, use <kbd><strong>overflow: auto</strong></kbd> to allow the browser to determine if it should display scrollbars.</li>
+        </ul>
+      </ul>
+    <h2>Overflow establishes a Block Formatting Context</h2>
+    <p>When using the values <kbd>scroll</kbd> and <kbd>auto</kbd> with the <kbd>overflow</kbd> property, you create a <strong><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Block_formatting_context">Block Formatting Context (BFC)</a></strong>. This essentially means that the content of an element box with these <kbd>overflow</kbd> values acquires a self-contained layout; content outside, like an element box, cannot poke into the element box, and nothing from the element box can poke into the surrounding layout. This in turn enables scrolling behavior, as all box content needs to be contained and not overlap to create a consistent scrolling experience.</p>
+    <h2>Unwanted overflow in web design</h2>
+    <p>Unlike older CSS layout methods, newer methods are designed with an eye to managing overflow. Unlike their predecessors, then, they largely work without assumptions or dependencies for how much content there will be on a web page. Keep this in mind when working with older CSS layouts, as you'll likely need to accommodate overflow in these instances.</p>
 </body>
 </html>
