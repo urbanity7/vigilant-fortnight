@@ -15,7 +15,7 @@
     </ul>
     <h2>Numbers, lengths, and percentages</h2>
     <h4><em>Jump to type <a href="#length">Lengths</a> | <a href="#percentages">Percentages</a> | <a href="#numbers">Numbers</a></em></h4>
-    <p>There are various numeric value types that you might encounter in CSS. The following are all classes as numeric:</p>
+    <p>There are various numeric value types that you might encounter in CSS. The following are all classed as numeric:</p>
     <table>
         <tr class="table-lightgray">
           <th>Data type</th>
@@ -46,39 +46,271 @@
         </tr>
       </table>
     <h3 id="length">Lengths</h3>
-
+    <p><kbd><strong>&lt;length&gt;</strong></kbd> is the most common numeric type. There are two  types of lengths used in CSS: relative and absolute.</p>
     <h4 style="text-decoration: underline;">Absolute length units</h4>
-
+    <p><strong>Absolute lengths</strong> are not relative to anything else, and are generally considered to always be the same size.</p>
+    <table>
+      <tr class="table-lightgray">
+        <th style="padding: 5px;">Unit</th>
+        <th>Name</th>
+        <th>Equivalent to</th>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>cm</strong></kbd></td>
+        <td>Centimeters</td>
+        <td>1cm = 37.8px = 25.2/64in</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>mm</strong></kbd></td>
+        <td>Millimeters</td>
+        <td>1mm = 1/10th of 1cm</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>Q</strong></kbd></td>
+        <td>Quarter-millimeters</td>
+        <td>1Q = 1/40th of 1cm</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>in</strong></kbd></td>
+        <td>Inches</td>
+        <td>1in = 2.54cm = 96px</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>pc</strong></kbd></td>
+        <td>Picas</td>
+        <td>1pc = 1/6th of 1in</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>pt</strong></kbd></td>
+        <td>Points</td>
+        <td>1pt = 1/72nd of 1in</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>px</strong></kbd></td>
+        <td>Pixels</td>
+        <td>1px = 1/96th of 1in</td>
+      </tr>
+    </table>
+    <p>Keep in mind that some units--such as pixels--are better suited for use on screens, while others--like centimeters--are better used for content that will be printed.</p>
     <h4 style="text-decoration: underline;">Relative length units</h4>
-
-    <h4>Example</h4>
-
+    <p><strong>Relative lengths</strong> are relative to something else, for example, the size of the parent element's font or the size of the viewport. The benefit of using relative length units is that with some planning, you can make it so the size of text or other elements scales relative to everything else on the page.</p>
+    <table>
+      <tr class="table-lightgray">
+        <th style="padding: 5px;">Unit</th>
+        <th>Relative to</th>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>em</strong></kbd></td>
+        <td>Font size of the parent, in the case of typographical properties like <kbd>font-size</kbd>, and font size of the element itself, in the case of other properties like <kbd>width</kbd>.</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>ex</strong></kbd></td>
+        <td>x-height of the element's font.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>ch</strong></kbd></td>
+        <td>The advance measure (width) of the glyph "0" of the element's font.</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>rem</strong></kbd></td>
+        <td>Font size of the root element.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>lh</strong></kbd></td>
+        <td>Line height of the element.</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>rlh</strong></kbd></td>
+        <td>Line height of the root element. When used on the <kbd>font-size</kbd> or <kbd>line-height</kbd> properties of the root element, it refers to the properties' initial value.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>vw</strong></kbd></td>
+        <td>1% of the viewport's width.</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>vh</strong></kbd></td>
+        <td>1% of the viewport's height.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>vmin</strong></kbd></td>
+        <td>1% of the viewport's smaller dimension.</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>vmax</strong></kbd></td>
+        <td>1% of the viewport's larger dimension.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>vb</strong></kbd></td>
+        <td>1% of the size of the initial containing block in the direction of the root element's <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values#block_vs._inline">block axis</a>.</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>vi</strong></kbd></td>
+        <td>1% of the size of the initial containing block in the direction of the root element's <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values#block_vs._inline">inline axis</a>.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>svw, svh</strong></kbd></td>
+        <td>1% of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport">small viewport's</a> width and height, respectively.</td>
+      </tr>
+      <tr class="table-lightgray">
+        <td style="text-align: center;"><kbd><strong>lvw, lvh</strong></kbd></td>
+        <td>1% of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport">large viewport's</a> width and height, respectively.</td>
+      </tr>
+      <tr>
+        <td style="text-align: center;"><kbd><strong>dvw, dvh</strong></kbd></td>
+        <td>1% of the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length#relative_length_units_based_on_viewport">dynamic viewport's</a> width and height, respectively.</td>
+      </tr>
+    </table>
+    <h4>Exploring an example</h4>
+    <p>In the example below, you can see how some relative and absolute length units behave. The first box has a <kbd>width</kbd> set in pixels. As an absolute unit, this width will remain the same no matter what else changes.</p>
+    <p>The second box has a width set in <kbd>vw</kbd> (viewport width) units. This value is relative to the viewport width, so 10vw is 10 percent of the width of the viewport. If you change the width of the browser window, the size of the box should change. Because this example is embedded into the page using an <kbd>&lt;iframe&gt;</kbd>, it won't work. That said, you can see this in action <a href="https://mdn.github.io/css-examples/learn/values-units/length.html">by opening the example in a new browser tab.</a></p>
+    <p>The third box uses <kbd>em</kbd> units. These are relative to font size. MDN has set a font size of <kbd>1em</kbd> on the containing <kbd>&lt;div&gt;</kbd>, which has a class of <kbd>.wrapper</kbd>. Change this value to <kbd>1.5em</kbd> and you'll see that the font size of all the elements increases, but only the last item will get wider as its width is relative to that font size.</p>
+    <div class="wrapper-1">
+      <div class="box px-1">I am 200px wide</div>
+      <br>
+      <div class="box vw-1">I am 10vw wide</div>
+      <br>
+      <div class="box em-1">I am 10em wide</div>
+    </div>
     <h4 style="text-decoration: underline;">More on ems and rems</h4>
-
+    <p><kbd><strong>em</strong></kbd> and <kbd><strong>rem</strong></kbd> are the two relative lengths you are likely to encounter most frequently when sizing anything from boxes to text. It's worth understanding how they work and the differences between them, especially when you start working with more complex subjects like CSS layout and styling text. The below example provides a demonstration.</p>
+    <p>The HTML illustrated below is a set of nested lists--we have two lists in total and both examples have the same HTML. The only difference is that the first has a class of <em>ems</em> and the second has a class of <em>rems</em>.</p>
+    <p>To start, we set x px (note: didn't actually change this because it messed with the rest of the document) as the font size on the <kbd>&lt;html&gt;</kbd> element.</p>
+    <p><strong>Remember, the em unit means "my parent element's font-size"</strong> in the context of typography. The <kbd>&lt;li&gt;</kbd> elements inside the <kbd>&lt;ul&gt;</kbd> with a class of <kbd>ems</kbd> take their sizing from their parent. So each successive level of nesting gets progressively larger, as each has its font size set to <kbd>1.3em</kbd>--or 1.3 times its parent's font size.</p>
+    <p><strong>Remember, the rem unit means "the root element's font-size"</strong> since rem stands for "root element." The <kbd>&lt;li&gt;</kbd> elements inside the <kbd>&lt;ul&gt;</kbd> with a class of <kbd>rems</kbd> take their sizing from the root element (<kbd>&lt;html&gt;</kbd>). This means that each successive level of nesting does <em>not</em> keep getting larger.</p>
+    <p>However, if you change the <kbd>&lt;html&gt;</kbd> element's <kbd>font-size</kbd> in the CSS, you will see that everything else changes relative to it--both <kbd>rem</kbd>- and <kbd>em</kbd>-sized text.</p>
+    <ul class="ems">
+      <li>One</li>
+      <li>Two</li>
+      <li>Three
+        <ul>
+          <li>Three A</li>
+          <li>Three B
+            <ul>
+              <li>Three B 2</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="rems">
+      <li>One</li>
+      <li>Two</li>
+      <li>Three
+        <ul>
+          <li>Three A</li>
+          <li>Three B
+            <ul>
+              <li>Three B 2</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>    
     <h3 id="percentages">Percentages</h3>
-
+    <p>In a lot of cases, a percentage is treated in the same way as a length. The thing with percentages is that they are always set relative to some other value. For example, if you set an element's <kbd>font-size</kbd> as a percentage, it will be a percentage of the <kbd>font-size</kbd> of the element's parent. If you use a percentage for a <kbd>width</kbd> value, it will be a percentage of the <kbd>width</kbd> of the parent.</p>
+    <p>In the below example the two percentage-sized boxes and the two pixel-sized boxes have the same class names. The sets are 40% and 200px wide, respectively.</p>
+    <p>The difference is that the second set of two boxes is inside a wrapper that is 400px wide. The second 200px wide box is the same width as the first one, but the second 40% box is now 40% of 400px--a lot narrower than the first one!</p>
+    <div class="box px-2" style="border: 4px solid green;">I am 200px wide</div>
+    <br>
+    <div class="box percent-2" style="border: 4px solid green;">I am 40% wide</div>
+    <br>
+    <div class="wrapper-2">
+      <div class="box px-2" style="border: 4px solid green;">I am 200px wide</div>
+      <br>
+      <div class="box percent-2" style="border: 4px solid green;">I am 40% wide</div>
+    </div>
+    <p>The next example has font sizes set in percentages. Each <kbd>&lt;li&gt;</kbd> has a <kbd>font-size</kbd> of 80%; therefore, the nested list items become progressively smaller as they inherit their sizing from their parent.</p>
+    <ul>
+      <li class="li">One</li>
+      <li class="li">Two</li>
+      <li class="li">Three
+        <ul>
+          <li class="li">Three A</li>
+          <li class="li">Three B
+            <ul>
+              <li class="li">Three B 2</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul> 
+    <p>Note that while many value types accept a length or a percentage, there are some that only accept length. You can see which values are accepted on the MDN property reference pages. <strong>If the allowed value includes <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length-percentage">&lt;length-percentage&gt;</a></kbd> then you can use a length <em>or</em> a percentage. If the allowed value only includes <kbd>&lt;length&gt;</kbd>, it is <em>not</em> possible to use a percentage.</strong></p>
     <h3 id="numbers">Numbers</h3>
-
+    <p>Some value types accept numbers, without any unit added to them. An example of a property which accepts a unitless number is the <kbd>opacity</kbd> property, which controls the opacity of an element. This property accepts a number between <kbd>0</kbd> (fully transparent) and <kbd>1</kbd> (opaque).</p>
+    <div class="wrapper-3">
+      <div class="box-3">I am a box with opacity</div>
+    </div>
+    <p><strong>Note: when you use a number in CSS as a value, it should not be surrounded in quotes.</strong></p>
     <h2>Color</h2>
-
-    <h3>Color keywords</h3>
-
-    <h3>Hexadecimal values</h3>
-
-    <h3>RGB and RGBA values</h3>
-
-    <h3>HSL and HSLA values</h3>
-
+    <p>There are multiple ways to dictate color in CSS. These include color keywords, such as <kbd>red</kbd>; hexadecimal values, such as <kbd>#c55da1</kbd>; RGB and RGBA values, such as <kbd>rgb(18 138 125 0.5)</kbd>; and HSL and HLSA values, such as <kbd>hsl(321, 47%, 58%, .6)</kbd>.</p>
+    <p>Keep in mind that adding an alpha layer to a RGB or HSL value will only affect the opacity of that specific color. In contrast, when using the <kbd>opacity</kbd> property, you're changing the opacity of the entire element.</p>
     <h2>Images</h2>
+    <p>The <kbd>&lt;image&gt;</kbd> value is used wherever an image is a valid value. This can be an actual image file pointed to via a <kbd>url()</kbd> function, or a gradient.</p>
+    <p>You can supposedly combine an image and a gradient together using the CSS <kbd>background-image</kbd> property:</p>
+<code><pre><strong>HTML</strong>
+&lt;div class="box image"&gt;&lt;/div&gt;
+&lt;div class="box gradient"&gt;&lt;/div&gt;
 
+<strong>CSS</strong>
+.image {
+  background-image: url(star.png);
+}
+
+.gradient {
+  background-image: linear-gradient(90deg, rgba(119,0,255,1) 39%, rgba(0,212,255,1) 100%);
+}</pre></code>
     <h2>Position</h2>
-
+    <p>The <kbd>&lt;position&gt;</kbd> value type represents a set of 2D coordinates, used to position an item such as a background image (via <kbd>background-position</kbd>). It can take keywords such as <kbd>top</kbd>, <kbd>bottom</kbd>, <kbd>left</kbd>, <kbd>right</kbd>, and <kbd>center</kbd> to align items with specific bounds of a 2D box, along with lengths, which represent offsets from the top and left-hand edges of the box.</p>
+    <p>A typical position value consists of two values--the first sets the position horizontally, and the second vertically. If you only specify values for one axis, the other axis will default to <kbd>center</kbd>.</p>
     <h2>Strings and identifiers</h2>
+    <p>Throughout the examples above, we've seen places where keywords are used as a value (for example, <kbd>&lt;color&gt;</kbd> keywords like <kbd>red</kbd>). These keywords are more accurately described as <strong><em>identifiers</em></strong>, a special value that CSS understands. As such, they are not quoted--they are not treated as strings.</p>
+    <p>There are places where you use strings in CSS, however. For example, <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements#generating_content_with_before_and_after">when specifying generated content</a>. In this case, the value is quoted to demonstrate that it is a string. In the example below (markup only; see <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units#strings_and_identifiers">webpage version here</a> for the example that this markup generates), we use unquoted color keywords along with a quoted generated content string.</p>
+<code><pre><strong>HTML</strong>
+&lt;div class="box"&gt;&lt;/div&gt;
 
+<strong>CSS</strong>
+  .box {
+  width:400px;
+  padding: 1em;
+  border-radius: .5em;
+  border: 5px solid rebeccapurple;
+  background-color: lightblue;
+}
+
+.box::after {
+  content: "This is a string. I know 
+  because it is quoted in the CSS."
+}</pre></code>
     <h2>Functions</h2>
-
+    <p>In programming, a function is a piece of code that does a specific task. Functions are useful because you can write code once, then reuse it many times instead of writing the same logic over and over. Most programming languages not only support functions but also come with convenient built-in functions for common tasks so you don't have to write them from scratch.</p>
+    <p>CSS also has <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">functions</a>, which work in a similar way to functions in other languages. In fact, we've already seen CSS functions in the color section above with the <kbd>rgb()</kbd> and <kbd>hsl()</kbd> functions.</p>
+    <p>Aside from applying colors, you can use functions in CSS to do a lot of other things. For example, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#transform_functions">transform functions</a> are a common way to move, rotate, and scale elements on a page. You might see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate"><kbd>translate()</kbd></a> for moving something horizontally or vertically, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate"><kbd>rotate()</kbd></a> to rotate something, or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale"><kbd>scale()</kbd></a> to make something bigger or smaller.</p>
     <h3>Math functions</h3>
+    <p>When you are creating styles for a project, you will probably start off with numbers like 300px for lengths or 200ms for durations. If you want to have these values change based on other values, you will need to use mathematical functions (or, alternatively, manually calculate your outputs... but that's less conveient).</p>
+    <p>CSS has support for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#math_functions">math functions</a>, which allow us to perform calculations instead of relying on static values or doing the math in JavaScript. One of the most common math functions is <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc"><kbd>calc()</kbd></a> which lets you do operations like addition, subtraction, multiplication, and division.</p>
+    <p>For example, let's say we want to set the width of an element to be 20% of it's parent container plus 100px. We can't specify this width with a static value--if the parent uses a percentage width (or a relative unit like <kbd>em</kbd> or <kbd>rem</kbd>), then it will vary depending on the context it is used in, and other factors such as the user's device or browser window width. However, we can use <kbd>calc()</kbd> to set the width of the element to be 20% of its parent container plus 100px. The 20% is based on the width of the parent container (in this case, <kbd>.wrapper-4</kbd>) and if that width changes, the calculation will change, too:</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>HTML</strong> 
+&lt;div class="wrapper-4"&gt;
+  &lt;div class="box"&gt;My width is calculated.&lt;/div&gt;
+&lt;/div&gt;
 
+<strong>CSS</strong>
+.wrapper-4 {
+  width: 400px;
+}
 
+.box-4 {
+  width: calc(20% + 100px);
+  background-color: lightblue;
+  border: 2px blue solid;
+}
+</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="wrapper-4">
+      <div class="box-4">My width is calculated.</div>
+    </div>
+    <p>There are many other math functions that you can use in CSS, such as <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/min"><kbd>min()</kbd>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max"><kbd>max()</kbd>, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"><kbd>clamp()</kbd></a>; respectively, these let you pick the smallest, largest, or middle value from a set of values. You can also use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#trigonometric_functions">trigonometric functions</a> like <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/sin"><kbd>sin()</kbd></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/cos"><kbd>cos()</kbd></a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/tan"><kbd>tan()</kbd></a> to calculate angles for rotating elements around a point, or choose colors that take a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/hue">hue angle</a> as a parameter. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions#exponential_functions">Exponential functions</a> might also be used for animations and transitions, especially when you require very specific control over how something moves and looks.</p>
+    <p>Knowing about CSS functions is useful so you recognize them when you see them. You should start experimenting with them in your projects--they will help you avoid writing custom or repetitive code to achieve results that you can get with regular CSS.</p>
 </body>
 </html>
