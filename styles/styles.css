@@ -210,7 +210,7 @@ font-family: Arial, Helvetica, sans-serif;
 }
 
 .box-border-radius {
-border: 5px solid rebeccapurple;
+  border: 5px solid rebeccapurple;
   border-radius: 2em;
   border-top-right-radius: 10% 30%;
 }
@@ -228,5 +228,81 @@ td, th {
 .table-lightgray {
     background-color: #ECECEC;
 }
+
+.wrapper-1 {
+    font-size: 1em;
+}
+
+    /* Exploring an example */
+    .px-1 {
+        width: 200px;
+        background-color: lightblue;
+        border: 4px blue solid;
+    }
+
+    .vw-1 {
+        width: 10vw;
+        background-color: lightblue;
+        border: 4px blue solid;
+    }
+
+    .em-1 {
+        width: 10em;
+        background-color: lightblue;
+        border: 4px blue solid;
+    }
+
+    /* More on ems and rems */    
+    .ems li {
+        font-size: 1.3em;
+    }
+    
+    .rems li {
+        font-size: 1.3rem;
+    }
+
+    /* Percentages */
+        /* Example 1 */
+        .wrapper-2 {
+            width: 400px;
+            border: 5px solid rebeccapurple;
+        }
+        
+        .px-2 {
+            width: 200px;
+        }
+        
+        .percent-2 {
+            width: 40%;
+        }
+        /* Example 2 */
+        .li {
+            font-size: 80%;
+          }
+    /* Numbers */
+    .wrapper-3 {
+        background-image: url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+        background-repeat: no-repeat;
+        background-position: bottom left;
+        padding: 20px;
+    }
+    
+    .box-3 {
+        color: black;
+        opacity: 0.46;
+        text-align: center;
+    }
+    
+    /* Math functions */
+    .wrapper-4 {
+        width: 400px;
+    }
+    
+    .box-4 {
+        width: calc(20% + 100px);
+        background-color: lightblue;
+        border: 2px blue solid;
+
+    }
 
 /* Text */
