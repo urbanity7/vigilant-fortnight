@@ -7,7 +7,123 @@
     <meta charset="UTF-8">
     </head>
   <body>
+    <h2>Replaced elements</h2>
+    <p>Images and videos are <strong>replaced elements</strong>, or elements of which CSS cannot affect their internal layout--instead, CSS can only affect their position on the page among other elements.</p>
+    <p>Some replaced elements, including images and video, also have an <strong>aspect ratio</strong>. Items with an aspect ratio have a size in both the horizontal (x) and vertical (y) directions, and will be displayed using their intrinsic dimensions by default.</p>
+    <h2>Sizing images</h2>
+    <p>Because everything in CSS generates a box, placing an image inside a box that is smaller or larger than the intrinsic dimensions of the image file in either direction will cause the image to appear smaller or larger (i.e., overflow) the box. Thus, you need to make a decision on what happens with the overflow.</p>
+    <p>In the example below, we have two boxes, both 200px in size:</p>
+    <ul>
+      <li>One contains an image which is smaller than 200px--it is smaller than the box and thus doesn't stretch to fill it.</li>
+      <li>The other image is larger than 200px and overflows the box.</li>
+    </ul>
+    <div class="wrapper-5">
+      <div class="box-11"><img src="https://mdn.github.io/css-examples/learn/images/star.png" class="star.png">
+      </div>
+      <div class="box-11"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" class="balloons.jpg">
+      </div>
+    </div>
+    <p>To fix the overflow issue, we can set the image's <kbd>max-width</kbd> property to 100%. This will enable the image to become smaller in size than the box, but not larger. This technique also works with other replaced elements, including <kbd>&lt;video&gt;</kbd> and <kbd>&lt;iframe&gt;</kbd>.</p>
+    <div class="wrapper-5">
+      <div class="box-11"><img src="https://mdn.github.io/css-examples/learn/images/star.png" class="star-png">
+      </div>
+      <div class="box-11"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" class="balloons-jpg-1">
+      </div>
+    </div>
+    <p>You can also make other choices about images inside containers. For example, you may want to size an image so it completely covers a box. In such an instance, try using the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit">object-fit</a></kbd> property. This property enables you to size replaced elements to fit a box in a variety of ways.</p>
+    <p>In the below example, we have used the value <kbd>cover</kbd>, which sizes the image down while maintaining its aspect ratio so that it neatly fills the box. As the aspect ratio is maintained, some parts of the image will be cropped by the box.</p>
+    <div class="wrapper-5">
+    <div class="box-12"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" class="balloons-jpg-2 balloons-cover">
+      </div>
+    </div>
+    <p>If we use <kbd>contain</kbd> as a value, the image will be scaled down until it is small enough to fit inside the box, resulting in "letterboxing" if the image is not the same aspect ratio as the box.</p>
+    <div class="wrapper-5">
+      <div class="box-12"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" class="balloons-jpg-2 balloons-contain">
+        </div>
+      </div>
+    <p>Finally, the <kbd>fill</kbd> value will fill the box with the image, but will not maintain the aspect ratio.</p>
+    <div class="wrapper-5">
+      <div class="box-12"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" class="balloons-jpg-2 balloons-fill">
+        </div>
+      </div>
+    <h2>Replaced elements in layout</h2>
+    <p>When using various CSS layout techniques on replaced elements, you may sometimes find that they behave slightly differently from other elements. For example, in a flex or grid layout, elements are stretched to fill the entire area by default. However, images will not stretch, and will instead be aligned to the start of the grid area or flex container.</p>
+    <p>You can see this happening in the example below where we have a two column, two row grid container, which has four items in it. All of the <kbd>&lt;div&gt;</kbd> elements have a background color and stretch to fill the row and column. The image, however, does not stretch.</p>
+    <div class="wrapper-6">
+      <img src="https://mdn.github.io/css-examples/learn/images/star.png">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p>If you are following these lessons in order, then you may have not looked at layout yet. Just keep in mind that <strong>replaced elements, when they become part of a grid or flex layout, have different default behaviors</strong>, essentially to avoid them being stretched strangely by the layout.</p>
+    <p>To force the image to stretch to fill the grid cell it is in, you'd have to do something like the following:</p>
+<code><pre>
+img {
+  width: 100%;
+  height: 100%;
+}</pre></code>
+    <p>This would, however, stretch the image, so it is probably not what you'd want to do.</p>
+    <h2>Form elements</h2>
+    <p>Styling form elements with CSS can be tricky. The <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms">Web Forms module</a> has detailed guides to the more complex aspects of styling these, so they're not fully covered in this section. However, there are some basics worth being aware of.</p>
+    <p>Many form controls are added to the page using the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;</a></kbd> element. This element defines simple form fields, such as text inputs, as well as more complex fields, like date and color pickers. There are some additional elements, such as <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea">&lt;textarea&gt;</a></kbd> for multiline input, as well as elements used to contain and label parts of forms such as <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset">&lt;fieldset&gt;</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/legend">&lt;legend&gt;</a></kbd>.</p>
+    <p>HTML also contains attributes that enable web developers to indicate which fields are required, and even the type of content that needs to be entered. If the user enters something unexpected, or leaves a required field blank, the browser can leave an error message. Different browsers vary with one another in how much styling and customization they allow for such items.</p>
+    <h3>Styling text input elements</h3>
+    <p>Elements that allow for text input, such as <kbd>&lt;input type="text"&gt;</kbd>, and the more specific <kbd>&lt;input type="email"&gt;</kbd>, and the <kbd>&lt;textarea&gt;</kbd> element are quite easy to style and behave just like other boxes on your page. The default styling of these elements will differ, however, based on the operating system and browser that your user visits the site with.</p>
+    <p>In the example below, we have styled some text inputs using CSS--you can see that things like borders, margins, and padding all apply like you'd expect. We are using attribute selectors to target the different input types. Try changing how this form looks by adjusting the borders, adding background colors to the fields, and changing fonts and padding.</p>
+    <form>
+      <div><label for="name">Name</label>
+      <input type="text" id="name"></div>
+      <div><label for="email">Email</label>
+      <input type="email" id="email"></div>
+      <div class="buttons"><input type="submit" value="Submit"></div>
+    </form>
+    <p><strong>Be careful when changing the styling of form elements in order to ensure it's obvious to users that they're form elements</strong>.</p>
+    <p>As the lessons on <a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Styling_web_forms">styling web forms</a> indicate, many of the more complex input types are rendered by the operating system and are therefore inaccessible to styling. For this reason, you should always text complex forms in multiple browsers as well as assume that forms are going to vary in appearance for different visitors.</p>
+    <h3>Inheritance and form elements</h3>
+    <p>In some browsers, form elements do not inherit font styling by default. Therefore, if you want to be sure that your form fields use the font defined on the body, or that on a parent element, you should add this rule to your CSS:</p>
+<code><pre>
+<strong>CSS</strong>
+<strong>button, input, select, textarea</strong> {
+  font-family: inherit;
+  font-size: 100%;
+}</pre></code>
+    <h3>Form elements and box-sizing</h3>
+    <p>Across browsers, form elements use different box sizing rules for different widgets. You learned about the <kbd>box-sizing</kbd> property in the box model lesson, and you can use this knowledge when styling forms to ensure a consistent experience when setting widths and heights on form elements.</p>
+    <p>For consistency, it's a good idea to set margins and padding to <kbd>0</kbd> on all elements, and then go back and add these back in when styling particular controls:</p>
+<code><pre>
+<strong>CSS</strong>
+<strong>button, input, select, textarea</strong> {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}</pre></code>
+    <h3>Other useful settings</h3>
+    <p>In addition to the rules mentioned above, you should also set <kbd>overflow: auto</kbd> on <kbd>&lt;textarea&gt;</kbd> objects to stop the browser from showing a scrollbar when there's no need for one:</p>
+<code><pre>
+<strong>CSS</strong>
+<strong>textarea</strong> {
+  overflow: auto;
+}</pre></code>
+    <h3>Putting it all together into a "reset"</h3>
+    <p>As a final step, we can wrap up the various properties discussed above into the following "form reset" to provide a consistent base to work from. This includes all the items mentioned in the last three sections:</p>
+<code><pre>
+<strong>CSS</strong>
+<strong>button, input, select, textarea</strong> {
+  font-family: inherit;
+  font-size: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-    
+<strong>textarea</strong> {
+  overflow: auto;
+}</pre></code>
+    <p><strong>Note</strong>: Normalizing stylesheets are used by many developers to create a set of baseline styles to use on all projects. Typically these do similar things to those described above, making sure that anything different across browsers is set to a consistent default before you do your own work on the CSS. They are not as important as they once were, as browsers are typically more consistent than in the past. However, if you want to take a look at one example, check out <a href="https://necolas.github.io/normalize.css/">Normalize.css</a>, which is a very popular stylesheet used as a base by many projects.</p>
+    <p>For further information on styling forms, take a look at the two articles in the HTML section of these guides:</p>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Styling_web_forms">Styling web forms</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Advanced_form_styling">Advanced form styling</a></li>
+    </ul>
 </body>
 </html>
