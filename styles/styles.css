@@ -305,4 +305,124 @@ td, th {
 
     }
 
+/* Sizing items */
+
+.box-5 {
+    border: 5px solid darkblue;
+    height: 75px;
+    width: 150px;
+}
+
+.box-6 {
+    border: 5px solid darkblue;
+    width: 50%;
+}
+
+.box-7 {
+    border: 5px solid darkblue;
+    width: 300px;
+    margin: 10%;
+    padding: 10%;
+}
+
+.box-8 {
+    border: 5px solid darkblue;
+    min-height: 75px;
+    width: 200px;
+}
+
+.box-9 {
+    border: 5px solid darkblue;
+    width: 200px;
+}
+
+.minibox-1 {
+    border: 5px solid darkblue;
+    width: 50px;
+}
+
+.width {
+    width: 100%;
+}
+
+.max-1 {
+    max-width: 75%;
+}
+
+.max-2 {
+    max-width: 100%;
+}
+
+.box-10 {
+    border: 5px solid darkblue;
+    width: 20vw;
+    height: 20vh;
+    font-size: 10vh;
+}
+
+/* Images, media items, and forms */
+.box-11 {
+    width: 200px;
+    background-color: darkblue;
+}
+
+.balloons-jpg-1 {
+    max-width: 100%;
+}
+
+.box-12 {
+    width: 200px;
+    height: 200px;
+}
+
+img.balloons-jpg-2 {
+    height: 100%;
+    width: 100%;
+}
+
+.balloons-cover {
+    object-fit: cover;
+}
+
+.balloons-contain {
+    object-fit: contain;
+}
+
+.balloons-fill {
+    object-fit: fill;
+}
+
+.wrapper-6 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 200px 200px;
+  gap: 20px;
+}
+
+.wrapper-6 > div {
+    background-color: rebeccapurple;
+    border-radius: .5em;
+  }
+
+  input[type="text"],
+input[type="email"] {
+  border: 2px solid #000;
+  margin: 0 0 1em 0;
+  padding: 10px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  border: 3px solid #333;
+  background-color: #999;
+  border-radius: 5px;
+  padding: 10px 2em;
+  font-weight: bold;
+  color: #fff;
+}
+
+input[type="submit"]:hover, input[type="submit"]:focus {
+  background-color: #333;
+}
+
 /* Text */
