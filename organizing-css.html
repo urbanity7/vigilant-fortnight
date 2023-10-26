@@ -7,7 +7,33 @@
     <meta charset="UTF-8">
     </head>
   <body>
-
-    
+  <h2>Some helpful tips for organizing your CSS</h2>
+  <ul>
+    <li>It might be useful to comment out sections in your CSS dedicated to portions that are used as general rules (e.g., size, font, etc. used for h1, h2, h3, h4...), as well as apply sitewide, to pages of a specific type, and individual pages. It might also help to have a utilities section for classes that appear on multiple pages.</li>
+    <li>Avoid overly-specific selectors--instead, utilize classes so that you can re-apply specific styling elsewhere on your site, should it be needed.</li>
+    <li>Break larger stylesheets into smaller ones. Per MDN:</li>
+    <li style="list-style-type: none;"><blockquote>"In cases where you have very different styles for distinct parts of the site, you might want to have one stylesheet that includes all the global rules, as well as some smaller stylesheets that include the specific rules needed for those sections. You can link to multiple stylesheets from one page, and the normal rules of the cascade apply, with rules in stylesheets linked later coming after rules in stylesheets linked earlier.
+      <br>
+      <br>
+      For example, we might have an online store as part of the site, with a lot of CSS used only for styling the product listings and forms needed for the store. It would make sense to have those things in a different stylesheet, only linked to on store pages.
+      <br>
+      <br>
+      This can make it easier to keep your CSS organized, and also means that if multiple people are working on the CSS, you will have fewer situations where two people need to work on the same stylesheet at once, leading to conflicts in source control."</blockquote></li>
+    <li>Utilize the Sass tool to do the following:</li>
+      <ul>
+        <li>Define variables</li>
+        <li>Compile component stylesheets. In other words, have multiple stylesheets in the same directory, and then using partials (aka the Sass feature that makes this possible), use the <kbd>@use</kbd> rule to load them into other stylesheets</li>
+        <li>Post-processing optimization of your stylesheets</li>
+      </ul>
+  </ul>
+  <h3>Helpful Sass links</h3>
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Organizing">The MDN page where I first learned about it</a></li>
+    <li><a href="https://code.visualstudio.com/docs/languages/css">VS Code page on Sass</a></li>
+    <ul>
+      <li>This page makes me question whether I even need to install the extension--apparently some Sass functionalities are already built into VS Code. I'm not sure whether these features are the ones I want (aka the ones I listed above), though</li>
+    </ul>
+    <li><a href="https://www.freecodecamp.org/news/the-beginners-guide-to-sass/">FreeCodeCamp page on Sass</a></li>
+  </ul>
 </body>
 </html>
