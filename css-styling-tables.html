@@ -7,7 +7,192 @@
     <meta charset="UTF-8">
     </head>
   <body>
+  <h3>How do we get from a table like this...</h3>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/table-unstyled.png">
+  <h3>...to a table like this?</h3>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/table-with-caption.png">
+  <h2>Styling our table</h2>
+  <h3>Spacing and layout</h3>
+  <p>Add the following CSS to adjust the spacing and layout of your table:</p>
+<code><pre>
+<strong>CSS</strong>
+/* Spacing and layout */
 
-    
+<strong>table</strong> {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid purple;
+}
+
+<strong>thead th:nth-child(1)</strong> {
+  width: 30%;
+}
+
+<strong>thead th:nth-child(2)</strong> {
+  width: 20%;
+}
+
+<strong>thead th:nth-child(3)</strong> {
+  width: 15%;
+}
+
+<strong>thead th:nth-child(4)</strong> {
+  width: 35%;
+}
+
+<strong>th, 
+td</strong> {
+  padding: 20px;
+}</pre></code>
+<p><strong>Things to keep in mind</strong>:</p>
+<ul>
+  <li>A <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout">table-layout</a></strong></kbd> value of <kbd><strong>fixed</strong></kbd> is generally a good idea to set on your table, as it makes the table behave a bit more predictably by default. Normally, table columns tend to be sized according to how much content they contain, which produces some strange results. With <kbd>table-layout: fixed</kbd>, you can size your columns according to the width of their headings, and then deal with their content as appropriate. This is why we've selected the four different headings with the <kbd>thead: th:nth-child(n)</kbd> (<kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child">nth-child</a></strong></kbd>) selector <em>(see "Select the n-th child that is a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">&lt;th&gt;</a></kbd> element in a sequence, inside a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead">&lt;thead&gt;</a></kbd> element")</em> and given them set percentage widths. The entire column width follows the width of its heading, making for a nice way to size your table columns. This technique is discussed in more detail in <a href="https://css-tricks.com/fixing-tables-long-strings/">Fixed Table Layouts</a>. We've coupled this with a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width">width</a></kbd> of 100%, meaning that the table will fill any container it is put in, and be nicely responsive (although it would still need some work to get it looking good on narrow screen widths).</li>
+  <br>
+  <li>A <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse">border-collapse</a></strong></kbd> value of <kbd><strong>collapse</strong></kbd> is standard best practice for any table styling effort. By default, when you set borders on table elements, they will all have spacing between them, as the image below illustrates:</li>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/no-border-collapse.png"><br>
+  <li style="list-style-type: none;">With <kbd>border-collapse: collapse;</kbd> set, the borders collapse down into one, which looks much better:<br>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/border-collapse.png"></li>
+  <br>
+  <li>We've put a <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border</a></strong></kbd> around the whole table, which is needed because we'll be putting some borders round the table header and footer later on--it looks really odd and disjointed when you don't have a border round the whole outside of the table and end up with gaps.</li>
+  <br>
+  <li>We've set some <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/padding">padding</a></strong></kbd> on the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">&lt;th&gt;</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td">&lt;td&gt;</a></kbd> elements--this gives the data items space to breathe, making the table look a lot more legible.</li>
+</ul>
+  <p>At this point, our table already looks a lot better:</p>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/table-with-spacing.png">
+  <h3>Some simple typography</h3>
+  <p>To use a font from Google Fonts, input the following HTML in your HTML head, above the existing <kbd>&lt;link&gt;</kbd> element:</p>
+<code><pre>
+<strong>HTML</strong>
+&lt;link
+  href="https://fonts.googleapis.com/css?family=Rock+Salt"
+  rel="stylesheet"
+  type="text/css" /&gt;
+</pre></code>
+  <p>You'll also need to add the following CSS to your <kbd>style.css</kbd> file, below the entry from the "Spacing and layout" section. Note the creation of a custom <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family">font-family</a></strong></kbd> declaration that includes the Google Font as well.</p>
+<code><pre>
+<strong>CSS</strong>
+/* Typography */
+
+<strong>html</strong> {
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+}
+
+<strong>thead th, 
+tfoot th</strong> {
+  font-family: "Rock Salt", cursive;
+}
+
+<strong>th</strong> {
+  letter-spacing: 2px;
+}
+
+<strong>td</strong> {
+  letter-spacing: 1px;
+}
+
+<strong>tbody td</strong> {
+  text-align: center;
+}
+
+<strong>tfoot th</strong> {
+  text-align: right;
+}
+</pre></code>
+  <p><strong>Things to keep in mind (note that these tips aren't exclusive to styling tables)</strong>:</p>
+  <ul>
+    <li>We've set a global sans-serif font stack; this is purely a stylistic choice. We've also set our custom font on headings inside the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead">&lt;thead&gt;</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot">&lt;tfoot&gt;</a></kbd> elements for a more grunge look.</li>
+    <li>We've set some <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing">letter-spacing</a></strong></kbd> on the headings and cells to improve readability. This is likewise a primarily stylistic choice.</li>
+    <li>We've center-aligned the text in the table cells inside the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody">&lt;tbody&gt;</a></kbd> so that they line up with the headings. By default, cells are given a <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">&lt;text-align&gt;</a></strong></kbd> value of <kbd>left</kbd>, and headings are given a value of <kbd>center</kbd>, but it generally looks better to have the alignments set the same for both. The default bold weight on the heading fonts is enough to differentiate their look, at least in this case.</li>
+    <li>We've right-aligned the heading inside the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot">&lt;tfoot&gt;</a></kbd> so that it is visually associated better with its data point.</li>
+  </ul>
+  <p>Our table now looks like this:</p>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/table-with-typography.png">
+  <h3>Graphics and colors</h3>
+  <p>To adjust your table's colors and graphics, you should first add the following CSS to your <kbd>style.css</kbd> file, again placing it beneath the previous section on typography:</p>
+<code><pre>
+<strong>CSS</strong>
+/* Graphics and colors */
+
+<strong>thead, 
+tfoot</strong> {
+  background: url(leopardskin.jpg);
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+<strong>thead th, 
+tfoot th, 
+tfoot td</strong> {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  border: 3px solid purple;
+}</pre></code>
+  <p><strong>Things to keep in mind (note that these tips aren't exclusive to styling tables)</strong>:</p>
+  <ul>
+    <li>We've added a <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-image">background-image</a></strong></kbd> to the <kbd>&lt;thead&gt;</kbd> and <kbd>&lt;tfoot&gt;</kbd>, and changed the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">color</a></strong></kbd> of all text inside the header and footer to white (as well as given it a <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-shadow">text-shadow</a></strong></kbd>) so it is readable. It's a good idea to make sure your text contrasts well with your background for readability's sake.</li>
+    <li>We've added a linear gradient to the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">&lt;th&gt;</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td">&lt;td&gt;</a></kbd> elements inside the header and footer for a nice bit of texture, as well as given those elements a bright purple border. It is useful to have multiple nested elements available so you can layer styles on top of one another. Yes, we could have put both the background image and the linear gradient on the <kbd>&lt;thead&gt;</kbd> and <kbd>&lt;tfoot&gt;</kbd> elements using multiple background images, but we decided to do it separately for the benefit of older browsers that don't support multiple background images or linear gradients.</li>
+  </ul>
+  <h4>Zebra striping</h4>
+  <p>This section is designed to show you how to implement <strong>zebra stripes</strong>--alternating rows of color in your table that make the data easier to read. Add the following CSS to you <kbd>style.css</kbd> file:</p>
+<code><pre>
+<strong>CSS</strong>
+/* Zebra stripes */
+
+<strong>tbody tr:nth-child(odd)</strong> {
+  background-color: #ff33cc;
+}
+
+<strong>tbody tr:nth-child(even)</strong> {
+  background-color: #e495e4;
+}
+
+<strong>tbody tr</strong> {
+  background-image: url(noise.png);
+}
+
+<strong>table</strong> {
+  background-color: #ff33cc;
+}</pre></code>
+  <ul>
+    <li>Earlier on in this module, you saw the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child">:nth-child</a></strong></kbd> selector being used to select specific child elements. <strong>It can also be given a formula as a parameter, so it will select a sequence of elements</strong>. The formula <kbd><strong>2n+1</strong></kbd> would select all the <strong>odd</strong> numbered children, and the formula <kbd><strong>2n</strong></kbd> would select all the <strong>even</strong> numbered children. We've also used the <kbd><strong>odd</strong></kbd> and <kbd><strong>even</strong></kbd> keywords in our code, which do exactly the same things as these formulas. In this case, we are giving the odd and even rows different (lurid) colors.</li>
+    <li>We've added a repeating background tile to all the body rows, which is just a bit of noise (or to be more precise, a semi-transparent <kbd>.png</kbd> with a bit of visual distortion on it) to provide some texture.</li>
+    <li>We've given the entire table a solid background color so that browsers that don't support the <kbd>:nth-child</kbd> selector still have a background for their body rows.</li>
+  </ul>
+  <p>The table now looks like this:</p>
+  <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/table-with-color.png">
+  <h2>Styling the caption</h2>
+  <p>Lastly, to style the caption, add the following CSS to your <kbd>style.css</kbd> file:</p>
+<code><pre>
+<strong>CSS</strong>
+/* Caption */
+
+<strong>caption</strong> {
+  font-family: "Rock Salt", cursive;
+  padding: 20px;
+  font-style: italic;
+  caption-side: bottom;
+  color: #666;
+  text-align: right;
+  letter-spacing: 1px;
+}</pre></code>
+  <ul>
+    <li>The only thing of note here is the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/caption-side">caption-side</a></strong></kbd> property, which has been given a value of <kbd>bottom</kbd>. This causes the caption to be positioned on the bottom of the table, which along with the other declarations, gives us this final looking table:</li>
+    <br>
+    <li style="list-style-type: none;"><img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables/table-with-caption.png"></li>
+  </ul>
+  <h2>Table styling quick tips</h2>
+  <p>To recap, here's a list of the most useful tips for styling tables:</p>
+  <ul>
+    <li>Make your table markup as simple as possible, and keep things flexible (e.g., by using percentages) so the design is more responsive. It is also helpful to organize your CSS into sections so you can quickly find each portion of your table during the styling process.</li>
+    <li>Use <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout">table-layout</a>: fixed</strong></kbd> to create a more predictable table layout that allows you to easily set column widths by setting <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width">width</a></strong></kbd> on their headings (<kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">&lt;th&gt;</a></kbd>).</li>
+    <li>Use <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-collapse">border-collapse</a>: collapse</strong></kbd> to make table elements' borders collapse into each other, producing a neater and easier to control look.</li>
+    <li>Use <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/thead">&lt;thead&gt;</a></strong></kbd>, <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tbody">&lt;tbody&gt;</a></strong></kbd>, and <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot">&lt;tfoot&gt;</a></strong></kbd> to break up your table into logical chunks and provide extra places to apply CSS to, so it is easier to layer styles on top of one another if required.</li>
+    <li>Use zebra striping to make alternating rows easier to read.</li>
+    <li>Use <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">text-align</a></strong></kbd> to line up your <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th">&lt;th&gt;</a></strong></kbd> and <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/td">&lt;td&gt;</a></strong></kbd> text, to make things neater and easier to follow.</li>
+  </ul>
 </body>
 </html>
