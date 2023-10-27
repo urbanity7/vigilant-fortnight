@@ -1,0 +1,62 @@
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>CSS text fundamentals</title>
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css">
+    <link href="../index.html">
+  </head>
+  <body>
+    <h2>Web safe fonts</h2>
+    <table>
+      <thead style="text-align: left;">
+        <tr>
+          <th>Name</th>
+          <th>Generic type</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tr>
+        <td>Arial</td>
+        <td>sans-serif</td>
+        <td>Specify Helvetica as the backup font in the <kbd><strong>font-family</strong></kbd> property font stack</td>
+      </tr>
+      <tr>
+        <td>Courier New</td>
+        <td>monospace</td>
+        <td>Specify Courier as the backup font in the <kbd><strong>font-family</strong></kbd> property font stack</td>
+      </tr>
+      <tr>
+        <td>Georgia</td>
+        <td>serif</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Times New Roman</td>
+        <td>serif</td>
+        <td>Specify Times as the backup font in the <kbd><strong>font-family</strong></kbd> property font stack</td>
+      </tr>
+      <tr>
+        <td>Trebuchet MS</td>
+        <td>sans-serif</td>
+        <td>Not as widely available on mobile OSes</td>
+      </tr>
+      <tr>
+        <td>Verdana</td>
+        <td>sans-serif</td>
+        <td></td>
+      </tr>
+    </table>
+  <h2>Font family example with a font stack</h2>
+<code><pre>
+<strong>CSS</strong>
+p {
+  color: blue;
+  <strong>font-family: "Trebuchet MS", Verdana, sans-serif;</strong>
+}</pre></code>
+  <p>It is considered best practice to leave a generic font-type (e.g., sans-serif) at the end of the font stack in case the preceding fonts aren't available on one's device.</p>
+  <h2>Font sizes</h2>
+  <p>Remember, 1 <kbd><strong>em</strong></kbd> unit is equivalent to (at least when it comes to fonts) the font size set on the <strong>parent element</strong> of the current element. <kbd><strong>rem</strong></kbd> units are similar, but they apply to the <strong>root element</strong> set on the document rather than the selected element's parent element. In other words, their size is dependent on the font size given to the <kbd>&lt;html&gt;</kbd> element.</p>
+  <p><strong>I already know a lot of the stuff covered in this section</strong>, but here's the <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals">link to the MDN module</a> anyway in case I need to reference it. There's a bunch of helpful properties--like <kbd>font-stretch</kbd>--provided there that I wasn't in the mood to type out.</p>
+  </body>
+</html>
