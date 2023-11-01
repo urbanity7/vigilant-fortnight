@@ -8,5 +8,91 @@
     <link href="../index.html">
   </head>
   <body>
+    <p>See <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_lists#handling_list_spacing">this page</a> for more. I skimmed through it and feel like this is something I can reference on an as-needed basis instead of replicating it here.</p>
+    <h2>Some brief notes nonetheless</h2>
+    <strong><p>When styling links and their various states, make sure to style them in the following order</strong>:</p>
+<code><pre><strong>CSS</strong>
+<strong>a</strong> {
+}
+
+<strong>a:link</strong> {
+}
+
+<strong>a:visited</strong> {
+}
+
+<strong>a:focus</strong> {
+}
+
+<strong>a:hover</strong> {
+}
+
+<strong>a:active</strong> {
+}</pre></code>
+    <p>This order is important because link styles build on one another. For example, the styles in the first rule will apply to all the subsequent ones. When a link is activated, it's usually also hovered over. If you put these in the wrong order, and you're changing the same properties in each ruleset, things won't work as you expect.</p>
+    <h3>Styling links as buttons</h3>
+    <p>Styling links as buttons is commonly done to create navigation menus. Below is some sample markup that might be used in such an instance.</p>
+<code><pre><strong>HTML</strong>
+&lt;nav class="container"&gt;
+  &lt;a href="#"&gt;Home&lt;/a&gt;
+  &lt;a href="#"&gt;Pizza&lt;/a&gt;
+  &lt;a href="#"&gt;Music&lt;/a&gt;
+  &lt;a href="#"&gt;Wombats&lt;/a&gt;
+  &lt;a href="#"&gt;Finland&lt;/a&gt;
+    &lt;/nav&gt;
+
+<strong>CSS</strong>
+body,
+html {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+  gap: 0.625%;
+}
+
+a {
+  flex: 1;
+  text-decoration: none;
+  outline: none;
+  text-align: center;
+  line-height: 3;
+  color: black;
+}
+
+a:link,
+a:visited,
+a:focus {
+  background: palegoldenrod;
+  color: black;
+}
+
+a:hover {
+  background: orange;
+}
+
+a:active {
+  background: darkred;
+  color: white;
+}</pre></code>
+<p>The HTML defines a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav">&lt;nav&gt;</a></kbd> element with a <kbd>"container"</kbd> class. The <kbd>&lt;nav&gt;</kbd> contains our links.</p>
+
+<p>The CSS includes the styling for the container and the links it contains.</p>
+<ul>
+  <li>The second rule says:</li>
+  <ul>
+    <li>The container is a <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">flexbox</a>. The items it contains — the links, in this case — will be <em>flex items</em>.</li>
+    <li>The gap between the flex items will be <kbd>0.625%</kbd> of the container's width.</li>
+  </ul>
+  <li>The third rule styles the links:</li>
+  <ul>
+    <li>The first declaration, <kbd>flex: 1</kbd>, means that the widths of the items will be adjusted so they use all the available space in the container.</li>
+    <li>Next, we turn off the default <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration">text-decoration</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/outline">outline</a></kbd> — we don't want those spoiling our look.</li>
+    <li>The last three declarations are to center the text inside each link, set the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height">line-height</a></kbd> to 3 to give the buttons some height (which also has the advantage of centering the text vertically), and set the text color to black.</li>
+    </ul>
+  </ul>
+    <p>One other section of note included in this module is the <strong><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links">including icons on links</a></strong> section. I don't plan to use this feature much, but I wanted to mention it just in case.</p>
   </body>
 </html>
