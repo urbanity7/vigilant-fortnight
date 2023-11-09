@@ -29,7 +29,8 @@
 
 .wrapper-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 10em 10em 10em; 
+    /* NOTE: Google Chrome doesn't support fr as widely for grids */
     grid-template-rows: 100px 100px;
     gap: 10px;
 }
