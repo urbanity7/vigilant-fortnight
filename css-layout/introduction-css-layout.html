@@ -184,11 +184,432 @@
     </div>
     <p>The rest of this section covers other layout methods that are less important for the main layout of your page, but still help to achieve specific tasks. By understanding the nature of each layout task, you will soon find that when you look at a particular component of your design, the type of layout most suitable for it will often be clear.</p>
     <h2 id="floats">Floats</h2>
+    <p>Floating an element changes the behavior of that element and the block level elements that follow it in normal flow. The floated element is moved to the left or right and removed from normal flow, and the surrounding content <em>floats</em> around it.</p>
+    <p><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">float</a></strong></kbd> has four possible values:</p>
+    <ul>
+      <li><kbd>left</kbd> - Floats the element to the left.</li>
+      <li><kbd>right</kbd> - Floats the element to the right.</li>
+      <li><kbd>none</kbd> - Specifies no floating at all. This is the default setting.</li>
+      <li><kbd>inherit</kbd> - Specifies that the value of the <kbd>float</kbd> property should be inherited from the element's parent element.</li>
+    </ul>
+    <p>In the example below, we float a <kbd>&lt;div&gt;</kbd> left and give it a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/margin">margin</a></kbd> on the right to push the surrounding text away from it. This gives us the effect of text wrapped around the boxed element, and is most of what you need to know about floats as used in modern web design.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+<strong>.box-float {
+  float: left;
+  margin-right: 30px;</strong>
+  width: 150px;
+  height: 150px;
+  background-color: lightblue;
+  border-radius: 5px;
+}
 
+<strong>HTML</strong>
+&lt;h4 style="font-size: larger;"&gt;Simple float example&lt;/h4&gt;
+&lt;div class="box-float"&gt;Float&lt;/div&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.&lt;/p&gt;
+</pre></code>
+    <p><strong>Output</strong>:</p>
+    <h4 style="font-size: larger;">Simple float example</h4>
+    <div class="box-float">Float</div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+    <p>Keep in mind that prior to the advent of flexbox and grids, floats were used as a method creating column layouts. You may still encounter this across the web. We'll come back to this in the lesson on <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Legacy_Layout_Methods">legacy layout methods</a>.</p>
     <h2 id="positioning">Positioning techniques</h2>
+    <p>Positioning allows you to move an element from where it would otherwise be placed in normal flow to another location. It isn't a method for creating the main layouts of a page; it's more about managing and fine-tuning the position of specific items on a page.</p>
+    <p>There are, however, useful techniques for obtaining specific layout patterns that rely on the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a></kbd> property. Understanding positioning also helps in understanding normal flow, and what it means to move an item out of the normal flow.</p>
+    <p>There are five types of positioning you should know about:</p>
+    <ul>
+      <li><strong>Static positioning</strong> is the default positioning method that every element gets. It essentially means "put the element into its normal position in the document layout flow--no need to do anything special here."</li>
+      <li><strong>Relative positioning</strong> allows you to modify an element's position on the page, moving it relative to its position in normal flow, as well as making it overlap other elements on the page.</li>
+      <li><strong>Absolute positioning</strong> moves an element completely out of the page's normal layout flow, like it's sitting on its own separate layer. From there, you can fix it to a position relative to the edge of its closest positioned ancestor (which becomes <kbd>&lt;html&gt;</kbd> if no other ancestors are positioned). This is useful for creating complex layout effects, such as tabbed boxes where different control panels sit on top of one another and are shown and hidden as desired, or information panels that sit off-screen by default, but can be made to slide on screen using a control button.</li>
+      <li><strong>Fixed positioning</strong> is very similar to absolute positioning except that it fixes an element relative to the browser viewport, not another element. This is useful for creating effects such as a persistent navigation menu that always stays in the same place on the screen as the rest of the content scrolls.</li>
+      <li><strong>Sticky positioning</strong> is a newer positioning method that makes an element act like <kbd>position: relative</kbd> until it hits a defined offset from the viewport, at which point it acts like <kbd>position: fixed</kbd>.</li>
+    </ul>
+    <h3>Simple positioning example</h3>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+body {
+  width: 500px;
+}
 
+.p-intro {
+  background-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.p-intro-2 {
+  background: rgba(255, 84, 104, 0.3);
+  border: 2px solid rgb(255, 84, 104);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+<strong>HTML</strong>
+&lt;h4 style="font-size: larger;"&gt;Positioning&lt;/h4&gt;
+&lt;p class="p-intro"&gt;I am a basic block level element.&lt;/p&gt;
+&lt;p class="p-intro-2"&gt;I am a basic block level element.&lt;/p&gt;
+&lt;p class="p-intro"&gt;I am a basic block level element.&lt;/p&gt;
+&lt;h4 style="font-size: larger;"&gt;Relative positioning example&lt;/h4&gt;
+</pre></code>
+    <p><strong>Output</strong>:</p>
+    <h4 style="font-size: larger;">Positioning</h4>
+    <p class="p-intro">I am a basic block level element.</p>
+    <p class="p-intro-2">I am a basic block level element.</p>
+    <p class="p-intro">I am a basic block level element.</p>
+    <h4 style="font-size: larger;">Relative positioning example</h4>
+    <p>Relative positioning allows you to offset an item from its default position in normal flow. This means you could achieve a task such as moving an icon down a bit so it lines up with a text label. To do this, we could add the following class and rule to add relative positioning:</p>
+
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+body {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.p-intro {
+  background-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.p-intro-2 {
+  background: rgba(255, 84, 104, 0.3);
+  border: 2px solid rgb(255, 84, 104);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+<strong>.relative {
+  position: relative;
+  top: 30px;
+  left: 30px;
+}</strong>
+
+<strong>HTML</strong>
+&lt;h4 style="font-size: larger;"&gt;Positioning&lt;/h4&gt;
+&lt;p class="p-intro"&gt;I am a basic block level element.&lt;/p&gt;
+&lt;p class="p-intro-2 relative"&gt;This is my relatively positioned element.&lt;/p&gt;
+&lt;p class="p-intro"&gt;I am a basic block level element.&lt;/p&gt;
+&lt;h4 style="font-size: larger;"&gt;Relative positioning example&lt;/h4&gt;
+</pre></code>
+    <p><strong>Output</strong>:</p>
+    <h4 style="font-size: larger;">Positioning</h4>
+    <p class="p-intro">I am a basic block level element.</p>
+    <p class="p-intro-2 relative">This is my relatively positioned element.</p>
+    <p class="p-intro">I am a basic block level element.</p>
+    <h4 style="font-size: larger;">Relative positioning example</h4>
+    <p>Here we gave our middle paragraph a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position">position</a></kbd> value of <kbd>relative</kbd>. <strong>This doesn't do anything on its own</strong>, so we also add <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top">top</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/left">left</a></kbd> properties. These serve to move the affected element down and to the right. This might seem counterintuitive, so think of it as the element being pushed on its left and top sides as in physics--this results in it moving rightwards and downwards.</p>
+    <h3>Absolute positioning example</h3>
+    <p>Absolute positioning is used to completely remove an element from the normal flow and instead position it using offsets from the edges of a containing block. We could add the following CSS rule to implement absolute </p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+body {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.p-intro {
+  background-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.p-intro-2 {
+  background: rgba(255, 84, 104, 0.3);
+  border: 2px solid rgb(255, 84, 104);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+<strong>.absolute {
+  position: absolute;
+  top: -80px;
+  left: 30px;
+}</strong>
+
+<strong>HTML</strong>
+&lt;h4 style="font-size: larger;"&gt;Positioning&lt;/h4&gt;
+&lt;p class="p-intro"&gt;I am a basic block level element.&lt;/p&gt;
+<strong>&lt;div style="position: relative;"&gt;
+  &lt;p class="p-intro-2 absolute"&gt;This is my absolutely positioned element.&lt;/p&gt;
+  &lt;/div&gt;</strong>
+&lt;p class="p-intro"&gt;I am a basic block level element.&lt;/p&gt;
+&lt;h4 style="font-size: larger;"&gt;Relative positioning example&lt;/h4&gt;
+</pre></code>
+    <p><strong>Output</strong>:</p>
+    <h4 style="font-size: larger;">Positioning</h4>
+    <p class="p-intro">I am a basic block level element.</p>
+    <div style="position: relative;">
+    <p class="p-intro-2 absolute">This is my absolutely positioned element.</p>
+    </div>
+    <p class="p-intro">I am a basic block level element.</p>
+    <br>
+    <br>
+    <p>The positioned element has now been completely separated from the rest of the page layout and sits over the top of it. The other two paragraphs now sit together as if their positined sibling didn't exist. The <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/top">top</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/left">left</a></kbd> properties have a different effect on absolutely positioned elements than they do on relatively positioned elements: in this case, the offsets have been calculated from the top and the left of the page. It is possible to change the parent element that becomes this container--we'll take a look at this in the lesson on <kbd><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning">positioning</a></kbd>.</p>
+    <p><strong>REMEMBER that absolutely positioned elements position themselves in accordance to the <text style="text-decoration: underline">last element that was positioned relatively with <kbd>position: relative</kbd></text>. This means you likely need to use a <kbd>&lt;div&gt;</kbd> and/or play with the lengths you assign to <kbd>top</kbd>, <kbd>left</kbd>, etc. if the object isn't positioning itself where you want it to appear</strong>.</p>
+    <h3>Fixed positioning example</h3>
+    <p><strong>Input</strong>:</p>
+    <p>Fixed positioning removes our element from the document flow in the same way as absolute positioning. However, instead of the offsets being applied from the container, they are applied from the <strong>viewport</strong>. Because the item remains fixed in relation to the viewport, we can create effects such as a menu that remains fixed as the page scrolls beneath it.</p>
+    <p>For this example, our HTML contains three paragraphs of text so that we can scroll through the page, as well as a box with the property <kbd>position: fixed</kbd>.</p>
+<code><pre><strong>CSS</strong>
+body {
+  width: 500px;
+  margin: 0 auto;
+}
+  
+.p-intro {
+  background-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.p-intro-2 {
+  background: rgba(255, 84, 104, 0.3);
+  border: 2px solid rgb(255, 84, 104);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+<strong>.fixed {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+}</strong>
+
+<strong>HTML</strong>
+&lt;h4 style="font-size: larger;"&gt;Fixed positioning&lt;/h4&gt;
+<strong>&lt;div class="p-intro-2 fixed"&gt;Fixed&lt;/div&gt;</strong>
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci.&lt;/p&gt;    
+&lt;p&gt;Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et.&lt;/p&gt;
+&lt;p&gt;In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.&lt;/p&gt;
+</pre></code>
+    <p><strong>Output</strong>:</p>
+    <h4 style="font-size: larger;">Fixed positioning</h4>
+    <!-- <div class="p-intro-2 fixed">Fixed</div> -->
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus ut, rutrum luctus orci.</p>    
+    <p>Cras porttitor imperdiet nunc, at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus neque, ac ornare ex malesuada et.</p>
+    <p>In vitae convallis lacus. Aliquam erat volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.</p>
+    <p><strong>NOTE: The fixed portion is commented out to avoid it from appearing on the screen constantly. If you want to see it constantly, uncomment it out.</strong></p>
+    <h3>Sticky positioning example</h3>
+    <p><strong>Input</strong>:</p>
+    <p>Sticky positioning is the final positioning method that we have at our disposal. It mixes relative positioning with fixed positioning. When an item has <kbd>position: sticky</kbd>, it'll scroll in normal flow <strong>until it hits offsets from the viewport that we have defined</strong>. At that point, it becomes "stuck," as if it had <kbd>position: fixed</kbd> applied.</p>
+<code><pre><strong>CSS</strong>
+body {
+  width: 500px;
+  margin: 0 auto;
+}
+  
+.p-intro {
+  background-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.p-intro-2 {
+  background: rgba(255, 84, 104, 0.3);
+  border: 2px solid rgb(255, 84, 104);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+<strong>.sticky {
+  position: sticky;
+  top: 30px;
+  left: 30px;
+}</strong>
+
+<strong>HTML</strong>
+&lt;h4 style="font-size: larger;"&gt;Sticky positioning&lt;/h4&gt;
+&lt;p&gt;
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam
+  dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus
+  ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus
+  laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum,
+  tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus
+  neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat
+  volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros
+  pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec
+  lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.
+  &lt;/p&gt;
+  <strong>&lt;div class="p-intro-2 sticky"&gt;Sticky&lt;/div&gt;</strong>
+&lt;p&gt;
+  Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada
+  ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed
+  est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus
+  tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus
+  sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis
+  vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque
+  penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  &lt;/p&gt;
+&lt;p&gt;
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam
+  dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus
+  ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus
+  laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum,
+  tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus
+  neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat
+  volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros
+  pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec
+  lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.
+&lt;/p&gt;
+&lt;a few more instances of repeating lorem ipsum...&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <h4 style="font-size: larger;">Sticky positioning</h4>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam
+      dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus
+      ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus
+      laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum,
+      tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus
+      neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat
+      volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros
+      pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec
+      lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.
+    </p>
+    <!-- <div class="p-intro-2 sticky">Sticky</div> -->
+    <p>
+      Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada
+      ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed
+      est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus
+      tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus
+      sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis
+      vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque
+      penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam
+      dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus
+      ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus
+      laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum,
+      tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus
+      neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat
+      volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros
+      pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec
+      lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam
+      dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus
+      ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus
+      laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum,
+      tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus
+      neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat
+      volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros
+      pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec
+      lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.
+    </p>
+    <p>
+      Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada
+      ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed
+      est. Nam id risus quis ante semper consectetur eget aliquam lorem. Vivamus
+      tristique elit dolor, sed pretium metus suscipit vel. Mauris ultricies lectus
+      sed lobortis finibus. Vivamus eu urna eget velit cursus viverra quis
+      vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum sociis natoque
+      penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus aliquam
+      dolor, eu lacinia lorem placerat vulputate. Duis felis orci, pulvinar id metus
+      ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at ultricies tellus
+      laoreet sit amet. Sed auctor cursus massa at porta. Integer ligula ipsum,
+      tristique sit amet orci vel, viverra egestas ligula. Curabitur vehicula tellus
+      neque, ac ornare ex malesuada et. In vitae convallis lacus. Aliquam erat
+      volutpat. Suspendisse ac imperdiet turpis. Aenean finibus sollicitudin eros
+      pharetra congue. Duis ornare egestas augue ut luctus. Proin blandit quam nec
+      lacus varius commodo et a urna. Ut id ornare felis, eget fermentum sapien.
+    </p>
+    <p><strong>NOTE: The sticky portion is commented out to avoid it from appearing on the screen constantly. If you want to see it constantly, uncomment it out.</strong></p>
     <h2 id="table-layout">Table layout</h2>
+    <p>HTML tables are fine for displaying tabular data, but many years ago, web developers used to also use tables for entire page layouts, putting their headers, footers, columns, etc. into various table rows and columns. This has many problems in practice today.</p>
+    <p>The way that a table looks on a webpage when you use table markup is due to a set of CSS properties that define table layout. These same properties can also be used to lay out elements that <strong>aren't</strong> tables, a use which is sometimes described as "using CSS tables."</p>
+    <p>The example below shows one such use. It must be noted that using CSS tables for layout should be considered a legacy method at this point, and should only be used to support old browsers that lack support for flexbox or grids.</p>
+    <p>Let's look at the example. First, some simple markup that creates an HTML form. Each input element has a label, and we've also included a caption inside a paragraph. Each label/input pair is wrapped in a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">&lt;div&gt;</a></kbd> for layout purposes.</p>
+<pre><code><strong>HTML</strong>
+&lt;form&gt;
+  &lt;p&gt;First of all, tell us your name and age.&lt;/p&gt;
+  &lt;div&gt;
+    &lt;label for="fname">First name:&lt;/label&gt;
+    &lt;input type="text" id="fname" /&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p&gt;&lt;em&gt;This event is made possible by the generous support of the Bill &amp; Melinda Gates Foundation.&lt;/em&gt;&lt;/p&gt;label for="lname">Last name:&lt;/label&gt;
+    &lt;input type="text" id="lname" /&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for="age"&gt;Age:&lt;/label&gt;
+    &lt;input type="text" id="age" /&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+  <p>As for the CSS, most of it's fairly ordinary except for the uses of the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a></kbd> property. The <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">&lt;form&gt;</a></kbd>, <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">&lt;div&gt;</a></kbd>s, and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label">&lt;labels&gt;</a></kbd>s and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">&lt;input&gt;</a></kbd>s have been told to display like a table, table rows, and table cells, respectively. Basically, they'll act like HTML markup, causing the labels and inputs to line up nicely by default. All we then have to do is add a bit of sizing, margin, etc. to make everything look a bit nicer, and we're done.</p>
+  <p>You'll notice that the caption paragraph has been given <kbd>display: table-caption</kbd>, which makes it act like a table <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/caption">&lt;caption&gt;</a></kbd>, and <kbd>caption-side: bottom;</kbd> to tell the caption to sit on the bottom of the table for styling purposes, even though the markup is before the <kbd>&lt;input&gt;</kbd> elements in the source. This allows for a nice bit of flexibility.</p>
+<pre><code><strong>CSS</strong>
+form {
+  display: table;
+  margin: 0;
+}
 
-    <h2 id="multi-column-layout">Multi-column layout</h2>
+form div {
+  display: table-row;
+}
+
+form label,
+form input {
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+form label {
+  width: 200px;
+  padding-right: 5%;
+  text-align: right;
+}
+
+form input {
+  width: 300px;
+}
+
+form p {
+  display: table-caption;
+  caption-side: bottom;
+  width: 300px;
+  color: #999;
+  font-style: italic;
+}</code></pre>
+  <p><strong>Output</strong>:</p>
+  <form>
+    <p>First of all, tell us your name and age.</p>
+    <div>
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" />
+    </div>
+    <div>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" />
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input type="text" id="age" />
+    </div>
+  </form>
+  <h2 id="multi-column-layout">Multi-column layout</h2>
+
+
+  
   </body>
 </html>
