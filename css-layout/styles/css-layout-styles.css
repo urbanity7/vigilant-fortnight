@@ -156,4 +156,7 @@ form p {
     color: #999;
     font-style: italic;
 }
-  
+
+.container-intro {
+    column-width: 200px;
+}
