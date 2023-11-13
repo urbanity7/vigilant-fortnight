@@ -608,8 +608,62 @@ form p {
     </div>
   </form>
   <h2 id="multi-column-layout">Multi-column layout</h2>
-
-
+  <p>The multi-column layout CSS module provides us a way to lay out content in columns, similar to how text flows in a newspaper. While reading up and down columns is less useful in a web context due to the users having to scroll up and down, arranging content into columns can nevertheless be a useful technique.</p>
+  <p>To turn a block into a multi-column container, use either the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-count">column-count</a></strong></kbd> property, which tells the browser <em>how many</em> columns we would like to have, or the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-width">column-width</a></strong></kbd> property, which tells the browser to fill the container with as many columns as possible of a <em>specified width</em>.</p>
+  <p>In the example below, we start with a block of HTML inside a containing <kbd>&lt;div&gt;</kbd> element with a class of <kbd>container-intro</kbd>.</p>
+  <p><strong>Input</strong>:</p>
+<code><pre><strong>HTML</strong>
+  &lt;div class="container-intro"&gt;
+    &lt;h2&gt;Multi-column Layout&lt;/h2&gt;
   
+    &lt;p&gt;
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at
+      ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada
+      ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed
+      est. Nam id risus quis ante semper consectetur eget aliquam lorem.
+    &lt;/p&gt;
+  
+    &lt;p&gt;
+      Vivamus tristique elit dolor, sed pretium metus suscipit vel. Mauris
+      ultricies lectus sed lobortis finibus. Vivamus eu urna eget velit cursus
+      viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum
+      sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+      mus.
+      &lt;/p&gt;
+  &lt;/div&gt;</pre></code>
+  <p>We're using a <kbd>column-width</kbd> of 200 pixels on that container, causing the browser to create as many 200 pixel columns that will fit. Whatever space is left between the columns will be shared.</p>
+<code><pre><strong>CSS</strong>
+.container-intro {
+  column-width: 200px;
+}
+</pre></code>
+  <p><strong>Output</strong>:</p>
+  <div class="container-intro">
+    <h2>Multi-column Layout</h2>  
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc, at
+      ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    </p>
+    <p>
+      Nam vulputate diam nec tempor bibendum. Donec luctus augue eget malesuada
+      ultrices. Phasellus turpis est, posuere sit amet dapibus ut, facilisis sed
+      est. Nam id risus quis ante semper consectetur eget aliquam lorem.
+    </p>
+    <p>
+      Vivamus tristique elit dolor, sed pretium metus suscipit vel. Mauris
+      ultricies lectus sed lobortis finibus. Vivamus eu urna eget velit cursus
+      viverra quis vestibulum sem. Aliquam tincidunt eget purus in interdum. Cum
+      sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+      mus.
+    </p>
+  </div>
   </body>
 </html>
