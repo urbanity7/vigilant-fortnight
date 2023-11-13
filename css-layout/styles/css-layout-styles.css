@@ -158,5 +158,6 @@ form p {
 }
 
 .container-intro {
-    column-width: 100px;
+    display: inline-block;
+    column-width: 200px;
 }
