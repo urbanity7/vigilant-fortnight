@@ -8,5 +8,65 @@
     <link href="../index.html">
   </head>
   <body>
+    <p>Because you can change how elements behave by either adjusting their position in normal flow or removing them from normal flow entirely, it's always best to start with a webpage that's readable in normal flow. This ensures your content is readable even if the user's using a limited browser or device like a screen reader. Since normal flow is designed to make a readable document, you'll also ensure that you're working <em>with</em> the document as opposed to <em>against</em> it when you initially create a document laid out in normal flow.</p>
+    <h2>A review of how elements are laid out by default</h2>
+    <p>Remember, the layout process begins as boxes of individual elements are laid out in such a way that any padding, border, or margin they happen to have is added to their content. This is called the <strong>box model</strong>.</p>
+    <p>By default, a <a href="https://developer.mozilla.org/en-US/docs/Glossary/Block-level_content">block-level element</a>'s content fills the available inline space of the parent element containing it, growing along the block dimension to accommodate its content. The size of <a href="https://developer.mozilla.org/en-US/docs/Glossary/Inline-level_content">inline-level elements</a> is just the size of their content. You can set <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width">width</a></kbd> or <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/height">height</a></kbd> on some elements that have a default <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a></kbd> property value of inline, like <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img">&lt;img&gt;</a></kbd>, but the <kbd>display</kbd> value will still remain <kbd>inline</kbd>.</p>
+    <p>If you want to control the <kbd>display</kbd> property of an inline-level element in this manner, use CSS to set it to behave like a block-level element (e.g., with <kbd>display: block;</kbd> or <kbd>display: inline-block;</kbd>, which mixes characteristics from both).</p>
+    <p>That explains how elements are structured individually, but how about the way they're structured when they interact with one another? The normal layout flow (mentioned in the introduction article for this module) is the system by which elements are placed inside the browser's viewport. By default, block-level elements are laid out in the <em>block flow direction</em>, which is based on the parent's <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode">writing mode</a></kbd> (<em>initial</em>: horizontal-tb). Each element will appear on a new line below the last one, with each one separated by whatever margin that's been specified. In English, for example, (or any other horizontal, top-to-bottom writing mode) block-level elements are laid out vertically.</p>
+    <p>Inline elements behave differently. They don't appear on new lines; instead, they all sit on the same line along with any adjacent (or wrapped) text content as long as there is space for them to do so inside the width of the parent block level element. If there isn't space, then the overflowing content will move down to a new line.</p>
+    <p>If two vertically adjacent elements both have a margin set on them and their margins touch, the larger of the two margins remains and the smaller one disappears. This is known as <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_box_model/Mastering_margin_collapsing">margin collapsing</a></strong></kbd>. Collapsing margins is only relevant in the <strong>vertical direction</strong>. Let's look at a simple example that explains all of this.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>HTML</strong>
+&lt;div class="body-normal&gt;
+  &lt;h3&gt;Basic document flow&lt;/h3&gt;
+  &lt;p class="p-normal"&gt;I am a basic block level element. My adjacent block level elements sit on new
+  lines below me.&lt;/p&gt;
+  &lt;p class="p-normal"&gt;By default we span 100% of the width of our parent element, and we are as tall
+  as our child content. Our total width and height is our content + padding +
+  border width/height.&lt;/p&gt;
+  &lt;p class="p-normal"&gt;We are separated by our margins. Because of margin collapsing, we are
+  separated by the width of one of our margins, not both.&lt;/p&gt;
+  &lt;p class="p-normal"&gt;Inline elements &lt;span&gt;like this one&lt;/span&gt; and &lt;span&gt;this one&lt;/span&gt; sit on
+  the same line along with adjacent text nodes, if there is space on the same
+  line. Overflowing inline elements will
+  &lt;span&gt;wrap onto a new line if possible (like this one containing text)&lt;/span&gt;,
+  or just go on to a new line if not, much like this image will do:
+  &lt;img src="https://live.mdnplay.dev/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow/long.jpg" alt="snippet of cloth" /&gt;&lt;/p&gt;
+&lt;/div&gt;
+<strong>CSS</strong>
+.body-normal {
+  width: 500px;
+  margin: 0 auto;
+}
+  
+.p-normal {
+  background: rgba(255, 84, 104, 0.3);
+  border: 2px solid rgb(255, 84, 104);
+  padding: 10px;
+  margin: 10px;
+}
+  
+span {
+  background: white;
+  border: 1px solid black;
+}</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="body-normal">
+      <h3>Basic document flow</h3>
+      <p class="p-normal">I am a basic block level element. My adjacent block level elements sit on new
+      lines below me.</p>
+      <p class="p-normal">By default we span 100% of the width of our parent element, and we are as tall
+      as our child content. Our total width and height is our content + padding +
+      border width/height.</p>
+      <p class="p-normal">We are separated by our margins. Because of margin collapsing, we are
+      separated by the width of one of our margins, not both.</p>
+      <p class="p-normal">Inline elements <span>like this one</span> and <span>this one</span> sit on
+      the same line along with adjacent text nodes, if there is space on the same
+      line. Overflowing inline elements will
+      <span>wrap onto a new line if possible (like this one containing text)</span>,
+      or just go on to a new line if not, much like this image will do:
+      <img src="https://live.mdnplay.dev/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow/long.jpg" alt="snippet of cloth"/></p>
+    </div>
   </body>
 </html>
