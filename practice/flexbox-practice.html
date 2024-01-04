@@ -1,0 +1,131 @@
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Flexbox practice</title>
+    <link href="../practice/styles/styles.css" rel="stylesheet" type="text/css">
+    <link href="../index.html">
+    <style>
+      section {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        background: lightskyblue;
+        border: 10px solid white;
+        justify-content: space-evenly;
+        /* This centers all the items in the <section>s. */
+      }
+
+      article {
+        flex: 100px;
+      }
+
+      header {
+        background: lightskyblue;
+        margin-bottom: -15px;
+      }
+
+      h1 {
+        display: flex;
+        justify-content: center;
+        padding-bottom: -5px;
+      }
+      
+      article {
+        flex: 1;
+      }
+
+      button {
+        margin: 3px;
+      }
+      
+      div {
+        display: flex;
+        justify-content: center;
+      }
+
+      article:nth-of-type(4) {
+        flex: 2 600px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <!-- 
+      <div class="wrapper">
+      <div class="box1 overflow">Expand the page preview to make the grid spacing function correctly</div>
+      <div class="box2 border"></div>
+      <div class="box1 border2"><div class="box3"></div></div>
+      <div class="box1 border"></div>
+      <div class="box1"><div class="box4 border2"></div></div>
+      <div class="box2"></div>
+      <div class="box2 border2"><div class="box5 border2"></div></div>
+      <div class="box1"></div>
+      <div class="box1 border"></div>
+    -->
+    <header>
+        <h1 style="text-align: center;">Practicing flexbox</h1>
+        <!-- Not sure style="text-align: center;" is necessary--
+             removing it changes the preview in VS Code but not in
+             my internet browser. -->
+      </header>
+      <section>
+        <div style="text-align: center;"> 
+          <!-- Aligns to center of overall page rather than the flexbox.
+               Not sure why this can't go in the styles section in the <head>;
+               Removing it from here and adding it to the <head> messes
+               up the layout. -->
+          <article>
+            <h2>This is my first article&nbsp;</h2>
+            <p>This is the text that accompanies my first article.</p>
+          </article>
+          <article>
+            <h2>This is my second article</h2>
+            <p>This is the text that accompanies my second article.</p>
+          </article>
+          <article>
+            <h2>This is my third article</h2>
+            <p>This is the text that accompanies my third article.</p>
+          </article>
+          </div>
+        <div>
+          <!-- This <div> MUST be present for CSS to exclusively affect the
+               fourth article since it's distinct from the <div> used for the 
+               first three. -->
+          <article>
+              <h2 style="text-align: center;">This is my fourth article</h2>
+            <p>This is the text that accompanies my fourth article. This article is designed to span the width of two articles due to my use of the <kbd>article:nth-of-type(4)</kbd> property in the CSS.</p>
+          </article>
+        </div>
+        <div>
+        <article style="padding-right: 10%;">
+          <h2>This is my fifth article</h2>
+          <p>This is the text that accompanies my fifth article.</p>
+        </article>
+        <article style="padding-left: 10%;">
+          <h2>This is my sixth article</h2>
+          <p>This is the text that accompanies my sixth article.</p>
+        </article>
+        </div>
+      </div>
+      </section>
+      <section>
+            <article>
+              <h2 style="text-align: center;">This is my seventh article</h2>
+              <p style="text-align: center;">This is the text that accompanies my seventh article. Unlike the first six articles, this article is located in my second section.</p>
+              <div style="text-align: center;">
+                <button>These are buttons</button>
+                <button>that are set to</button>
+                <button><kbd>display: flex;</kbd></button>
+                <button>and housed in</button>
+                <button>my second <kbd>&lt;section&gt;</kbd></button>
+                <button>and</button>
+                <button>my seventh <kbd>&lt;article&gt;</kbd></button>
+              </div>
+            <p style="text-align: center;">Each item in this section needs to be grouped into a <kbd>&lt;article&gt;</kbd> for the CSS to take effect.</p>
+          </article>
+      </section>
+    </div>
+  </body>
+</html>
