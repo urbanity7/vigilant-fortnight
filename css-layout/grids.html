@@ -8,5 +8,492 @@
     <link href="../index.html">
   </head>
   <body>
+    <h4><em>Jump to <a href="#what-is">What is grid layout?</a> | <a href="#creating-grid">Creating your grid</a> | <a href="#defining">Defining a grid</a> | <a href="#flexible">Flexible grids with the fr unit</a> | <a href="#gaps">Gaps between tracks</a> | <a href="#repeating">Repeating track listings</a> | <a href="implicit-explicit">Implicit and explicit grids</a> | <a href="#minmax">The minmax() function</a> | <a href="#as-many">As many columns as will fit</a> | <a href="#line-based">Line-based placement</a> | <a href="#positioning-grid-template-areas">Positioning with grid-template-areas</a> | <a href="nesting">Nesting grids and subgrid</a> | <a href="#frameworks">Grid frameworks</a> | <a href="#other">Other resources</a></em></h4>
+    <h2 id="what-is">What is grid layout?</h2>
+    <p>A grid is a collection of horizontal and vertical lines creating a pattern against which we can line up our design elements. They help us create layouts in which our elements won't move around or change width as we move from page to page, providing greater consistency on our websites.</p>
+    <p>A grid will typically have <strong>columns</strong>, <strong>rows</strong>, and <strong>gutters</strong>, or gaps between each row and column.</p>
+    <img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids/grid.png" width="500">
+    <h2 id="creating-grid">Creating your grid in CSS</h2>
+    <p>For a visual explanation of CSS grid, watch the following video:</p>
+    <iframe src="https://www.youtube.com/embed/KOvGeFUHAC0?si=w8Wq19RfscHRYsj0" width="560" height="315"></iframe>
+    <p><em>You can ignore this text, I just wanted to try out an iframe embed lol</em></p>
+    <h3 id="defining">Defining a grid</h3>
+    <p>Reference the sample grid HTML <a href="https://github.com/mdn/learning-area/blob/main/css/css-layout/grids/0-starting-point.html">here</a> and your local copy of the same markup <a href="/css-layout/grid-sample">here</a>.</p>
+    <p>Similar to how you define a flexbox, you define a grid layout by setting the value of the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a></strong></kbd> property to <kbd>grid</kbd> using the following CSS:</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS
+.grid-container-1 {
+  display: grid;
+}</strong>
+
+<strong>HTML</strong>
+&lt;div class="grid-container"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+  &lt;div&gt;Four&lt;/div&gt;
+  &lt;div&gt;Five&lt;/div&gt;
+  &lt;div&gt;Six&lt;/div&gt;
+  &lt;div&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="grid-container">
+      <div>One</div>
+      <div>Two</div>
+      <div>Three</div>
+      <div>Four</div>
+      <div>Five</div>
+      <div>Six</div>
+      <div>Seven</div>
+      <p><em>Note: it was an intentional choice not to apply styling to the class <kbd>grid-container</kbd>.</em></p>
+    </div>
+    <p>Unlike flexbox, the items will not look immediately different. Declaring <kbd>display: grid</kbd> gives you a one column grid, so your items will continue to display one below the other as they do in normal flow. To see something that looks more grid-like, we'll need to add some columns to the grid. Let's add three 200-pixel columns. You can use any length unit or percentage to create these column tracks.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+.grid-container-1 {
+  display: grid;
+  <strong>grid-template-columns: 200px 200px 200px;</strong>
+}
+
+<strong>HTML
+&lt;div class="grid-container-1"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+  <p><strong>Output</strong>:</p>
+  <div class="grid-container-1">
+    <div class="grid-color-1">One</div>
+    <div class="grid-color-1">Two</div>
+    <div class="grid-color-1">Three</div>
+    <div class="grid-color-1">Four</div>
+    <div class="grid-color-1">Five</div>
+    <div class="grid-color-1">Six</div>
+    <div class="grid-color-1">Seven</div>
+  </div>
+    <h3 id="flexible">Flexible grids with the fr unit</h3>
+    <p>In addition to creating grids using lengths and percentages, we can use the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex_value">fr</a></strong></kbd> unit. The <kbd>fr</kbd> unit represents one fraction of the available space in the grid container to flexibly size grid rows and columns. Change your track listing to the following definition, creating three <kbd>1fr</kbd> tracks:</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+.grid-container-2 {
+  display: grid;
+  <strong>grid-template-columns: 1fr 1fr 1fr;</strong>
+}
+
+<strong>HTML
+&lt;div class="grid-container-2"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="grid-container-2">
+      <div class="grid-color-1">One</div>
+      <div class="grid-color-1">Two</div>
+      <div class="grid-color-1">Three</div>
+      <div class="grid-color-1">Four</div>
+      <div class="grid-color-1">Five</div>
+      <div class="grid-color-1">Six</div>
+      <div class="grid-color-1">Seven</div>
+    </div>    
+    <p>You now have flexible tracks. The <kbd>fr</kbd> unit distributes space <strong>proportionally</strong>. You can specify different positive values for your tracks like so:</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+  .grid-container-3 {
+    display: grid;
+    <strong>grid-template-columns: 2fr 1fr 1fr;</strong>
+  }
+  
+<strong>HTML
+&lt;div class="grid-container-3"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="grid-container-3">
+      <div class="grid-color-1">One</div>
+      <div class="grid-color-1">Two</div>
+      <div class="grid-color-1">Three</div>
+      <div class="grid-color-1">Four</div>
+      <div class="grid-color-1">Five</div>
+      <div class="grid-color-1">Six</div>
+      <div class="grid-color-1">Seven</div>
+    </div>    
+    <p>You'll notice that the first track gets <kbd>2fr</kbd> of the available space and the other two tracks get <kbd>1fr</kbd>, making the first track larger. You <strong>can</strong> mix <kbd>fr</kbd> units with fixed length units. In this case, the space needed for the fixed tracks is used up first before the remaining space is distributed to the other tracks.</p>
+    <p><strong>Note</strong>: The <kbd>fr</kbd> unit distributes <em>available space</em>, <strong>not</strong> <em>all space</em>. Therefore, if one of your tracks has something large inside it, there will be less free space to share.</p>
+    <h3 id="gaps">Gaps between tracks</h3>
+    <p>To create gaps between tracks, we use the following properties:</p>
+    <ul>
+      <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap">column-gap</a></strong> for gaps between columns</li>
+      <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/row-gap">row-gap</a></strong> for gaps between rows</li>
+      <li><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">gap</a></strong> as shorthand for both</li>
+    </ul>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+.grid-container-4 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr
+  <strong>gap: 20px;</strong>
+}
+
+<strong>HTML</strong>
+&lt;div class="grid-container-4"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="grid-container-4">
+      <div class="grid-color-1">One</div>
+      <div class="grid-color-1">Two</div>
+      <div class="grid-color-1">Three</div>
+      <div class="grid-color-1">Four</div>
+      <div class="grid-color-1">Five</div>
+      <div class="grid-color-1">Six</div>
+      <div class="grid-color-1">Seven</div>
+    </div>
+    <p>These gaps can be any length unit or percentage, <strong>but not an <kbd>fr</kbd> unit</strong>.</p>
+    <p><strong>Note</strong>: The <kbd>gap</kbd> propertes (<kbd>column-gap</kbd>, <kbd>row-gap</kbd>, and <kbd>gap</kbd>) used to be prefixed by <kbd>grid-</kbd>. <strong>This spec has changed, but the prefixed versions will still be maintained as an alias</strong>. To be on the safe side and make your code more bulletproof, you can add both properties to your CSS:</p>
+<code><pre><strong>CSS</strong>
+.grid-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  <strong>grid-gap: 20px;
+  gap: 20px;</strong>
+}</pre></code>
+    <h3 id="repeating">Repeating track listings</h3>
+    <p>You can repeat all or merely a section of your track listing using the CSS <kbd><strong>repeat()</strong></kbd> function. Change your track listing to the following:</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+  .grid-container-5 {
+    display: grid;
+    <strong>grid-template-columns: repeat(3, 1fr);</strong>
+    gap: 20px;
+}
+  
+<strong>HTML
+&lt;div class="grid-container-5"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="grid-container-5">
+      <div class="grid-color-1">One</div>
+      <div class="grid-color-1">Two</div>
+      <div class="grid-color-1">Three</div>
+      <div class="grid-color-1">Four</div>
+      <div class="grid-color-1">Five</div>
+      <div class="grid-color-1">Six</div>
+      <div class="grid-color-1">Seven</div>
+    </div>
+    <p>You'll get three <kbd>1fr</kbd> tracks just as before. The first value passed to the <kbd>repeat()</kbd> function specifies the number of times you want the listing to repeat, while the second value is a track listing, which may be one or more tracks that you want to repeat.</p>
+    <h3 id="implicit-explicit">Implicit and explicit grids</h3>
+    <p>Up to this point, we've specified only column tracks, but rows are automatically created to hold the content. This concept highlights the distinction between explicit and implict grids:</p>
+    <ul>
+      <li><strong>Explicit grid</strong>: created using <kbd>grid-template-columns</kbd> or <kbd>grid-template-rows</kbd>.</li>
+      <li><strong>Implicit grid</strong>: extends the defined explicit grid when content is placed outside of that grid, such as into the rows by drawing additional grid lines.</li>
+    </ul>
+    <p>By default, tracks created in the implicit grid are <kbd>auto</kbd> sized, which generally means that they're large enough to contain their content. If you wish to give implicit grid tracks a size, you can use the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows">grid-auto-rows</a></strong></kbd> and <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns">grid-auto-columns</a></strong></kbd> properties. If you add <kbd>grid-auto-rows</kbd> with a value of <kbd>100px</kbd> to your CSS, you'll see that the rows are now 100px tall.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+  .grid-container-6 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    <strong>grid-auto-rows: 100px;</strong>
+    gap: 20px;
+}
+      
+<strong>HTML
+&lt;div class="grid-container-6"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="grid-container-6">
+      <div class="grid-color-1">One</div>
+      <div class="grid-color-1">Two</div>
+      <div class="grid-color-1">Three</div>
+      <div class="grid-color-1">Four</div>
+      <div class="grid-color-1">Five</div>
+      <div class="grid-color-1">Six</div>
+      <div class="grid-color-1">Seven</div>
+    </div>
+    <h3 id="minmax">The minmax() function</h3>
+    <p>Our 100px tall tracks won't be very useful if we add content into those tracks that's taller than 100px, in which case it would cause overflow. It might be a better idea to have tracks that are <em>at least</em> 100px tall and can still expand if more content becomes added.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+  .grid-container-7 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    <strong>grid-auto-rows: minmax(100px, auto);</strong>
+    gap: 20px;
+}
+      
+<strong>HTML
+&lt;div class="grid-container-7"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="grid-container-7">
+      <div class="grid-color-1">One</div>
+      <div class="grid-color-1">Two</div>
+      <div class="grid-color-1">Three</div>
+      <div class="grid-color-1">Four</div>
+      <div class="grid-color-1">Five</div>
+      <div class="grid-color-1">Six</div>
+      <div class="grid-color-1">Seven</div>
+    </div>
+    <p>If you add extra content, you'll see that the track expands to allow it to fit. Note that the expansion happens right along the row.</p>
+    <p>The <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax">minmax()</a></strong></kbd> function lets us set a minimum and a maximum size for a track, for example, <kbd>minmax(100px, auto)</kbd>. The minimum size is 100px, but the maximum is <kbd>auto</kbd>, meaning the track will expand in size to accommodate more content as necesseary. Try changing <kbd>grid-auto-rows</kbd> to use a minmax value:</p>
+    <h3 id="as-many">As many columns as will fit</h3>
+    <p>We can combine some of the lessons we've learned about track listing, repeat notation, and <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax">minmax()</a></strong></kbd> to create a useful pattern. Sometimes it's helpful to be able to ask a grid to create as many columns as will fit into the container. We do this by setting to value of <kbd>grid-template-columns</kbd> using the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat">repeat()</a></strong></kbd> function, but instead of entering a number, we use the value <kbd><strong>auto-fit</strong></kbd>. For the second parameter of the function, we use <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax">minmax()</a></strong></kbd> with a minimum value equal to the minimum track size that we would like to have and a maximum of <kbd>1fr</kbd>.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+  .grid-container-8 {
+    display: grid;
+    <strong>grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</strong>
+    grid-auto-rows: minmax(100px, auto);
+    gap: 20px;
+}
+      
+<strong>HTML
+&lt;div class="grid-container-8"&gt;</strong>
+  &lt;div class="grid-color-1"&gt;One&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Two&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Three&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Four&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Five&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Six&lt;/div&gt;
+  &lt;div class="grid-color-1"&gt;Seven&lt;/div&gt;
+&lt;/div&gt;</pre></code>
+        <p><strong>Output</strong>:</p>
+        <div class="grid-container-8">
+          <div class="grid-color-1">One</div>
+          <div class="grid-color-1">Two</div>
+          <div class="grid-color-1">Three</div>
+          <div class="grid-color-1">Four</div>
+          <div class="grid-color-1">Five</div>
+          <div class="grid-color-1">Six</div>
+          <div class="grid-color-1">Seven</div>
+        </div>
+    <p>This works because the grid is creating as many 200px columns as will fit into the container, then sharing whatever space if leftover among all the columns. The maximum is <kbd>1fr</kbd>, which, as we already know, distributes space evenly between tracks (since this is how the <kbd>fr</kbd> unit naturally behaves).</p>
+    <h2 id="line-based">Line-based placement</h2>
+    <p>We'll now take a look at how to place things on a grid. Our grid always has lines--these are numbered beginning with 1 and relate to the writing mode of the document. Column line 1 in English, for instance, would be on the left-hand side of the grid in accordance with how English text is written from left-to-right (with row 1 at the top), while column line 1 would be on the right hand side in Arabic.</p>
+    <p>To position items along these lines, we can specify the start and end lines of the grid area where an item should be placed using the following properties:</p>
+    <ul>
+      <li><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start">grid-column-start</a></strong></kbd></li>
+      <li><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end">grid-column-end</a></strong></kbd></li>
+      <li><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-start">grid-row-start</a></strong></kbd></li>
+      <li><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row-end">grid-row-end</a></strong></kbd></li>
+    </ul>
+    <p>These properties accept line numbers as their values; this means we can specify that an item should start on line 1 and end on line 3. Alternatively, you can also use shorthand properties that let you specify the start and end lines simultaneously, separated by a forward slash <kbd>/</kbd>:</p>
+    <ul>
+      <li><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column">grid-column</a></strong></kbd>: shorthand for <kbd>grid-column-start</kbd> and <kbd>grid-column-end</kbd></li>
+      <li><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row">grid-row</a></strong></kbd>: shorthand for <kbd>grid-row-start</kbd> and <kbd>grid-row-end</kbd></li>
+    </ul>
+    <p>You can see an example of this in action <a href="https://mdn.github.io/learning-area/css/css-layout/grids/8-placement-starting-point.html">here</a>, a local copy of which is available <a href="./grid-line-placement-sample.html">here</a>. Note that this sample has a defined grid and a simple article outlined. You can see that <em>auto-placement</em> is placing each item into its own cell in the grid.</p>
+    <p>Let's arrange the elements for our site by using the grid lines. Add the following rules to the bottom of your CSS <strong>on the <a href="./grid-line-placement-sample">sample page</a> to see how if affects the layout</strong>:</p>
+    <code><pre><strong>CSS</strong>
+header {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+article {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+aside {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+footer {
+  grid-column: 1 / 3;
+  grid-row: 3;
+}</pre></code>
+    <p><strong>NOTE</strong>: You can also use the value <kbd>-1</kbd> to target the end column or row line, then count inwards from the end using negative values. Note also that lines count always from the edges of the explicit grid and not the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Grid">implicit-grid</a>.</p>
+    <h2 id="positioning-grid-template-areas">Positioning with grid-template-areas</h2>
+    <p>An alternative way to arrange items on your grid is to use the <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas">grid-template-areas</a></strong></kbd> property and give the various elements of your design a name.</p>
+    <p>Comment out the line-based positioning from the last example on the grid lines placement sample <a href="./grid-line-placement-sample">page</a> and add the following CSS:</p>
+<code><pre><strong>CSS</strong>
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "footer footer";
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+}
+
+header {
+  grid-area: header;
+}
+
+article {
+  grid-area: content;
+}
+
+aside {
+  grid-area: sidebar;
+}
+
+footer {
+  grid-area: footer;
+}
+</pre></code>
+    <p>After adding this to your CSS, reload the page, and you'll see that your items have been placed as before but without us needing to use any line numbers!</p>
+    <p>The rules for <kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas">grid-template-areas</a></strong></kbd> are as follows:</p>
+    <ul>
+      <li>You need to have every cell of the grid filled.</li>
+      <li>To span across two cells, repeat the name.</li>
+      <li>To leave a cell empty, use a <kbd> . </kbd>—aka a period.</li>
+      <li>Areas must be rectangular—for example, you can't have an L-shaped area.</li>
+      <li>Areas <strong>can't</strong> be repeated in different locations.</li>
+    </ul>
+    <p>You can play around with our layout, changing the footer to only sit underneath the article and the sidebar to span all the way down. This is a very nice way to describe a layout because it's clear what's happening just from looking at the CSS.</p>
+    <h2 id="nesting">Nesting grids and subgrid</h2>
+    <p>It's possible to create a grid within a grid, or a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid">subgrid</a>. You can do this by setting the <kbd><strong>display: grid</strong></kbd> property on an item.</p>
+    <p>Let's expand on the previous example by adding a container for articles and using a nested grid to control the layout of multiple articles. While we're using only one column in the nested grid, we can define the rows to be split in a 2:1:1 ratio by using the <kbd>grid-template-rows</kbd> property. This approach allows us to create a layout where one article at the top of the page has a large display, while the others have a smaller, preview-like layout.</p>
+    <p>Add the following CSS to your <a href="./grid-line-placement-sample">line-based placement sample page</a>:</p>
+<code><pre><strong>CSS</strong>
+.articles {
+  display: grid;
+  grid-template-rows: 2fr 1fr 1fr;
+  gap: inherit;
+}
+
+article {
+  padding: 10px;
+  border: 2px solid rgb(79 185 227);
+  border-radius: 5px;
+}</pre></code>
+    <p>To make it easier to work with layouts in nested grids, you can use <kbd><strong>subgrid</strong></kbd> on <kbd><strong>grid-template-rows</strong></kbd> and <kbd><strong>grid-template-columns</strong></kbd> properties. This allows you to leverage the tracks defined in the parent grid.</p>
+    <p>In the following example, we're using line-based placement, enabling the nested grid to span multiple columns and rows of the parent grid. We've added a <kbd>subgrid</kbd> to inherit the parent grid's column tracks while adding a different layout for the rows within the nested grid.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>CSS</strong>
+.grid-container-9 div {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(207 232 220);
+  border: 2px solid rgb(79 185 227);
+}
+  
+.grid-container-9 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  gap: 10px;
+}
+
+#subgrid {
+  grid-column: 1 / 4;
+  grid-row: 2 / 4;
+  display: grid;
+  gap: inherit;
+  grid-template-columns: subgrid;
+  grid-template-rows: 2fr 1fr;
+}
+
+<strong>HTML</strong>
+&lt;div class="grid-container-9"&gt;
+  &lt;div&gt;One&lt;/div&gt;
+  &lt;div&gt;Two&lt;/div&gt;
+  &lt;div&gt;Three&lt;/div&gt;
+  &lt;div&gt;Four&lt;/div&gt;
+  &lt;div id="subgrid"&gt;
+    &lt;div&gt;Five&lt;/div&gt;
+    &lt;div&gt;Six&lt;/div&gt;
+    &lt;div&gt;Seven&lt;/div&gt;
+    &lt;div&gt;Eight&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;Nine&lt;/div&gt;
+  &lt;div&gt;Ten&lt;/div&gt;
+&lt;/div&gt;
+</pre></code>
+
+<p><strong>Output</strong>:</p>
+<div class="grid-container-9">
+  <div>One</div>
+  <div>Two</div>
+  <div>Three</div>
+  <div>Four</div>
+  <div id="subgrid">
+    <div>Five</div>
+    <div>Six</div>
+    <div>Seven</div>
+    <div>Eight</div>
+  </div>
+  <div>Nine</div>
+  <div>Ten</div>
+</div>
+    <h2 id="frameworks">Grid frameworks</h2>
+    <p>Numerous grid frameworks are available, offering a 12- or 16-column grid, to help with laying out your content. The good news is you probably won't need any third-party frameworks to help you create grid-based layouts—grid functionality is already included in the specification and supported by most modern browsers.</p>
+    <p>Add the following CSS to your <a href="./grid-frameworks-sample.html">grid frameworks sample page and see how it affects the layout</a>:</p>
+<code><pre><strong>CSS</strong>
+header {
+  grid-column: 1 / 13;
+  grid-row: 1;
+}
+
+article {
+  grid-column: 4 / 13;
+  grid-row: 2;
+}
+
+aside {
+  grid-column: 1 / 4;
+  grid-row: 2;
+}
+
+footer {
+  grid-column: 1 / 13;
+  grid-row: 3;
+}</pre></code>
+<p>If you use the <a href="https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_grid_layouts/index.html">Firefox Grid Inspector</a> to overlay the grid lines on your design, you can also see how our 12-column grid works on your sample page:</p>
+<img src="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids/learn-grids-inspector.png" width="500">
+    <h2 id="other">Other resources</h2>
+    <ul>
+      <li>A <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout#guides">list of guides</a> related to the CSS grid layout</li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Subgrid">Subgrid</a> guide</li>
+      <li><a href="https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/examine_grid_layouts/index.html">CSS grid inspector: Examine grid layouts</a> on Firefox-source docs</li>
+      <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A complete guide to CSS grid</a>, a visual guide on CSS-Tricks (2023)</li>
+      <li><a href="https://cssgridgarden.com/">Grid Garden</a>, an educational game to learn and better understand the basics of grid on cssgridgarden.com</li>
+    </ul>
   </body>
 </html>
