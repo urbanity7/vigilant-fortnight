@@ -3,10 +3,401 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Multi-column layout</title>
+    <style>
+    .container {
+      column-width: 200px;
+      column-gap: 20px;
+    }
+
+    .card {
+      background-color: rgb(207 232 220);
+      border: 2px solid rgb(79 185 227);
+      padding: 10px;
+      margin: 0 0 1em 0;
+    }
+
+    .card-2 {
+      break-inside: avoid;
+      background-color: rgb(207 232 220);
+      border: 2px solid rgb(79 185 227);
+      padding: 10px;
+      margin: 0 0 1em 0;
+    }
+    </style>
     <link href="../styles/styles.css" rel="stylesheet" type="text/css">
     <link href="../css-layout/styles/css-layout-styles.css" rel="stylesheet" type="text/css">
     <link href="../index.html">
   </head>
   <body>
+    <h2>Before you start</h2>
+      <ul>
+        <li>These inputs are all visible on <a href="./multi-column-sample.html">this page</a> to speed things up.</li>
+        <li><em>multicol</em> is shorthand for multi-column.</li>
+      </ul>
+    <h2>A basic example</h2>
+    <h3>A three-column layout</h3>
+    <p>Our starting file contains a wrapper with a class of <kbd>container</kbd>, inside of which is a heading and some paragraphs.</p>
+    <p>The <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div">&lt;div&gt;</a></kbd> with a class of <kbd>container</kbd> will become our multicol container. We enable multicol by using one of two properties: <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-count">column-count</a></kbd> or <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-width">column-width</a></kbd>. The <kbd>column-count</kbd> property takes a number as its value and creates that number of columns. If you add the following CSS to your stylesheet and reload the page, you'll get three columns:</p>
+<pre><code><strong>CSS</strong>
+.container {
+  column-count: 3;
+}</code></pre>
+    <p>The columns that you create have flexible widths--the browser works out how much space to assign each column.</p>
+    <h3>Setting column-width</h3>
+    <p>Change your CSS to use <kbd>column-width</kbd> as follows:</p>
+<pre><code><strong>CSS</strong>
+.container {
+  column-width: 200px;
+}</code></pre>
+    <p>The browser will now give you as many columns as it can of the size that you specify; any remaining space is then shared between the existing columns. This means that you won't get exactly the width that you specify <strong>unless</strong> your container is exactly divisible by that width.</p>
+    <h2>Styling the columns</h2>
+    <p><strong>The columns created by multicol cannot be styled individually</strong>. There's no way to make one column bigger than other columns or to change the background or text color of a single column. You have two opportunities to change the way that columns display:</p>
+    <ul>
+      <li>Changing the size of the gap between columns using the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-gap">column-gap</a></kbd>.</li>
+      <li>Adding a rule between columns with <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule">column-rule</a></kbd>.</li>
+    </ul>
+    <p>Using your example above, change the size of the gap by adding a <kbd>column-gap</kbd> property. You can play around with different values--the property accepts any length unit.</p>
+    <p>Now add a rule between the columns with <kbd>column-rule</kbd>. In a similar way to the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border</a></kbd> property that you encountered in previous lessons, <kbd>column-rule</kbd> is a shorthand for <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-color">column-rule-color</a></kbd>, <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-style">column-rule-style</a></kbd>, and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule-width">column-rule-width</a></kbd>, and accepts the same values as <kbd>border</kbd>.</p>
+<pre><code><strong>CSS</strong>
+.container {
+  column-count: 3;
+  column-gap: 20px;
+  column-rule: 4px dotted rgb(79 185 227);
+}</code></pre>
+    <p>Try adding rules of different styles and colors.</p>
+    <p>Something to make note of is that the rule doesn't take up any width of its own. It lies across the gap you created with <kbd>column-gap</kbd>. To make more space on either side of the rule, you'll need to increase the <kbd>column-gap</kbd> size.</p>
+    <h2>Spanning columns</h2>
+    <p>You can cause an element to span across all columns. In this case, the content breaks where the spanning element's introduced and then continues below the element, creating a new set of columns. To cause an element to span all the columns, specify the value of <kbd>all</kbd> for the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/column-span">column-span</a></kbd> property.</p>
+    <p><strong>Note</strong>: it isn't possible to cause an element to span just <em>some</em> columns. The property can only have the values of <kbd>none</kbd> (which is the default) or <kbd>all</kbd>.</p>
+<pre><code><strong>HTML</strong>
+&lt;h2&gt;Spanning subhead&lt;/h2&gt;
+
+<strong>CSS</strong>
+h2 {
+  column-span: all;
+  background-color: rgb(79 185 227);
+  color: white;
+  padding: 0.5em;
+}</code></pre>
+    <h2>Columns and fragmentation</h2>
+    <p>The content of a multi-column layout is fragmented. It essentially behaves the same way as content behaves in paged media, such as when you print a webpage. When you turn your content into a multicol container, it fragments into columns. In order for the content to do this, it must <em>break</em>.</p>
+    <h3>Fragmented boxes</h3>
+    <p>Sometimes, this breaking will happen in places that lead to a poor reading experience. In the example below, we've used multicol to lay out a series of boxes, each of which has a heading and some text inside. The heading becomes separated from the text if the columns fragment between the two.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>HTML</strong>
+&lt;div class="container"&gt;
+&lt;div class="card"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="card"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+<strong>CSS</strong>
+.container {
+  column-width: 200px;
+  column-gap: 20px;
+}
+
+.card {
+  background-color: rgb(207 232 220);
+  border: 2px solid rgb(79 185 227);
+  padding: 10px;
+  margin: 0 0 1em 0;
+}</pre></code>
+    <p><strong>Output</strong>:</p>
+    <div class="container">
+      <div class="card">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+      <div class="card">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    </div>
+    <h3>Setting break-inside</h3>
+    <p>To control this behavior, we can use properties from the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fragmentation">CSS Fragmentation</a> specification. This specification gives us properties to control the breaking of content in multicol and in paged media. For example, by adding the property <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/break-inside">break-inside</a></kbd> with a value of <kbd>avoid</kbd> to the rules for <kbd>.card</kbd>. This is the container of the heading and text, so we don't want it fragmented.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>HTML</strong>
+&lt;div class="container"&gt;
+&lt;div class="card-2"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+  &lt;p&gt;
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="card-2"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card-2"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card-2"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+    aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+    pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+    at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+    Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card-2"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card-2"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="card-2"&gt;
+  &lt;h2&gt;I am the heading&lt;/h2&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+      aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+      pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+      at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+      Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+<strong>CSS</strong>
+.container {
+  column-width: 200px;
+  column-gap: 20px;
+}
+
+.card-2 {
+  <strong>break-inside: avoid;</strong>
+  background-color: rgb(207 232 220);
+  border: 2px solid rgb(79 185 227);
+  padding: 10px;
+  margin: 0 0 1em 0;
+}</pre></code>   
+    <p><strong>Output</strong>:</p>
+    <div class="container">
+      <div class="card-2">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card-2">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card-2">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+      <div class="card-2">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card-2">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    
+      <div class="card-2">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+
+      <div class="card-2">
+        <h2>I am the heading</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla luctus
+          aliquam dolor, eu lacinia lorem placerat vulputate. Duis felis orci,
+          pulvinar id metus ut, rutrum luctus orci. Cras porttitor imperdiet nunc,
+          at ultricies tellus laoreet sit amet. Sed auctor cursus massa at porta.
+          Integer ligula ipsum, tristique sit amet orci vel, viverra egestas ligula.
+        </p>
+      </div>
+    </div>
+    <p>The addition of this property causes the boxes to stay in one piece--now they do not <em>fragment</em> across the columns.</p>
+    <h2>See also</h2>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_fragmentation">CSS Fragmentation</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_multicol_layout/Using_multicol_layouts">Using multi-column layouts</a></li>
+    </ul>
   </body>
 </html>
