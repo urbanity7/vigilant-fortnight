@@ -1,10 +1,10 @@
 <!DOCTYPE = html>
 <html lang="en">
   <head>
-    <title>Multimedia and Embedding</title>
+    <title>Introduction to HTML</title>
     <link href="styles/styles.css" rel="stylesheet">
     <link href="../MDN-structuring-the-web/images/weagle.png" id="weagle">
-    <!-- <link href="../MDN-structuring-the-web/images/clairecarmi-logo-2.svg" id="logo"> -->
+    <link href="../MDN-structuring-the-web/images/clairecarmi-logo-2.svg" id="logo">
     <link href="index.html">
     <meta charset="UTF-8">
     </head>
@@ -44,7 +44,8 @@
     <code><pre>
 p {
   background-image: url("images/dinosaur.jpg");
-}</pre></code>
+}
+    </pre></code>
     <p><strong>Output (two examples):</strong></p>
     <div id="caps-logo-2">
         <p>Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps! Let's go Caps!
@@ -109,19 +110,19 @@ p {
     <div id="caps-logo-1"><br><br><br><br><br></div>
     <br>
     <h2>Embedding content</h2>
-    <p>There are three ways to embed content: &lt;iframe&gt;, &lt;embed&gt;, and &lt;object&gt;. iFrames are most common. See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies" target="_blank">here for more information</a> on when to use each type and how to mitigate potential security concerns.</li>
-    <a href="index.html">Home</a>
+    <p>There are three ways to embed content: &lt;iframe&gt;, &lt;embed&gt;, and &lt;object&gt;. iFrames are most common. <strong>See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies" target="_blank">here for more information</a> on when to use embedding techniques and how to mitigate potential security concerns</strong>.</li>
   <h2>Using vectors</h2>
+  <p><strong>For more information on how to insert vectors, see this <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web">page</a> for more info</strong>.</p>
   <ul>
-    <li>When inserting a SVG into your HTML, the method you use to add the SVG--e.g., &lt;img src=&quot;&quot;&gt; vs &lt;svg&gt;--carry different advantages. See <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web" target="_blank">here for more info.</a></li>
+    <li>When inserting a SVG into your HTML, the method you use to add the SVG--e.g., &lt;img src=&quot;&quot;&gt; vs &lt;svg&gt;--carry different advantages.</li>
     <ul><li>The latter method is the only one which allows you to manipulate the vector using CSS attributes. However, it's best to only use the &lt;svg&gt; method when the vector only appears on one page of your website as this method increases the size of the overall SVG file.</li></ul>
     <ul><ul>
       <li>Method one (&lt;img src=&quot;&quot;&gt;):<br>
-        <!-- <code><pre>&lt;img src="/images/clairecarmi-logo-2.svg" id="logo"&gt;</pre></code> -->
-        <!-- <img src="/images/clairecarmi-logo-2.svg" height="100" width="auto" id="logo"> -->
+        <code><pre>&lt;img src="/images/clairecarmi-logo-2.svg" id="logo"&gt;</pre></code>
+        <img src="/images/clairecarmi-logo-2.svg" height="100" width="auto" id="logo">
       </li>
       <li>Method two (&lt;svg&gt;):<br>
-      <!-- <code><pre>&lt;svg id="Layer_14" data-name="Layer 14" xmlns=
+      <code><pre>&lt;svg id="Layer_14" data-name="Layer 14" xmlns=
         "http://www.w3.org/2000/svg" width="100px" height="250px" 
         viewBox="0 0 153.9 250.88"&gt;&lt;defs&gt;&lt;style&gt;
         .cls-1{fill:#231f20;stroke:#231f20;stroke-miterlimit:10;}&lt;
@@ -154,21 +155,22 @@ p {
         0,0,1,3.13-59.49S309,262,329.12,232.8c2.58-3.73,7.45-9.72,15.26-12.34C346.77,
         219.66,352.32,217.87,358,220.33Z" transform="translate(-215.5 -181.62)"/>
         &lt;/svg&gt;</pre>
-</code> -->
-<!-- <svg id="Layer_14" data-name="Layer 14" xmlns="http://www.w3.org/2000/svg" width="100px" height="250px" viewBox="0 0 153.9 250.88"><defs><style>.cls-1{fill:#231f20;stroke:#231f20;stroke-miterlimit:10;}</style></defs><path class="cls-1" d="M358,220.33a16.9,16.9,0,0,1,7.18,6.22c5.1,7.42,4.06,16.81,2.4,31.91-.14,1.25-.27,2.26-.35,2.88-2.86,18.57-6.68,37.9-11.72,57.86q-1.53,6.07-3.15,12c-1,4-2.61,9.55-4.84,16.12-2.46,7.22-6.69,19.66-13.21,31.26,0,0-16.64,29.58-47.7,46a62.31,62.31,0,0,1-17.3,6.32,57.25,57.25,0,0,1-16.49.82A55.81,55.81,0,0,1,238,428.2a42.24,42.24,0,0,1-15-13.09c-7.56-10.95-7.48-23-6.71-35.54a394.3,394.3,0,0,1,10.22-67.12c1.12-4.82,2.73-12,5-20.66,3.53-13.65,9.16-33.93,17.56-60.48,8.1-22.6,19.67-38.55,29.67-44.32A37.48,37.48,0,0,1,293,182.21a30.91,30.91,0,0,1,13.62,2,28.62,28.62,0,0,1,18.8,25.59c1.45,19.51-15.87,35.19-17.56,34.2-1.21-.71,4.2-11,5.53-24.84a26.18,26.18,0,0,0-1.34-11.31,15.23,15.23,0,0,0-3.4-5.87,13.5,13.5,0,0,0-5-3.3,14,14,0,0,0-8.37-.13c-5.92,1.51-9.63,5.7-11.06,7.29-12.89,14.25-23.77,49.72-23.77,49.72-3.07,10.78-21.25,75-25.53,118.7-1.22,12.51-1.86,29,8.58,39.06A30.17,30.17,0,0,0,255.16,420c8.46,2.47,15.73.2,22.49-2,3.65-1.19,10.63-3.82,19.91-10.51a107.62,107.62,0,0,0,25-25.55,91.12,91.12,0,0,0,5.83-9.84,154.39,154.39,0,0,0,7.2-15.46c1.91-4.62,4.16-10.53,6.35-17.55,1.84-6.59,4.46-16.06,7.51-27.54,2.64-9.93,4.59-17.54,6.48-25.26h0c.43-2.5.85-5,1.28-7.49q1.32-8.44,2.63-16.9c.36-3.23.67-6,.91-8.28.48-4.52.62-6,.72-8a67.17,67.17,0,0,0,0-6.95c-.22-3.52-.59-4.57-.83-5.16a9.18,9.18,0,0,0-3.28-4.29c-3.43-2.24-7.76-.69-9-.23a17.69,17.69,0,0,0-8.5,7.15c-8.87,13.19-15.11,34.48-15.81,36.9-1,3.4-5.54,19.37-7.93,32.45l-2.15,12c-1.17,6.55-2,11.47-2.11,11.88-3,18.7-4.17,41.48-4.17,41.48-1.34,33.64,3.12,40.42,5.42,43.34A32.16,32.16,0,0,0,323.9,423c16.84,8.31,35.54-1.42,36,0,.35,1.07-11.27,8.58-27,9-5.49.15-18.94.51-28-8-6.17-5.79-8.56-15.22-9.08-34.37a385.14,385.14,0,0,1,3.13-59.49S309,262,329.12,232.8c2.58-3.73,7.45-9.72,15.26-12.34C346.77,219.66,352.32,217.87,358,220.33Z" transform="translate(-215.5 -181.62)"/></svg> -->
+</code>
+<svg id="Layer_14" data-name="Layer 14" xmlns="http://www.w3.org/2000/svg" width="100px" height="250px" viewBox="0 0 153.9 250.88"><defs><style>.cls-1{fill:#231f20;stroke:#231f20;stroke-miterlimit:10;}</style></defs><path class="cls-1" d="M358,220.33a16.9,16.9,0,0,1,7.18,6.22c5.1,7.42,4.06,16.81,2.4,31.91-.14,1.25-.27,2.26-.35,2.88-2.86,18.57-6.68,37.9-11.72,57.86q-1.53,6.07-3.15,12c-1,4-2.61,9.55-4.84,16.12-2.46,7.22-6.69,19.66-13.21,31.26,0,0-16.64,29.58-47.7,46a62.31,62.31,0,0,1-17.3,6.32,57.25,57.25,0,0,1-16.49.82A55.81,55.81,0,0,1,238,428.2a42.24,42.24,0,0,1-15-13.09c-7.56-10.95-7.48-23-6.71-35.54a394.3,394.3,0,0,1,10.22-67.12c1.12-4.82,2.73-12,5-20.66,3.53-13.65,9.16-33.93,17.56-60.48,8.1-22.6,19.67-38.55,29.67-44.32A37.48,37.48,0,0,1,293,182.21a30.91,30.91,0,0,1,13.62,2,28.62,28.62,0,0,1,18.8,25.59c1.45,19.51-15.87,35.19-17.56,34.2-1.21-.71,4.2-11,5.53-24.84a26.18,26.18,0,0,0-1.34-11.31,15.23,15.23,0,0,0-3.4-5.87,13.5,13.5,0,0,0-5-3.3,14,14,0,0,0-8.37-.13c-5.92,1.51-9.63,5.7-11.06,7.29-12.89,14.25-23.77,49.72-23.77,49.72-3.07,10.78-21.25,75-25.53,118.7-1.22,12.51-1.86,29,8.58,39.06A30.17,30.17,0,0,0,255.16,420c8.46,2.47,15.73.2,22.49-2,3.65-1.19,10.63-3.82,19.91-10.51a107.62,107.62,0,0,0,25-25.55,91.12,91.12,0,0,0,5.83-9.84,154.39,154.39,0,0,0,7.2-15.46c1.91-4.62,4.16-10.53,6.35-17.55,1.84-6.59,4.46-16.06,7.51-27.54,2.64-9.93,4.59-17.54,6.48-25.26h0c.43-2.5.85-5,1.28-7.49q1.32-8.44,2.63-16.9c.36-3.23.67-6,.91-8.28.48-4.52.62-6,.72-8a67.17,67.17,0,0,0,0-6.95c-.22-3.52-.59-4.57-.83-5.16a9.18,9.18,0,0,0-3.28-4.29c-3.43-2.24-7.76-.69-9-.23a17.69,17.69,0,0,0-8.5,7.15c-8.87,13.19-15.11,34.48-15.81,36.9-1,3.4-5.54,19.37-7.93,32.45l-2.15,12c-1.17,6.55-2,11.47-2.11,11.88-3,18.7-4.17,41.48-4.17,41.48-1.34,33.64,3.12,40.42,5.42,43.34A32.16,32.16,0,0,0,323.9,423c16.84,8.31,35.54-1.42,36,0,.35,1.07-11.27,8.58-27,9-5.49.15-18.94.51-28-8-6.17-5.79-8.56-15.22-9.08-34.37a385.14,385.14,0,0,1,3.13-59.49S309,262,329.12,232.8c2.58-3.73,7.45-9.72,15.26-12.34C346.77,219.66,352.32,217.87,358,220.33Z" transform="translate(-215.5 -181.62)"/></svg>
 </li></ul></ul>
         <!-- To center SVG, input the following in the element: add style="display: block; margin:auto;" -->
     <li>This isn't listed on MDN's guide about SVGs, but to resize a vector, there are two options:
-      <ul><li>For vectors inserted using &lt;image src=&quot;&quot;&gt;, apply a matching ID to the vector in the &lt;meta&gt; and &lt;img src=&quot;&quot;&gt; elements. After making sure the <kbd>width</kbd> and <kbd>height</kbd> attributes within the SVG file are set to 100%, change the width and height within the &lt;img src=&quot;&quot;&gt; element (e.g., height=&quot;100&quot; width=&quot;100&quot;). See this <a href="https://www.freecodecamp.org/news/use-svg-images-in-css-html/">guide here</a> for more information.</li>
-      <li>For vectors inserted using &lt;svg&gt; elements, add <kbd>height</kbd> and <kbd>width</kbd> attributes to the SVG file's code and set them to your desired value in pixels (e.g., height=&quot;250px&quot; width=&quot;100px&quot;). Save the SVG's source code in your images folder and paste it into the HTML file where you want the vector to appear. See <a href="https://graphicdesign.stackexchange.com/questions/63726/resizing-svg-files">this guide</a> for more information (note: tested using TextEdit; confirmed to work correctly).</p>
+      <ul><li>For vectors inserted using &lt;image src=&quot;&quot;&gt;, apply a matching ID to the vector in the &lt;meta&gt; and &lt;img src=&quot;&quot;&gt; elements. After making sure the width and height attributes within the SVG file are set to 100%, change the width and height within the &lt;img src=&quot;&quot;&gt; element (e.g., height=&quot;100&quot; width=&quot;100&quot;). See this <a href="https://www.freecodecamp.org/news/use-svg-images-in-css-html/">guide here</a> for more information.</li>
+      <li>For vectors inserted using &lt;svg&gt; elements, add height and width attributes to the SVG file's code and set them to your desired value in pixels (e.g., height=&quot;250px&quot; width=&quot;100px&quot;). Save the SVG's source code in your images folder and paste it into the HTML file where you want the vector to appear. See <a href="https://graphicdesign.stackexchange.com/questions/63726/resizing-svg-files">this guide</a> for more information (note: tested using TextEdit; confirmed to work correctly).</p>
       </li>  
       </ul></ul>
     <h2>Responsive images</h2>
+    <p><strong>See this <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images">page</a> for more information on responsive images</strong>.</p>
     <p>There are various problems when it comes to the responsiveness of images (and vectors):
       <ul>
         <li><strong>Art direction problem</strong>: The problem whereby you want to serve cropped images for different layouts—for example a landscape image showing a full scene for a desktop layout, and a portrait image showing the main subject zoomed in for a mobile layout. You can solve this problem using the &lt;picture&gt; element.
         </li>
-        <li><strong>Resolution switching problem</strong>: The problem whereby you want to serve smaller image files to narrow-screen devices, as they don't need huge images like desktop displays do — and to serve different resolution images to high density/low density screens. You can solve this problem using vector graphics (SVG images) with the <kbd>srcset</kbd> and <kbd>size</kbd> attributes.
+        <li><strong>Resolution switching problem</strong>: The problem whereby you want to serve smaller image files to narrow-screen devices, as they don't need huge images like desktop displays do — and to serve different resolution images to high density/low density screens. You can solve this problem using vector graphics (SVG images) and the srcset with sizes attributes.
         </li>
       </ul>
     </p>
