@@ -5,7 +5,84 @@
     <link href="styles/styles.css" rel="stylesheet">
     <link href="index.html">
     <title>From object to iframe</title>
+    <style>
+      table td,
+      table th {
+        padding: 0.5rem;
+      }
+    </style>
     </head>
   <body>
+    <h2>iframes in detail</h2>
+    <p><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">&lt;iframe&gt;</a></kbd> elements are designed to allow you to embed other web documents into the current document. This is useful for incorporating third-party content that you might not have direct control over and don't want to implement your own version of, such as commenting systems like Disqus and videos from YouTube.</p>
+    <p>The components of an <kbd>&lt;iframe&gt;</kbd>:</p>
+    <ul>
+      <li><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border">border: none</a></kbd>: If used, the <kbd>&lt;iframe&gt;</kbd> is displayed without a surrounding border. Otherwise, browsers display the <kbd>&lt;iframe&gt;</kbd> with a border around it by default.</li>
+      <li><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#allowfullscreen">allowfullscreen</a></kbd>: If set, the <kbd>&lt;iframe&gt;</kbd> is able to be placed in fullscreen mode using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API">Fullscreen API</a> (which is somewhat beyond the scope of this article).</li>
+      <li><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#src">src</a></kbd>: This attribute, as with <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video">&lt;video&gt;</a></kbd>/<kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img">&lt;img&gt;</a></kbd>, contains a path pointing to the URL of the document to be embedded.</li>
+      <li><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#width">width</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#height">height</a></kbd>: These attributes specify the width and height you want the iframe to be.</li>
+      <li><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox">sandbox</a></kbd>: This attribute, which works in slightly more modern browsers than the rest of the <kbd>iframe</kbd> features, requests heightened security settings that are discussed in the next section of this article.</li>
+    </ul>
+    <p><strong>Note</strong>: In order to improve speed, it's a good idea to set the iframe's <kbd>src</kbd> attribute with JavaScript after the main content is done loading. This makes your page usable sooner and decreases your official page load time (an important <a href="https://developer.mozilla.org/en-US/docs/Glossary/SEO">SEO</a> metric).</p>
+    <h3>Security concerns</h3>
+    <p>iframes are a common target (aka attack vector) for hackers trying to maliciously modify your webpage or deceive your users. Because of this, spec engineers and browser developers have developed various security mechanisms for making <kbd>&lt;iframe&gt;</kbd>s more secure, and there are best practices to consider when using them, as well.</p>
+    <p><strong>Note</strong>: <a href="https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking">Clickjacking</a> is a kind of iframe attack where hackers embed an invisible iframe into your document (or embed your document into their own malicious website) and use it to capture users' interactions. This is a common way to deceive users and steal sensitive data.</p>
+    <p><strong>Only embed when necessary</strong></p>
+    <p>You can save yourself a lot of hassle by only embedding third-party content when necessary. You also need to be cognizant of intellectual property and copyright laws when embedding content that's not your own.</p>
+    <p><strong>Use HTTPS</strong></p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTTPS">HTTPS</a> is the encrypted version of <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTTP">HTTP</a>, and is thus the safer choice. One advantage of HTTPS is that it prevents embedded content from accessing content in your parent document, and vice versa.</p>
+    <p>Most hosting companies will provide HTTPS encryption for you; <a href="https://letsencrypt.org/">Let's Encrypt</a> is a good option for instances where this isn't the case.</p>
+    <p><strong>Note</strong>: <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/Using_GitHub_pages">GitHub pages</a> allow content to be served via HTTPS by default. If you are using a different hosting provider, you should check what support they provide for serving content with HTTPS.</p>
+    <p><strong>Always use the <kbd>sandbox</kbd> attribute</strong></p>
+    <p>You want to give hackers as little power as you can; therefore, it's best practice to only give embedded content the permissions needed to do its job. This applies to your own content, too. A container for code where it can be used appropriately--or for testing--but can't cause any harm to the rest of the codebase is called a <a href="https://en.wikipedia.org/wiki/Sandbox_(computer_security)">sandbox</a>.</p>
+    <p>Content that's not sandboxed may be able to execute JavaScript, submit forms, trigger popup windows, etc. By default, you should impose all available restrictions by using the <kbd>sandbox</kbd> attribute with no parameters, as shown in our previous example.</p>
+    <p>If absolutely required, you can add permissions back one by one (inside the <kbd>sandbox=""</kbd> attribute value)--see the <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox">sandbox</a></kbd> reference entry for all the available options. One important note is that you should <em>never</em> add both <kbd>allow-scripts</kbd> and <kbd>allow-same-origin</kbd> to your <kbd>sandbox</kbd> attribute--in that case, the embedded content could bypass the <a href="https://developer.mozilla.org/en-US/docs/Glossary/Same-origin_policy">Same-origin policy</a> that stops sites from executing scripts, and use JavaScript to turn off sandboxing altogether.</p>
+    <p><strong>Note</strong>: Sandboxing provides no protection if attackers can fool people into visiting malicious content directly (outside an <kbd>iframe</kbd>). If there's any chance that certain content may be malicious (e.g., user-generated content), serve it from a different <a href="https://developer.mozilla.org/en-US/docs/Glossary/Domain">domain</a> to your main site.</p>
+    <p><strong>Configure CSP directives</strong></p>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Glossary/CSP">CSP</a> stands for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"><strong>content security policy</strong></a> and provides <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy">a set of HTTP Headers</a> (metadata sent along with your web pages when they are served from a web server) designed to improve the security of your HTML document. When it comes to securing <kbd>&lt;iframe&gt;</kbd>s, you can <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">configure your server to send an appropriate <kbd>X-Frame-Options</kbd> header</a>. This can prevent other websites from embedding your content in their web pages (which would enable <a href="https://developer.mozilla.org/en-US/docs/Glossary/Clickjacking">clickjacking</a> and a host of other attacks), which is exactly what the MDN developers have done, as we saw earlier on.</p>
+    <p><strong>Note</strong>: You can read Frederik Braun's post <a href="https://blog.mozilla.org/security/2013/12/12/on-the-x-frame-options-security-header/">On the X-Frame-Options Security Header</a> for more info on this topic. It's rather out of scope for a full explanation in this article.</p>
+    <h2>The &lt;embed&gt; and &lt;object&gt; elements</h2>
+    <p>The <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed">&lt;embed&gt;</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object">&lt;object&gt;</a></kbd> elements serve a different function to <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">&lt;iframe&gt;</a></kbd>--these elements are general purpose embedding tools for embedding external content, such as PDFs.</p>
+    <p>However, you are unlikely to use these elements very much. If you need to display PDFs, it's usually better to link to them, rather than embedding them in the page.</p>
+    <p>Below is a table comparing what you need to use these two elements:</p>
+    <table>
+      <tr>
+        <th style="text-align: left;"></th>
+        <th style="text-align: left;"><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed">&lt;embed&gt;</a></strong></kbd></th>
+        <th style="text-align: left;"><kbd><strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object">&lt;object&gt;</a></strong></kbd></th>
+      </tr>
+      <tr>
+        <td><a href="https://developer.mozilla.org/en-US/docs/Glossary/URL">URL</a> of the embedded content</td>
+        <td><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#src">src</a></kbd></td>
+        <td><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#data">data</a></kbd></td>
+      </tr>
+      <tr>
+        <td><em>accurate</em> <a href="https://developer.mozilla.org/en-US/docs/Glossary/MIME_type">media type</a> of the embedded content</td>
+        <td><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#type">type</a></kbd></td>
+        <td><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#type">type</a></kbd></td>
+      </tr>
+      <tr>
+        <td>height and width (in CSS pixels) of the box controlled by the plugin</td>
+        <td><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#height">height</a></kbd><br><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed#width">width</a></kbd></td>
+        <td><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#height">height</a></kbd><br><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object#width">width</a></kbd></td>
+      </tr>
+      <tr>
+        <td>names and values, to feed the plugin as parameters</td>
+        <td>ad hoc attributes with those names and values</td>
+        <td>single-tag <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param">&lt;param&gt;</a></kbd> elements, contained within <kbd>&lt;object&gt;</kbd></td>
+      </tr>
+      <tr>
+        <td>independent HTML content as fallback for an unavailable resource</td>
+        <td>not supported (<kbd>&lt;noembed&gt;</kbd> is obsolete)</td>
+        <td>contained within <kbd>&lt;object&gt;</kbd>, after <kbd>&lt;param&gt;</kbd> elements</td>
+      </tr>
+    </table>
+    <p>Finally, here's an <kbd>&lt;object&gt;</kbd> example that embeds a PDF into a page (see the <a href="https://mdn.github.io/learning-area/html/multimedia-and-embedding/other-embedding-technologies/object-pdf.html">live example</a> and <a href="https://github.com/mdn/learning-area/blob/main/html/multimedia-and-embedding/other-embedding-technologies/object-pdf.html">source code</a>).</p>
+<code><pre><strong>HTML</strong>
+&lt;object data="mypdf.pdf" type="application/pdf" width="800" height="1200"&gt;
+  &lt;p&gt;You don't have a PDF plugin, but you can
+    &lt;a href="mypdf.pdf"&gt;download the PDF file.&lt;/a&gt;&lt;/p&gt;
+&lt;/object&gt;</pre></code>
+    <p>PDFs were a necessary stepping stone between paper and digital, but they pose <a href="https://webaim.org/techniques/acrobat/acrobat">accessibility challenges</a> and can be hard to read on small screens. They do still tend to be popular in some circles, but it is much better to link to them so they can be downloaded or read on a separate page, rather than embedding them in a web page.</p>
     </body>
     </html>
