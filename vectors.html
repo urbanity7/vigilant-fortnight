@@ -5,7 +5,155 @@
     <link href="styles/styles.css" rel="stylesheet">
     <link href="index.html">
     <title>Vectors</title>
+    <style>
+      table {
+        table-layout: fixed;
+        width: 100%;
+        border: none;
+      }
+
+      .table-2 {
+        width: 50%;
+      }
+
+      th, td {
+        border: none;
+      }
+    </style>
     </head>
   <body>
+    <h2>What is SVG?</h2>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a> is an <a href="https://developer.mozilla.org/en-US/docs/Glossary/XML">XML</a>-based language for describing vector images. Think markup, but you've got a variety of different elements for describing the shapes you want to appear in your image and the effects you want to apply to those shapes. SVG defines elements for creating basic shapes, like <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle">&lt;circle&gt;</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect">&lt;rect&gt;</a></kbd>, as well as elements for creating more complex shapes, like <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path">&lt;path&gt;</a></kbd> and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/polygon">&lt;polygon&gt;</a></kbd>. More advanced SVG features include <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feColorMatrix">&lt;feColorMatrix&gt;</a></kbd> (transform colors using a transformation matrix), <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate">&lt;animate&gt;</a></kbd> (animate parts of your vector graphic), and <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask">&lt;mask&gt;</a></kbd> (apply a mask on top of your image).</p>
+    <p>The following is a basic example of a SVG.</p>
+    <p><strong>Input</strong>:</p>
+<code><pre><strong>HTML</strong>
+&lt;svg
+  version="1.1"
+  baseProfile="full"
+  width="300"
+  height="200"
+  xmlns="http://www.w3.org/2000/svg"&gt;
+  &lt;rect width="100%" height="100%" fill="black" /&gt;
+  &lt;circle cx="150" cy="100" r="90" fill="blue" /&gt;
+  &lt;/svg&gt;</pre></code>
+    <p><strong>Output</strong>:</p>
+    <svg
+      version="1.1"
+      baseProfile="full"
+      width="300"
+      height="200"
+      xmlns="http://www.w3.org/2000/svg">
+      <rect width="100%" height="100%" fill="black" />
+      <circle cx="150" cy="100" r="90" fill="blue" />
+    </svg>
+    <p>Some programs that commonly used to make SVGs include <a href="https://inkscape.org/">Inkscape</a> and Adobe Illustrator. These packages allow you to create a variety of illustrations using various graphics tools, and create approximations of photos (using Inkscape's Trace Bitmap feature, for example).</p>
+    <p>Furthermore, SVGs have some additional advantages:</p>
+    <ul>
+      <li>Accessibility--text in vector images remains accessible (which benefits <a href="https://developer.mozilla.org/en-US/docs/Glossary/SEO">SEO</a>).</li>
+      <li>SVGs lend themselves well to styling/scripting, because each component of the image is an element that can be styled via CSS or scripted via JavaScript.</li>
+    </ul>
+    <p>That said, SVGs also have some disadvantages:</p>
+    <ul>
+      <li>SVGs can get complicated very quickly, meaning that file sizes can grow and yield longer processing times in a browser.</li>
+      <li>SVGs can be harder to create than raster images, depending on what kind of image you're trying to create.</li>
+    </ul>
+    <p><strong>Note</strong>: if using Inkscape, save your SVG files as Plain SVGs to save space. Also, see this article on how to <a href="http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Web-Inkscape.html">prepare SVGs for the web</a>.</p>
+    <h2>Adding SVG to your pages</h2>
+    <h3>The quick way: <kbd>img</kbd> element</h3>
+    <p>To embed an SVG via an <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img">&lt;img&gt;</a></kbd> element, you simply need to reference it in the <kbd>src</kbd> attribute as you'd expect. You'll also need a <kbd>height</kbd> or a <kbd>width</kbd> attribute (or both if your SVG has no inherent aspect ratio). For example:</p>
+<code><pre><strong>HTML</strong>
+&lt;img
+  src="equilateral.svg"
+  alt="triangle with all three sides equal"
+  height="87"
+  width="100" /&gt;</pre></code>
+    <table>
+      <tr>
+        <th>Pros</th>
+        <th>Cons</th>
+      </tr>
+      <tr>
+        <td>Quick, familiar image syntax with built-in text equivalent available in the <kbd>alt</kbd> attribute.</td>
+        <td>You cannot manipulate the image with JavaScript.</td>
+      </tr>
+      <tr>
+        <td>You can turn the image into a hyperlink by nesting the <kbd>&lt;img&gt;</kbd> inside an <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">&lt;a&gt;</a></kbd> element.</td>
+        <td>If you want to control the SVG content with CSS, you must include inline CSS styles in your SVG code (external stylesheets invoked from the SVG file have no effect).</td>
+      </tr>
+      <tr>
+        <td>The SVG file can be cached by the browser, resulting in faster loading times for any page that uses the image in the future.</td>
+        <td>You cannot restyle the image with CSS pseudoclasses (like <kbd>:focus</kbd>).</td>
+      </tr>
+    </table>
+    <h3>Troubleshooting and cross-browser support</h3>
+    <p>For browsers that don't support SVG (Android 2.3 and below), you could reference a PNG or JPG from you <kbd>src</kbd> attribute and use a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset">srcset</a></kbd> attribute (which only more modern browsers recognize) to reference the SVG. In this case, only modern, supporting browsers will load the SVG--all others will load the PNG instead.</p>
+<code><pre><strong>HTML</strong>
+&lt;img
+  src="equilateral.png"
+  alt="triangle with equal sides"
+  srcset="equilateral.svg" /&gt;</pre></code>
+    <p>You can also use SVGs as CSS background images, as shown below. In the below code, older browsers will stick with the PNG that they understand, while newer browsers will load the SVG.</p>
+<code><pre><strong>CSS</strong>
+background: url("fallback.png") no-repeat center;
+background-image: url("image.svg");
+background-size: contain;</pre></code>
+    <p>Like the <kbd>img</kbd> method described above, inserting SVGs using CSS background images means that the SVG can't be manipulated with JavaScript, and is also subject to the same CSS limitations.</p>
+    <p>If your SVGs aren't showing up at all, it might be because your server isn't set up properly. If that's the problem, this <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Getting_Started#a_word_on_web_servers_for_.svgz_files">article will point you in the right direction</a>.</p>
+    <h3>How to include SVG code inside your HTML</h3>
+    <p>You can also open up the SVG file in a text editor, copy the SVG code, and paste it into your HTML document--this is sometimes called putting your <strong>SVG inline</strong>, or <strong>inlining your SVG</strong>. Make sure your SVG code snippet begins with an <kbd>svg</kbd> start tag and ends with an <kbd>/svg</kbd> end tag. Here's a simple example of what you might paste into your document:</p>
+<code><pre><strong>HTML</strong>
+&lt;svg width="300" height="200"&gt;
+  &lt;rect width="100%" height="100%" fill="green" /&gt;
+&lt;/svg&gt;</pre></code>
+    <table>
+      <tr>
+        <th>Pros</th>
+        <th>Cons</th>
+      </tr>
+      <tr>
+        <td>Putting your SVG inline saves an HTTP request, meaning it can reduce loading times a bit.</td>
+        <td>This method is only suitable if you're using the SVG in a single place. <strong>Duplication makes for resource-intensive maintenance</strong>.</td>
+      </tr>
+      <tr>
+        <td>You can assign classes and IDs to SVG elements and style them with CSS, either within the SVG itself or wherever you put the CSS style rules for your HTML document. You can actually use any <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute#presentation_attributes">SVG presentation attribute</a> as a CSS property.</td>
+        <td>Extra SVG code increases the size of your HTML file.</td>
+      </tr>
+      <tr>
+        <td>Inlining SVG is the only approach that lets you use CSS interactions (like <kbd>:focus</kbd>) and CSS animations on your SVG image (even in your regular stylesheet).</td>
+        <td>The browser cannot cache inline SVG as it would cache regular image assets, so pages that include the image will not load faster after the first page containing the image is loaded.</td>
+      </tr>
+      <tr>
+        <td>You can turn SVG markup into a hyperlink by wrapping it in an <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">&lt;a&gt;</a> element.</kbd></td>
+        <td>You may include fallback in a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject">&lt;foreignObject&gt;</a> element, but browsers that support SVG still download any fallback images. Therefore, you need to weigh whether the extra overhead is really worthwhile to support obsolescent browsers.</kbd></td>
+      </tr>
+    </table>
+    <h3>How to embed an SVG with an <kbd>iframe</kbd></h3>
+    <p>You can open SVG images in your browser just like web pages. So, embedding an SVG document with an <kbd>&lt;iframe&gt;</kbd> is done just like we studied in <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Other_embedding_technologies">From &lt;object&gt; to &lt;iframe&gt;</a> (<a href="object-iframe.html">my version here</a>).</p>
+    <p>Here's a quick review. <strong>Keep in mind that this is not the best method to choose, as detailed below</strong>.</p>
+<code><pre><strong>HTML</strong>
+&lt;iframe src="triangle.svg" width="500" height="500" sandbox&gt;
+  &lt;img src="triangle.png" alt="Triangle with three unequal sides" /&gt;
+&lt;/iframe&gt;</pre></code>
+    <table class="table-2">
+      <tr>
+        <th>Cons</th>
+      </tr>
+      <tr>
+        <td><kbd>iframe</kbd>s do have a fallback mechanism, as you can see, however, browsers only display the fallback if they lack support for <kbd>iframe</kbd>s altogether.</td>
+      </tr>
+      <tr>
+        <td>Moreover, unless the SVG and your current web page have the same <a href="https://developer.mozilla.org/en-US/docs/Glossary/Origin">origin</a>, you cannot use JavaScript on your main webpage to manipulate the SVG.</td>
+      </tr>
+    </table>
+    <h2>See also</h2>
+    <ul>
+      <li><a href="http://tavmjong.free.fr/INKSCAPE/MANUAL/html/Web-Inkscape.html">Prepare SVGs for the web</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Getting_Started">SVG tutorial</a> on MDN</li>
+      <li><a href="https://thenewcode.com/744/Making-SVG-Responsive">Quick tips for responsive SVGs</a></li>
+      <li><a href="https://tympanus.net/codrops/2014/08/19/making-svgs-responsive-with-css/">Sara Soueidan's tutorial on responsive SVG images</a></li>
+      <li><a href="https://www.w3.org/TR/SVG-access/">Accessibility benefits of SVG</a></li>
+      <li><a href="https://css-tricks.com/svg-properties-and-css/">SVG Properties and CSS</a></li>
+      <li><a href="https://css-tricks.com/scale-svg/">How to scale SVGs</a> (it's trickier than scaling raster graphics)</li>
+    </ul>
     </body>
     </html>
