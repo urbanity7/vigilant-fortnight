@@ -8,7 +8,6 @@
     <style>
       table {
         table-layout: fixed;
-        width: 100%;
         border: none;
       }
 
@@ -18,6 +17,7 @@
 
       th, td {
         border: none;
+        padding: 0.25em;
       }
     </style>
     </head>
@@ -124,7 +124,7 @@ background-size: contain;</pre></code>
       </tr>
       <tr>
         <td>You can turn SVG markup into a hyperlink by wrapping it in an <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a">&lt;a&gt;</a></kbd> element.</td>
-        <td>You may include fallback in a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject">&lt;foreignObject&gt;</a> element, but browsers that support SVG still download any fallback images. Therefore, you need to weigh whether the extra overhead is really worthwhile to support obsolescent browsers.</kbd></td>
+        <td>You may include fallback in a <kbd><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/foreignObject">&lt;foreignObject&gt;</a></kbd> element, but browsers that support SVG still download any fallback images. Therefore, you need to weigh whether the extra overhead is really worthwhile to support obsolescent browsers.</td>
       </tr>
     </table>
     <h3>How to embed an SVG with an <kbd>iframe</kbd></h3>
