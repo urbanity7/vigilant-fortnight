@@ -105,6 +105,13 @@ img {
       <li><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset">srcset</a></kbd></li>
       <li><kbd><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes">sizes</a></kbd></li>
     </ul>
+    <h2>Practice</h2>
+    <picture>
+      <source media="(max-width: 300px)" srcset="/images/weagle.png 4x" />
+      <source media="(301px <= width <= 399px)" srcset="/images/weagle.png 3x" />
+      <source media="(min-width: 400px)" srcset="/images/weagle.png 2x" />
+      <img src="../MDN-structuring-the-web/images/weagle.png">
+    </picture>
     </body>
     </html>
 
