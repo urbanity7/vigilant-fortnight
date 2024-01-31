@@ -7,7 +7,7 @@
     <link href="../MDN-structuring-the-web/images/weagle.png" id="weagle">
     <!-- LOGO <link href="../MDN-structuring-the-web/images/" id="logo"> -->
     <link href="../testing/styles/styles.css" rel="stylesheet" type="text/css">
-    <link href="..index.html">
+    <link href="../index.html">
     <title>Testing</title>
    </head>
   <body>
