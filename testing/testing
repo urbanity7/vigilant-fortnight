@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width">
     <link href="tables-directory/blank-template.html"> 
     <link href="../MDN-structuring-the-web/images/weagle.png" id="weagle">
-    <!-- LOGO <link href="../MDN-structuring-the-web/images/" id="logo"> -->
     <link href="../testing/styles/styles.css" rel="stylesheet" type="text/css">
     <link href="../index.html">
     <title>Testing</title>
    </head>
   <body>
-<!--  FOR TESTING STUFF WITH SVG LOGO  
+<!--  FOR TESTING STUFF WITH SVG LOGO
     <LOGO img src="../images/" width="250">
     <svg stuff >
         IDK if this animation code is technically sound but it looks cool
@@ -23,8 +22,7 @@
         to="360 60 70"
         dur="10s"
         repeatCount="indefinite" />
-        </svg>
-    -->
+        </svg> -->
     <img src="../images/weagle.png" width="50%">
     </body>
     </html>
