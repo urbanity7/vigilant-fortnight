@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 250 250" style="enable-background:new 0 0 250 250;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#DFDFDF;}
+	.st1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st2{display:none;fill:#CCCCCC;}
+	.st3{fill:#CCCCCC;}
+	.st4{fill:#CCCCCC;stroke:#000000;stroke-miterlimit:10;}
+</style>
+<g id="ellipse">
+	<circle class="st0" cx="125" cy="125" r="87"/>
+</g>
+<g id="ellipse_edge">
+	<circle class="st1" cx="125" cy="125" r="87"/>
+</g>
+<g id="same_size_00000111177330137449217260000012523820145328006805_">
+	<path id="same_size" class="st2" d="M125,125l43.5-75.3c13.2,7.6,24.2,18.6,31.8,31.8C208,94.7,212,109.7,212,125H125z"/>
+</g>
+<g id="bigger_00000088117585213836984800000014891125022670191247_">
+	<path id="bigger" class="st2" d="M125,125l49.4-85.6c15,8.7,27.5,21.2,36.2,36.2c8.7,15,13.2,32.1,13.2,49.4H125z"/>
+</g>
+<g id="not_perfect">
+	<g id="edge_outside_1_00000133523630047777804810000005421592597366843581_">
+		<g>
+			<g>
+				<path d="M125,125l49.3-86.5c31,17.7,50.2,50.8,50.2,86.5c0,0.1,0,0.2,0,0.3L125,125z"/>
+			</g>
+		</g>
+	</g>
+	<path id="edge_outside_1_00000171701402733206576450000014897791438034542995_" class="st3" d="M124.1,125.5l49.6-86
+		c15.1,8.7,27.6,21.2,36.3,36.3s13.3,32.1,13.4,49.5L124.1,125.5z"/>
+</g>
+<g id="edge_full_00000042008730553895523570000004026040879869639604_">
+	<path id="edge_full" class="st4" d="M125,125l49.4-85.6c15,8.7,27.5,21.2,36.2,36.2c8.7,15,13.2,32.1,13.2,49.4H125z"/>
+</g>
+<g id="Layer_2">
+	<path class="st0" d="M395,125h87c0,47.7-39.3,87-87,87s-87-39.3-87-87s39.3-87,87-87c15.3,0,30.3,4,43.5,11.7L395,125z"/>
+</g>
+</svg>
