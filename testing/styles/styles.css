@@ -15,14 +15,16 @@ img {
   }
 */
 
+/* 
 img {
     animation: 
     8s infinite alternate running slidein, 
     2s infinite alternate-reverse running rotate,
     4s infinite alternate-reverse running scale;
 }
+*/
 
-@keyframes slidein {
+/* @keyframes slidein {
     from {
       transform: translate(0px, 0px);
     }
@@ -47,5 +49,22 @@ img {
 
     to {
         transform:scale(0.25, 0.25);
+    }
+} */
+
+.pie {
+    transform: rotate(360deg);
+    /*nth-of-type() not needed */
+    animation: rotate 7s ease-in-out infinite;
+}
+
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    360% {
+        transform: rotate(360deg);
     }
 }
