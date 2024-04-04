@@ -8,10 +8,122 @@
     <script src="js-basics.js"></script>
     </head>
   <body>
+    <h2>Internal vs external JavaScript</h2>
+    <p><strong>Internal</strong></p>
+    <ul><li>Enclosed in <kbd>&lt;script&gt;</kbd> tags within the <kbd>&lt;head&gt;</kbd> or <kbd>&lt;body&gt;</kbd></li>
+    </ul>
+    <p><strong>External</strong></p>
+    <ul><li>Linked to similarly to CSS style sheets, except the opening tag is <kbd>&lt;script&gt;</kbd>, not <kbd>&lt;link&gt;</kbd></li>
+    <li style="list-style-type: none"><code>&lt;script src="name-of-js-file.js"&gt;&lt;/script&gt;</code></li>
+    <ul><li style="list-style-type: none"><u>Advantages</u></li>
+      <li>Separates HTML and JavaScript, making both easier to read and maintain</li>
+      <li>Cached JavaScript files can make pages load faster</li>
+      </ul>
+      </ul>
+    <h2>Overview of JavaScript syntax</h2>
+    <p>There are two types of values:</p>
+    <p><strong>Fixed values, or literals</strong></p>
+    <ul>
+      <li><strong>Strings</strong> are text enclosed in double or single quotes</li>
+      <li style="list-style-type: none"><code>"John Doe", 'John Doe'</code></li>
+    </ul>
+    <p><strong>Variable values, or variables</strong></p>
+    <ul>
+      <li><strong>Variables</strong> are used to store data values</li>
+      <li>Signified via one of the following keywords and then defined by a value with an = sign:</li>
+        <ul>
+          <li><kbd>var</kbd></li>
+          <ul>
+            <li>Can be scoped globally or locally</li>
+            <ul>
+              <li>Globally scoped <kbd>var</kbd>s are declared outside of a function. They can be called anywhere in the window--not just within a specific function</li>
+              <li>Locally scoped <kbd>var</kbd>s are declared inside a function, and thus must be called within the same function</li>
+            </ul>
+            <li>Can be hoisted, or moved to the top of their scope before the code is run. They are initialized with a value of <kbd>undefined</kbd></li>
+            <ul>
+              <li>In other words, <kbd>var</kbd> can be declared after the first instance in which it appears in your code</li>
+            </ul>
+            <li>Both types can be updated and redeclared within their respective scopes</li>
+          </ul>
+          <li><kbd>let</kbd></li>
+          <ul>
+            <li>Block scoped (aka anything within a set of curly brackets), meaning it can't be used outside the block in which it is declared</li>
+            <li>Can be updated within its scope, but not redeclared</li>
+            <ul><li>The following would work:</li>
+            <li style="list-style-type: none">
+<code><pre>let greeting = "Say hi";
+greeting = "say hello instead";</pre></code></li>
+<li>The following would <strong>not</strong> work (the second use of <kbd>let</kbd> is what redeclares the variable):</li>
+<li style="list-style-type: none;"><code><pre>let greeting = say hi;
+let greeting = "say hello instead";</pre></code></li>
+<li>It's possible to define the same variable in different scopes, meaning the following would also work because the code treats each instance of the word "let" as a different scope due to the use of curly brackets:
+<li style="list-style-type: none;"><code><pre>let greeting = say hi;
+if (true) { 
+  let greeting = "say hello instead";
+  console.log(greeting); // "say hello instead"
+}
+console.log(greeting); // "say hi" </pre></code></li>
+</li></ul>
+<li>Can be hoisted to the top, but are not initialized when this is done</li>
+          </ul>
+          <li><kbd>const</kbd></li>
+          <ul>
+            <li><kbd>const</kbd> values are constant values</li>
+            <li>Block scoped</li>
+            <li>Cannot be updated or redeclared--the whole point of <kbd>const</kbd> values is that they remain constant. This means that every <kbd>const</kbd> declaration must be initialized when it's first declared</li>
+            <ul>
+              <li>That said, you <strong>can</strong> update the properties of <kbd>const</kbd> variables. For instance, the following would work:</li>
+              <li style="list-style-type: none;"><code><pre>greeting.message = "say hello instead";</pre></code></li>
+              <li>However, this would not work because it's updating the value stored within <kbd>const</kbd> rather than a property of <kbd>const</kbd>:</li>
+              <li style="list-style-type: none;"><code><pre>greeting = {
+  words: "Hello",
+  number: "five",
+} // error: Assignment to constant variable.</pre></code></li>
+            </ul>
+            <li>Can be hoisted to the top, but are not initialized when this is done</li>
+      </ul>
+      </ul>
+      <li>Variables can be defined or undefined</li>
+      <ul>
+        <li>Undefined variables end after the variable is identified:</li>
+        <li style="list-style-type: none;"><code><pre>var/let/const x;</pre></code></p></li>
+        <li>Defined variables use an assignment operator aka an = sign:</li>
+        <li style="list-style-type: none;"><code><pre>var/let/const x;
+x = 6;</pre></code></p></li>
+</ul>
+<li>When to use <kbd>var</kbd> vs <kbd>let</kbd> vs <kbd>const</kbd></li>
+  <ul>
+    <li><kbd>let</kbd> and <kbd>const</kbd> are preferred over <kbd>var</kbd></li>
+    <ul>
+      <li><kbd>const</kbd> should be used when the value and the property type (arrays, objects) should not be changed; try to use <kbd>let</kbd> otherwise</li>
+    </ul>
+      <li><kbd>var</kbd> should be used in cases where you MUST support older browsers</li>
+    </ul>
+</ul>
+    <h2>Comments in JavaScript</h2>
+    <p>Not all JavaScript statements are executed when the code is run. Code after double slashes // or between /* and */ is treated as a comment and not code to be run--think comments in CSS</p>
+    <ul>
+      <li>Note: Comments that begin with // do not need a // at the end of the comment because they are single-line comments--the comment ends when a new line starts</li>
+      <li>/* */ comments are reserved for comments that span multiple lines</li>
+    </ul>
+    <h2>JavaScript names/identifiers</h2>
+    <p>Names/identifiers are used to name variables, keywords, and functions. They must adhere to the following rules:</p>
+    <ul>
+      <li>Begin with a letter, dollar sign, or underscore--names/identifiers cannot start with numbers</li>
+      <li>Subsequent characters may be letters, digits, underscores, and dollar signs</li>
+    </ul>
+    <h2>Capitalization/punctuation rules</h2>
+    <ul>
+      <li>JavaScript is case sensitive--the variables "lastname" and "lastName" are distinct</li>
+      <li>JavaScript is typically written using Camel Case (e.g., camelCase)</li>
+      <ul>
+        <li>This is because JavaScript only permits hyphens for subtracting and negative numbers--they can't be used when naming names/identifiers</li>
+      </ul>
+    </ul>
+
     <p>Pick up by referencing these pages:</p>
     <ul>
-        <li><a href="https://www.w3schools.com/js/js_whereto.asp">Internal vs external JavaScript</a></li>
-        <li><a href="https://www.w3schools.com/js/js_syntax.asp">W3 Schools: JavaScript syntax</a></li>
+        <li>Left off <a href="https://www.w3schools.com/js/js_let.asp">here</a>--keep in mind that the info on this page and the next page may repeat info already in your <kbd>let</kbd> and <kbd>const</kbd> sections. It might introduce new info as well, so it's worth reviewing just in case</li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN JavaScript hub</a>--see reference section and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">central reference page</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps">MDN: JavaScript First Steps</a></li>
     </ul>
